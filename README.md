@@ -13,6 +13,7 @@ The material is intended for early career engineers, developers new to the C++ l
 * Fundamentals
 * Special Member Functions
 * Additional Class Operations
+* Rule of Zero/Five
 * Class Hierarchies
 
 ## GoF Design Patterns
@@ -25,13 +26,14 @@ The material is intended for early career engineers, developers new to the C++ l
 
 * Copy-and-Swap
 * Hidden Friend
+* Argument-Dependent Lookup (ADL)
 * Resource Acquisition is Initialization (RAII)
 * Pointer to Implementation (PImpl)
 
 ## Modern Idioms
 
 * Curiously Recurring Template Pattern (CRTP)
-*  Mixins
+* Mixins
 * Type Erasure
 * Overload Pattern
 
