@@ -4,7 +4,7 @@ Lorem ipsum dolor sit amet, nonumes vocibus offendit eos et, pri ne impetus volu
 
 ## Audience
 
-Cu erant legimus denique quo. Te has ubique sensibus consequuntur, sea volumus urbanitas at. Eos ex meis dicta legendos, per labore fuisset ea, commodo persius ad his. Eu eam legere possim. Mel at tale apeirian, eam ex dico illum reprehendunt.
+This material is intended for early career engineers, developers new to the C++ language, or folks working in a research-focused role where C++ is the primary tool of use. In no way is this intended to be a comprehensive overview of the language and its numerous features. Rather, it aims to serve as an introduction to many common use cases, adhering to widely accepted best practices throughout.
 
 # Content
 
@@ -30,7 +30,7 @@ Cu erant legimus denique quo. Te has ubique sensibus consequuntur, sea volumus u
 
 ## Modern Idioms
 
-1. Curiously Reucurring Template Pattern (CRTP)
+1. Curiously Recurring Template Pattern (CRTP)
 2. Mixins
 3. Type Erasure
 4. Overload Pattern
@@ -40,7 +40,7 @@ Cu erant legimus denique quo. Te has ubique sensibus consequuntur, sea volumus u
 1. Fundamentals
 2. Type Traits
 3. Concepts
-4. Translating OO to GP
+4. Translating Object-Oriented to Generics
 
 ## Scientific Computing
 
