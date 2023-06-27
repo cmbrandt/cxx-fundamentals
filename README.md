@@ -19,7 +19,7 @@ The material is intended for early career engineers, developers new to the C++ l
 ## GoF Design Patterns
 
 * Creational Patterns
-*  Structural Patterns
+* Structural Patterns
 * Behavioral Patterns
 
 ## Common Idioms
@@ -48,5 +48,6 @@ The material is intended for early career engineers, developers new to the C++ l
 
 * Vectorization
 * Parallelism
+* Cache Blocking
 * Benchmarking
 * `std::mdspan`
