@@ -24,9 +24,9 @@ The material is intended for early career engineers, developers new to the C++ l
 ## Common Idioms
 
 * Copy-and-Swap
-* Argument-Dependent Lookup (ADL)
 * Hidden Friend
-* Tag Dispatch
+* Resource Acquisition is Initialization (RAII)
+* Pointer to Implementation (PImpl)
 
 ## Modern Idioms
 
