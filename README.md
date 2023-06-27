@@ -1,2 +1,2 @@
-# cxx-seminar
+# C++ Seminar
 C++ Seminar
