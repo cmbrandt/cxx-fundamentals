@@ -6,9 +6,7 @@ Duo deleniti posidonium ut. Duo ne solum delicatissimi. At sed amet accusam. An 
 * Hidden Friend
 * Argument-Dependent Lookup (ADL)
 * Resource Acquisition is Initialization (RAII)
-
-
-# Pointer to Implementation (Pimpl)
+* Pointer to Implementation (Pimpl)
 
 
 # Copy-and-Swap
