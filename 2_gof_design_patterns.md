@@ -1,10 +1,10 @@
 # Gang of Four Design Patterns
 Lorem ipsum dolor sit amet, te sit utamur pertinacia, omnium qualisque referrentur et his. Pri ad agam mutat option, te summo voluptaria qui, in simul probatus nec. Suas impetus et sit. Eum ne quas velit iisque, nec vero insolens interpretaris ei, duo magna ornatus te. In malorum corrumpit aliquando quo, in nam fugit inermis consulatu, libris minimum adolescens eos in. Nulla offendit an mei, ut nonumy aeterno pericula nam, no nec liber patrioque.
 
-## Subsections:
-* Creational Patterns
-* Structural Patterns
-* Behavioral Patterns
+## Content
+* [Creational Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_gof_design_patterns.md#creational-patterns)
+* [Structural Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_gof_design_patterns.md#structural-patterns)
+* [Behavioral Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_gof_design_patterns.md#behavioral-patterns)
 
 
 # Creational Patterns
