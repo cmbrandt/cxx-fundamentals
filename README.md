@@ -8,7 +8,7 @@ The material is intended for early career engineers, developers new to the C++ l
 
 # Content
 
-## Class Design
+## [Class Design](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md)
 
 * Fundamentals
 * Special Member Functions
@@ -16,13 +16,13 @@ The material is intended for early career engineers, developers new to the C++ l
 * Rule of Zero/Five
 * Class Hierarchies
 
-## GoF Design Patterns
+## [GoF Design Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_gof_design_patterns.md)
 
 * Creational Patterns
 * Structural Patterns
 * Behavioral Patterns
 
-## Common Idioms
+## [Common Idioms](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/3_common_idioms.md)
 
 * Copy-and-Swap
 * Hidden Friend
@@ -30,21 +30,21 @@ The material is intended for early career engineers, developers new to the C++ l
 * Resource Acquisition is Initialization (RAII)
 * Pointer to Implementation (PImpl)
 
-## Modern Idioms
+## [Modern Idioms](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/4_modern_idioms.md)
 
 * Curiously Recurring Template Pattern (CRTP)
 * Mixins
 * Type Erasure
 * Overload Pattern
 
-## Generic Programming
+## [Generic Programming](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/5_generic_programming.md)
 
 * Fundamentals
 * Type Traits
 * Concepts
 * Translating Object-Oriented to Generics
 
-## Scientific Computing
+## [Scientific Computing](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/6_scientific_computing.md)
 
 * Vectorization
 * Parallelism
