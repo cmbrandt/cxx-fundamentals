@@ -16,13 +16,13 @@ The material is intended for early career engineers, developers new to the C++ l
 * Rule of Zero/Five
 * Class Hierarchies
 
-## [Design Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_gof_design_patterns.md)
+## [Design Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_design_patterns.md)
 
 * Creational Patterns
 * Structural Patterns
 * Behavioral Patterns
 
-## [Classic Idioms](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/3_common_idioms.md)
+## [Classic Idioms](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/3_classic_idioms.md)
 
 * Copy-and-Swap
 * Hidden Friend
