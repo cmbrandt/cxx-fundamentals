@@ -222,8 +222,27 @@ To define the skeleton of an algorithm consisting of various typical steps
 To define 1-to-N dependencies between objects so that changes to one object cause all dependent objects to be notified
 
 ### Structure:
+<p align="center">
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/observer.png" alt="Image" />
+</p>
 
 ### Participants:
+`Observer`
+* 1
+* 2
+
+`ConcreteObserver`
+* 1
+* 2
+
+`Subject`
+* 1
+* 2
+
+`ConcreteSubject`
+* 1
+* 2
+
 
 ### Variations:
 * Subject may send a notification, or a value
@@ -249,8 +268,30 @@ To define 1-to-N dependencies between objects so that changes to one object caus
 To encapsulate an operation executed on an object within an object hierarchy
 
 ### Structure:
+<p align="center">
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/visitor.png" alt="Image" />
+</p>
 
 ### Participants:
+`Visitor`
+* 1
+* 2
+
+`ConcreteVisitor`
+* 1
+* 2
+
+`Element`
+* 1
+* 2
+
+`ConcreteElementA`
+* 1
+* 2
+
+`ConcreteElementB`
+* 1
+* 2
 
 ### Variations:
 * N/A
