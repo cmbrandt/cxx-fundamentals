@@ -1,14 +1,21 @@
 # Modern Idioms
+Ea ridens cetero imperdiet est, dicit prodesset eu his, ex debitis inermis per. Pro et vidisse impedit accommodare, mea autem graecis et, vix ut assum detracto. Et illum aliquid laboramus vix, eu duo euismod corrumpit. Electram accusamus ne pro.
+
+## Subsections
+* Fundamentals
+* Type Traits
+* Concepts
+* Translating Object-Oriented to Generics
 
 
-## Fundamentals
+# Fundamentals
 
 
-## Type Traits
+# Type Traits
 
 
-## Concepts
+# Concepts
 
 
-## Translating Object-Oriented to Generics
+# Translating Object-Oriented to Generics
 

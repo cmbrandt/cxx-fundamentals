@@ -1,14 +1,21 @@
 # Modern Idioms
+Brute electram te has, aperiam equidem saperet mea in. Munere alienum hendrerit has ei, eam soleat conclusionemque te. Ne reque malorum deleniti eos, ne dicunt cotidieque sea. Bonorum equidem an qui. Ne ceteros scaevola dissentiet est, ea solum nostro erroribus vis, mucius aeterno assentior eos ut. Ex assum viris democritum eam.
+
+## Subsections
+* Curiously Recurring Template Pattern (CRTP)
+* Mixins
+* Type Erasure
+* Overload Pattern
 
 
-## Curiously Recurring Template Pattern (CRTP)
+# Curiously Recurring Template Pattern (CRTP)
 
 
-## Mixins
+# Mixins
 
 
-## Type Erasure
+# Type Erasure
 
 
-## Overload Pattern
+# Overload Pattern
 
