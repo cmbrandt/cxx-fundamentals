@@ -2,10 +2,25 @@
 Lorem ipsum dolor sit amet, te sit utamur pertinacia, omnium qualisque referrentur et his. Pri ad agam mutat option, te summo voluptaria qui, in simul probatus nec. Suas impetus et sit. Eum ne quas velit iisque, nec vero insolens interpretaris ei, duo magna ornatus te. In malorum corrumpit aliquando quo, in nam fugit inermis consulatu, libris minimum adolescens eos in. Nulla offendit an mei, ut nonumy aeterno pericula nam, no nec liber patrioque.
 
 ## Content
-* [Creational Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_gof_design_patterns.md#creational-patterns)
-* [Structural Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_gof_design_patterns.md#structural-patterns)
-* [Behavioral Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_gof_design_patterns.md#behavioral-patterns)
 
+### [Creational Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_gof_design_patterns.md#creational-patterns)
+* Factory Method
+* Prototype
+* Singleton
+
+### [Structural Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_gof_design_patterns.md#structural-patterns)
+* Adapter
+* Bridge
+* Decorator
+* Composite
+* Fascade
+* Proxy
+
+### [Behavioral Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_gof_design_patterns.md#behavioral-patterns)
+* Strategy
+* Template Method
+* Observer
+* Visitor
 
 # Creational Patterns
 Ei diam eros verterem his, sit veri clita deleniti ei. Est an probo adhuc euripidis, alia vulputate mei ut. Sea at phaedrum laboramus, ea vim ipsum insolens mnesarchum, usu ex malis habemus. Soluta ridens causae ei sea, per porro postea inciderint ea, nisl debitis erroribus ea his.
@@ -18,7 +33,7 @@ Ei diam eros verterem his, sit veri clita deleniti ei. Est an probo adhuc euripi
 * AKA:  Virtual Constructor, Factory Pattern, Virtual Factory, Creation Method
 
 ### Purpose:
-To provide an API for creating an object, where the factory method detemrines the exact class of the object that will be created
+To provide an API for creating an object, where the factory method determines the exact class of the object that will be created
 
 ### Structure:
 
