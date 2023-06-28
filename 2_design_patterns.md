@@ -140,8 +140,26 @@ Behavioral patterns are concerned with algorithms and the assignment of responsi
 To define a family of algorithms and encapsulate them into objects
 
 ### Structure:
+<p align="center">
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/strategy.png" alt="Image" />
+</p>
 
 ### Participants:
+`Context`
+* 1
+* 2
+
+`Strategy`
+* 1
+* 2
+
+`ConcreteStrategy1`
+* 1
+* 2
+
+`ConcreteStrategy2`
+* 1
+* 2
 
 ### Variations:
 * N/A
@@ -166,8 +184,18 @@ To define a family of algorithms and encapsulate them into objects
 To define the skeleton of an algorithm consisting of various typical steps
 
 ### Structure:
+<p align="center">
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/template_method.png" alt="Image" />
+</p>
 
 ### Participants:
+`AbstractClass`
+* 1
+* 2
+
+`ConcreteClass`
+* 1
+* 2
 
 ### Variations:
 * Non-Virtual Interface (NVI)
