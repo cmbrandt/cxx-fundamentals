@@ -16,24 +16,24 @@ The material is intended for early career engineers, developers new to the C++ l
 * Rule of Zero/Five
 * Class Hierarchies
 
-## [GoF Design Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_gof_design_patterns.md)
+## [Design Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_gof_design_patterns.md)
 
 * Creational Patterns
 * Structural Patterns
 * Behavioral Patterns
 
-## [Common Idioms](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/3_common_idioms.md)
+## [Classic Idioms](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/3_common_idioms.md)
 
 * Copy-and-Swap
 * Hidden Friend
 * Argument-Dependent Lookup (ADL)
 * Resource Acquisition is Initialization (RAII)
-* Pointer to Implementation (PImpl)
+* Pointer to Implementation (Pimpl)
 
 ## [Modern Idioms](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/4_modern_idioms.md)
 
 * Curiously Recurring Template Pattern (CRTP)
-* Mixins
+* Mixin
 * Type Erasure
 * Overload Pattern
 
