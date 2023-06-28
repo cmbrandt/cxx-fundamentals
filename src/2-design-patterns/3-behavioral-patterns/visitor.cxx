@@ -12,7 +12,7 @@ struct Visitor
   virtual ~Visitor() = default;
 
   virtual void visit(ConcreteElementA const& a) const = 0;
-  virtual void visit(ConcreteElementB const& s) const = 0;
+  virtual void visit(ConcreteElementB const& b) const = 0;
 };
 
 struct Element
