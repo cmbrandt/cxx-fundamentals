@@ -3,7 +3,7 @@ Brute electram te has, aperiam equidem saperet mea in. Munere alienum hendrerit 
 
 ## Content
 * Curiously Recurring Template Pattern (CRTP)
-* Mixins
+* Mixin
 * Type Erasure
 * Overload Pattern
 
@@ -11,7 +11,7 @@ Brute electram te has, aperiam equidem saperet mea in. Munere alienum hendrerit 
 # Curiously Recurring Template Pattern (CRTP)
 
 
-# Mixins
+# Mixin
 
 
 # Type Erasure
