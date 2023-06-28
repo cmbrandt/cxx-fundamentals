@@ -23,14 +23,14 @@ Lorem ipsum dolor sit amet, te sit utamur pertinacia, omnium qualisque referrent
 * Visitor
 
 # Creational Patterns
-Ei diam eros verterem his, sit veri clita deleniti ei. Est an probo adhuc euripidis, alia vulputate mei ut. Sea at phaedrum laboramus, ea vim ipsum insolens mnesarchum, usu ex malis habemus. Soluta ridens causae ei sea, per porro postea inciderint ea, nisl debitis erroribus ea his.
+Creational design patterns focus on how objects are created, aiming to find appropriate ways to create objects based on the specific situation. The conventional approach to object creation can lead to design challenges or increased complexity. Creational design patterns address this issue by providing mechanisms to manage object creation in a controlled manner.
 
 
 ## Factory Method
 
 ### About:
-* Form: Class Pattern
-* AKA:  Virtual Constructor, Factory Pattern, Virtual Factory, Creation Method
+* Classification: Class Pattern
+* Also Known As:  Virtual Constructor, Factory Pattern, Virtual Factory, Creation Method
 
 ### Purpose:
 To provide an API for creating an object, where the factory method determines the exact class of the object that will be created
@@ -54,13 +54,61 @@ To provide an API for creating an object, where the factory method determines th
 * Lack of extensibility
 * Runtime overhead
 
+
 ## Prototype
+
+### About:
+* Classification: Class Pattern
+* Also Known As:  Clone pattern
+
+### Purpose:
+Create new objects by copying or cloning existing objects, thus avoiding the need for explicit instantiation and allowing for runtime determination of the object to be cloned
+
+### Structure:
+
+### Participants:
+
+### Variations:
+* N/A
+
+### Pros:
+* Reduces the need for subclassing to create new objects
+* Simplifies the creation of complex objects
+
+### Cons:
+* Cloning can be complex and error-prone for objects with complex internal references
+* Not suitable for scenarios where object creation involves complex logic or dependencies
+
 
 ## Singleton
 
+### About:
+* Classification: Object pattern
+* Also Known As:  N/A
+
+### Purpose:
+To ensure that there is only a single instance of a class throughout the application, and to provide a global point of access to that instance
+
+### Structure:
+
+### Participants:
+
+### Variations:
+* N/A
+
+### Pros:
+* Ensures that there is only one instance of a class throughout the application
+* Provides a global access point to the single instance
+
+### Cons:
+* Static initialization ordering
+* Thread safety
+* Hidden dependency
+
 
 # Structural Patterns
-Duis fierent sit in. Sanctus argumentum complectitur et duo, ocurreret deseruisse an vim. Consetetur quaerendum sit cu. Ad exerci facilisi dignissim his. Reque saperet cu vis, ei sit errem iriure.
+Structural design patterns focus on how to compose objects and classes to form larger structures. Structural *class* patterns employ inheritance to compose interfaces or implementations. Structural *object* patterns describe approaches to compose objects to achieve new functionality.
+
 
 ## Adapter
 
@@ -76,13 +124,14 @@ Duis fierent sit in. Sanctus argumentum complectitur et duo, ocurreret deseruiss
 
 
 # Behavioral Patterns
-Nam malis corpora repudiandae id, tale utamur accusamus te vim, cu mei vidisse quaestio. Aliquip eripuit albucius ne cum, ne summo verear officiis usu, mollis eirmod no mea. Ad facer veniam tibique pri, timeam indoctum sed ne. Purto natum soluta sea id, errem accusamus assentior his id. Eos aperiri evertitur cu, ad augue reprimique duo, detracto facilisi aliquando sit ut.
+Behavioral patterns are concerned with algorithms and the assignment of responsibilities between objects. They describe both the patterns of objects and classes, along with the patterns of communication between them.
+
 
 ## Strategy
 
 ### About:
-* Form: Object pattern
-* AKA:  Policy (compile-time)
+* Classification: Object pattern
+* Also Known As:  Policy (compile-time)
 
 ### Purpose:
 To define a family of algorithms and encapsulate them into objects
@@ -103,11 +152,12 @@ To define a family of algorithms and encapsulate them into objects
 * Clients must know and choose the correct strategy
 * The number of objects (strategies) increases heavily
 
+
 ## Template Method
 
 ### About:
-* Form: Object pattern
-* AKA:  N/A
+* Classification: Object pattern
+* Also Known As:  N/A
 
 ### Purpose:
 To define the skeleton of an algorithm consisting of various typical steps
@@ -130,11 +180,12 @@ To define the skeleton of an algorithm consisting of various typical steps
 * Even small variations of an algorithm require the creation of a new class
 * The skeleton is fixed and cannot be changed (overcome by making the skeleton function virtual)
 
+
 ## Observer
 
 ### About:
-* Form: Object pattern
-* AKA:  Publisher-subscriber
+* Classification: Object pattern
+* Also Known As:  Publisher-subscriber
 
 ### Purpose:
 To define 1-to-N dependencies between objects so that changes to one object cause all dependent objects to be notified
@@ -156,11 +207,12 @@ To define 1-to-N dependencies between objects so that changes to one object caus
 * There is no guarantee of the order in which subscribers are notified
 * Publishers may send a notification to a subscriber that is not alive anymore
 
+
 ## Visitor
 
 ### About:
-* Form: Object pattern
-* AKA:  N/A
+* Classification: Object pattern
+* Also Known As:  N/A
 
 ### Purpose:
 To encapsulate an operation executed on an object within an object hierarchy
