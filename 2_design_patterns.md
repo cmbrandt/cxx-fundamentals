@@ -1,5 +1,5 @@
 # Design Patterns
-[Design Patterns: Elements of Reusable Object-Oriented Software](https://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612) is an extremely well-known and highly influential book that describes software design patterns. First published in 1994, the book was written by Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides, often referred to as the *Gang of Four (GoF)*.
+[Design Patterns: Elements of Reusable Object-Oriented Software](https://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612) is an extremely well-known and highly influential book that describes software design patterns. First published in 1994, the book was written by Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides, who together are often referred to as the *Gang of Four (GoF)*.
 
 The book illustrates 23 classic software design patterns, categorized into three types: creational patterns, structural patterns, and behavioral patterns. Of those original 23 patterns, many remain widely used today, while others have somewhat fallen out of favor. Below we will explore 13 of the original 23 patterns that are most likely to appear in modern code bases.
 
