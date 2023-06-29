@@ -211,12 +211,11 @@ To define the skeleton of an algorithm consisting of various typical steps
 
 ### Participants:
 `AbstractClass`
-* 1
-* 2
+* Implements the template method defining the skeleton of an algorithm
+* Declares abstract primitive operations that concrete subsclasses define to implement steps of an algorihtm
 
 `ConcreteClass`
-* 1
-* 2
+* Implements the primitive operations to carry out subclass-specific steps of the algorithm
 
 ### Variations:
 * Non-Virtual Interface (NVI)
@@ -248,22 +247,21 @@ To define 1-to-N dependencies between objects so that changes to one object caus
 </p>
 
 ### Participants:
-`Observer`
-* 1
-* 2
-
-`ConcreteObserver`
-* 1
-* 2
-
 `Subject`
-* 1
-* 2
+* Provides an interface for attaching and detaching Observer objects
+* Is a ware of its object
 
 `ConcreteSubject`
-* 1
-* 2
+* Stores state of interest to ConcreteObserver objects
+* Sends a notification to its observers when its state changes
 
+`Observer`
+* Defines an updating inteface for objects that should be notified of changes in a subject
+
+`ConcreteObserver`
+* Maintains a reference to a ConcreteSubject object
+* Stores state that should stay consistent with the subject's
+* Implements the Observer updating interface to keep its state consistenent with the subject's
 
 ### Variations:
 * Subject may send a notification, or a value
