@@ -4,9 +4,9 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 ## Content
 
 ### [Fundamentals](https://github.com/cmbrandt/modern-cxx-seminar/edit/master/1_class_design.md#fundamentals-1)
-* Topic One
-* Topic Two
-* Topic Three
+* Data Members
+* Constructors
+* ...
 
 ### [Special Member Functions](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#special-member-functions)
 * Default Constructor
@@ -30,11 +30,11 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 
 # Fundamentals
 
-## Topic One
+## Data Members
 
-## Topic Two
+## Constructors
 
-## Topic Three
+## ...
 
 
 # Special Member Functions
