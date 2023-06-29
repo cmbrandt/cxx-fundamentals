@@ -160,8 +160,8 @@ Behavioral patterns are concerned with algorithms and the assignment of responsi
 ## Strategy
 
 ### About:
-* Classification: Object pattern
-* Also Known As:  Policy (compile-time)
+* Classification: *Object pattern*
+* Also Known As:  *Policy*
 
 ### Purpose:
 To define a family of algorithms and encapsulate them into objects
@@ -198,8 +198,8 @@ To define a family of algorithms and encapsulate them into objects
 ## Template Method
 
 ### About:
-* Classification: Object pattern
-* Also Known As:  N/A
+* Classification: *Object pattern*
+* Also Known As:  *N/A*
 
 ### Purpose:
 To define the skeleton of an algorithm consisting of various typical steps
@@ -235,8 +235,8 @@ To define the skeleton of an algorithm consisting of various typical steps
 ## Observer
 
 ### About:
-* Classification: Object pattern
-* Also Known As:  Publisher-subscriber
+* Classification: *Object pattern*
+* Also Known As:  *Publisher-Subscriber*
 
 ### Purpose:
 To define 1-to-N dependencies between objects so that changes to one object cause all dependent objects to be notified
@@ -280,8 +280,8 @@ To define 1-to-N dependencies between objects so that changes to one object caus
 ## Visitor
 
 ### About:
-* Classification: Object pattern
-* Also Known As:  N/A
+* Classification: *Object pattern*
+* Also Known As:  *N/A*
 
 ### Purpose:
 To encapsulate an operation executed on an object within an object hierarchy
@@ -292,25 +292,21 @@ To encapsulate an operation executed on an object within an object hierarchy
 </p>
 
 ### Participants:
-`Visitor`
-* 1
-* 2
+`Visitor` (NodeVisitor)
+* Declares a visit operation for each class of ConcreteElement in the object structure
+* The operation name and signature identifies the class that sends the visit request to the visitor
+* The visitor then determines the concrete class of the element being visited
+* The visitor can access the element directly through its particular interface
 
-`ConcreteVisitor`
-* 1
-* 2
+`ConcreteVisitor` (TypeCheckingVisitor)
+* Implements each operation declared by Visitor
+* Provides the context for the algorithm and stores its local state, which often accumulates results during the traversal of the structure
 
-`Element`
-* 1
-* 2
+`Element` (Node)
+* Defines an accept operation that takes a visitor as an argument
 
-`ConcreteElementA`
-* 1
-* 2
-
-`ConcreteElementB`
-* 1
-* 2
+`ConcreteElement` (AssignmentNode, VariableRefNode)
+* Implements an accept operation that takes a visitor as an argument
 
 ### Variations:
 * N/A
