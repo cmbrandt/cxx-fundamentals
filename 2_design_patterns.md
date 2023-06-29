@@ -44,6 +44,17 @@ To provide an API for creating an object, where the factory method determines th
 </p>
 
 ### Participants:
+`Product`
+* 1
+* 2
+
+`ConcreteProduct`
+* 1
+* 2
+
+`Creator`
+* 1
+* 2
 
 ### Variations:
 * Distinct class that implements that factory method
@@ -76,6 +87,13 @@ Create new objects by copying or cloning existing objects, thus avoiding the nee
 </p>
 
 ### Participants:
+`Prototype`
+* 1
+* 2
+
+`ConcretePrototype`
+* 1
+* 2
 
 ### Variations:
 * N/A
@@ -104,6 +122,9 @@ To ensure that there is only a single instance of a class throughout the applica
 </p>
 
 ### Participants:
+`Singleton`
+* 1
+* 2
 
 ### Variations:
 * N/A
