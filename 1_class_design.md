@@ -6,7 +6,7 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 ### [Fundamentals](https://github.com/cmbrandt/modern-cxx-seminar/edit/master/1_class_design.md#fundamentals-1)
 * Data Members
 * Constructors
-* ...
+* Member Functions
 
 ### [Special Member Functions](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#special-member-functions)
 * Default Constructor
@@ -34,7 +34,7 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 
 ## Constructors
 
-## ...
+## Member Functions
 
 
 # Special Member Functions
