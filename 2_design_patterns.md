@@ -39,6 +39,9 @@ Creational design patterns focus on how objects are created, aiming to find appr
 To provide an API for creating an object, where the factory method determines the exact class of the object that will be created
 
 ### Structure:
+<p align="center">
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/factory_method.png" alt="Image" />
+</p>
 
 ### Participants:
 
@@ -68,6 +71,9 @@ To provide an API for creating an object, where the factory method determines th
 Create new objects by copying or cloning existing objects, thus avoiding the need for explicit instantiation and allowing for runtime determination of the object to be cloned
 
 ### Structure:
+<p align="center">
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/prototype.png" alt="Image" />
+</p>
 
 ### Participants:
 
@@ -93,6 +99,9 @@ Create new objects by copying or cloning existing objects, thus avoiding the nee
 To ensure that there is only a single instance of a class throughout the application, and to provide a global point of access to that instance
 
 ### Structure:
+<p align="center">
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/singleton.png" alt="Image" />
+</p>
 
 ### Participants:
 

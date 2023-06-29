@@ -29,7 +29,7 @@ struct ConcreteElementA : public Element
   }
 
   std::string operation_a() const {
-    return "A";
+    return "ConcreteElementA";
   }
 };
 
@@ -40,32 +40,19 @@ struct ConcreteElementB : public Element
   }
 
   std::string operation_b() const {
-    return "B";
+    return "ConcreteElementB";
   }
 };
 
-struct ConcreteVisitor1 : public Visitor
+struct ConcreteVisitor : public Visitor
 {
   void visit(ConcreteElementA const& a) const override {
-    std::cout << "ConcreteVisitor1::visit(ConcreteElementA)"
+    std::cout << "ConcreteVisitor::visit(ConcreteElementA)"
               << "\na.operation_a(): " << a.operation_a() << std::endl;
   }
 
   void visit(ConcreteElementB const& b) const override {
-    std::cout << "ConcreteVisitor1::visit(ConcreteElementB)"
-              << "\nb.operation_b(): " << b.operation_b() << std::endl;
-  }
-};
-
-struct ConcreteVisitor2 : public Visitor
-{
-  void visit(ConcreteElementA const& a) const override {
-    std::cout << "ConcreteVisitor2::visit(ConcreteElementA)"
-              << "\na.operation_a(): " << a.operation_a() << std::endl;
-  }
-
-  void visit(ConcreteElementB const& b) const override {
-    std::cout << "ConcreteVisitor2::visit(ConcreteElementB)"
+    std::cout << "ConcreteVisitor::visit(ConcreteElementB)"
               << "\nb.operation_b(): " << b.operation_b() << std::endl;
   }
 };
@@ -74,7 +61,6 @@ struct ConcreteVisitor2 : public Visitor
 void client(std::vector<std::unique_ptr<Element>> const& elems,
             Visitor const& v)
 {
-  std::cout<< "\nclient code: Element::accept()" << std::endl;
   for (auto const& e : elems)
     e->accept(v);
 }
@@ -90,11 +76,9 @@ int main()
   elems.emplace_back(std::make_unique<ConcreteElementB>());
   elems.emplace_back(std::make_unique<ConcreteElementA>());
 
-  // Create visitors
-  ConcreteVisitor1 v1{};
-  ConcreteVisitor2 v2{};
+  // Create visitor
+  ConcreteVisitor visitor{};
 
   // Client usage
-  client(elems, v1);
-  client(elems, v2);
+  client(elems, visitor);
 }
