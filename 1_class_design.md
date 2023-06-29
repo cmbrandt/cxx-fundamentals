@@ -11,8 +11,10 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 ### [Special Member Functions](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#special-member-functions)
 * Default Constructor
 * Destructor
-* Copy Operations
-* Move Operations
+* Copy Constructor
+* Copy Assignment Operator
+* Move Constructor
+* Move Assignment Operator
 
 ### [Additional Class Operations](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#additional-class-operations)
 * Topic One
@@ -43,9 +45,13 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 
 ## Destructor
 
-## Copy Operations
+## Copy Constructor
 
-## Move Operations
+## Copy Assignment Operator
+
+## Move Constructor
+
+## Move Assignment Operator
 
 
 # Additional Class Operations
