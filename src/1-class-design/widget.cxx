@@ -4,6 +4,7 @@
 #include <utility>
 
 struct Resource {
+  Resource() = default;
   Resource(int ii) : i{ii} { }
   int i{};
 };
@@ -26,7 +27,7 @@ public:
     if (r and other.r) {
       i  = other.i;
       s  = other.s;
-      *r = *other.r;
+      *r = *other.r; // copy assignment of Resource
     }
     else {
       Widget tmp{other};

@@ -5,6 +5,7 @@
 #include <utility>
 
 struct Resource {
+  Resource() = default;
   Resource(int ii) : i{ii} { }
   int i{};
 };
@@ -31,11 +32,11 @@ public:
     if (r.get() and other.r.get()) {
       i  = other.i;
       s  = other.s;
-      *r = *other.r.get();
+      *r = *other.r.get(); // is this correct?
     }
     else {
       Widget tmp{other};
-      swap(tmp);
+      swap(tmp); // confirm exactly what this does
     }
     return *this;
   }

@@ -1,4 +1,5 @@
 #include <cassert>
+#include <cmath>
 #include <iostream>
 #include <string_view>
 
@@ -8,8 +9,10 @@ public:
   Rational(int n)        : num{n}, den {1} { normalize(); }
   Rational(int n, int d) : num{n}, den {d} { normalize(); }
 
-  // Copy operations
+  // Copy constructor
   Rational(Rational const& other) : num{other.num}, den{other.den} { }
+
+  // Copy assignment operator
   Rational& operator=(Rational const& other)
   {
     num = other.num;
@@ -17,9 +20,11 @@ public:
     return *this;
   }
 
-  // Move operations
+  // Move constructor
   Rational(Rational&& other)
   : num{std::move(other.num)}, den{std::move(other.den)} { }
+
+  // Move assignment operator
   Rational& operator=(Rational&& other)
   {
     num = std::move(other.num);
@@ -86,8 +91,8 @@ bool operator!=(Rational const& r1, Rational const& r2) {
 }
 
 bool operator<(Rational const& r1, Rational const& r2) {
-  int n1 = r1.get_num();
-  int n2 = r2.get_num();
+  int    n1 = r1.get_num();
+  int    n2 = r2.get_num();
   double d1 = r1.get_den();
   double d2 = r2.get_den();
 
@@ -115,37 +120,36 @@ void print_rational(std::string_view sv, Rational const& r) {
 int main()
 {
   Rational r1;
-  print_rational("\nDefault constructor", r1);
+  print_rational("\nDefault constructor", r1);              // = 0/1
 
   Rational r2{5};
-  print_rational("\nInteger conversation constructor", r2);
+  print_rational("\nInteger conversation constructor", r2); // = 5/1
 
   Rational r3{2, 4};
-  print_rational("\nParameterized constructor", r3);
+  print_rational("\nParameterized constructor", r3);        // = 1/2
 
   Rational r4{r3};
-  print_rational("\nCopy constructor", r4);
+  print_rational("\nCopy constructor", r4);                 // = 1/2
 
   Rational r5 = r3;
-  print_rational("\nCopy assignment operator", r5);
+  print_rational("\nCopy assignment operator", r5);         // = 1/2
 
   Rational r6{std::move(r3)};
-  print_rational("\nMove constructor", r6);
-  print_rational("Moved from value", r3);
+  print_rational("\nMove constructor", r6);                 // = 1/2
 
   Rational r7 = std::move(r4);
-  print_rational("\nMove assignment operator", r7);
-  print_rational("Moved from value", r4);
+  print_rational("\nMove assignment operator", r7);         // = 1/2
 
 
   Rational c1{-1, 2};
   Rational c2{2, -4};
 
-  std::cout << "\n(-1/2) == (2/-4) = " << (c1 == c2)
-            << "\n(-1/2) != (2/-4) = " << (c1 != c2)
-            << "\n(-1/2) <  (2/-4) = " << (c1 <  c2)
-            << "\n(-1/2) >  (2/-4) = " << (c1 >  c2)
-            << "\n(-1/2) <= (2/-4) = " << (c1 <= c2)
-            << "\n(-1/2) >= (2/-4) = " << (c1 >= c2)
+  std::cout << std::boolalpha
+            << "\n(-1/2) == (2/-4) = " << (c1 == c2) // = true
+            << "\n(-1/2) != (2/-4) = " << (c1 != c2) // = false
+            << "\n(-1/2) <  (2/-4) = " << (c1 <  c2) // = false
+            << "\n(-1/2) >  (2/-4) = " << (c1 >  c2) // = false
+            << "\n(-1/2) <= (2/-4) = " << (c1 <= c2) // = true
+            << "\n(-1/2) >= (2/-4) = " << (c1 >= c2) // = true
             << std::endl;
 }

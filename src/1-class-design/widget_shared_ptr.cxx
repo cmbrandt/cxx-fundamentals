@@ -5,6 +5,7 @@
 #include <utility>
 
 struct Resource {
+  Resource() = default;
   Resource(int ii) : i{ii} { }
   int i{};
 };

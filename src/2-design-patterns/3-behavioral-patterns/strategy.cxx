@@ -10,6 +10,20 @@ struct Strategy
   virtual void algorithm() const = 0;
 };
 
+struct ConcreteStrategy1 : public Strategy
+{
+  void algorithm() const {
+    std::cout << "ConcreteStrategy1 executed" << std::endl;
+  }
+};
+
+struct ConcreteStrategy2 : public Strategy
+{
+  void algorithm() const {
+    std::cout << "ConcreteStrategy2 executed" << std::endl;
+  }
+};
+
 // The Context owns a Strategy
 struct Context
 {
@@ -24,20 +38,6 @@ struct Context
 
 private:
   std::unique_ptr<Strategy> strat{nullptr};
-};
-
-struct ConcreteStrategy1 : public Strategy
-{
-  void algorithm() const {
-    std::cout << "ConcreteStrategy1 executed" << std::endl;
-  }
-};
-
-struct ConcreteStrategy2 : public Strategy
-{
-  void algorithm() const {
-    std::cout << "ConcreteStrategy2 executed" << std::endl;
-  }
 };
 
 // Client code
