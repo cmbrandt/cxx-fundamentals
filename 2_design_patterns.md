@@ -72,8 +72,8 @@ To provide an API for creating an object, where the factory method determines th
 ## Prototype
 
 ### About:
-* Classification: Class Pattern
-* Also Known As:  Clone pattern
+* Classification: Class pattern
+* Also Known As:  Clone Pattern
 
 ### Purpose:
 Create new objects by copying or cloning existing objects, thus avoiding the need for explicit instantiation and allowing for runtime determination of the object to be cloned
@@ -121,8 +121,7 @@ To ensure that there is only a single instance of a class throughout the applica
 
 ### Participants:
 `Singleton`
-* 1
-* 2
+* Defines a static get_instance operation that allows clients to access its unqiue instance
 
 ### Variations:
 * N/A
