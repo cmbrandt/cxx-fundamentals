@@ -1,5 +1,6 @@
 #include <cassert>
 #include <iostream>
+#include <string_view>
 
 class Rational {
 public:
@@ -8,7 +9,7 @@ public:
   Rational(int n, int d) : num{n}, den {d} { normalize(); }
 
   // Copy operations
-  Rational(Rational const& other) : num{other.num}, den{other.num} { }
+  Rational(Rational const& other) : num{other.num}, den{other.den} { }
   Rational& operator=(Rational const& other)
   {
     num = other.num;
@@ -105,22 +106,46 @@ bool operator>=(Rational const& r1, Rational const& r2) {
   return !operator<(r1, r2);
 }
 
-void print_rational(Rational const& r) {
-  std::cout << "\nr.num = " << r.get_num()
+void print_rational(std::string_view sv, Rational const& r) {
+  std::cout << sv
+            << "\nr.num = " << r.get_num()
             << "\nr.den = " << r.get_den() << std::endl;
 }
 
 int main()
 {
-  Rational r0;
-  print_rational(r0);
+  Rational r1;
+  print_rational("\nDefault constructor", r1);
 
-  Rational r1{2, 4};
-  print_rational(r1);
+  Rational r2{5};
+  print_rational("\nInteger conversation constructor", r2);
 
-  Rational r2{r1};
-  print_rational(r2);
+  Rational r3{2, 4};
+  print_rational("\nParameterized constructor", r3);
 
-  Rational r3 = r1;
-  print_rational(r3);
+  Rational r4{r3};
+  print_rational("\nCopy constructor", r4);
+
+  Rational r5 = r3;
+  print_rational("\nCopy assignment operator", r5);
+
+  Rational r6{std::move(r3)};
+  print_rational("\nMove constructor", r6);
+  print_rational("Moved from value", r3);
+
+  Rational r7 = std::move(r4);
+  print_rational("\nMove assignment operator", r7);
+  print_rational("Moved from value", r4);
+
+
+  Rational c1{-1, 2};
+  Rational c2{2, -4};
+
+  std::cout << "\n(-1/2) == (2/-4) = " << (c1 == c2)
+            << "\n(-1/2) != (2/-4) = " << (c1 != c2)
+            << "\n(-1/2) <  (2/-4) = " << (c1 <  c2)
+            << "\n(-1/2) >  (2/-4) = " << (c1 >  c2)
+            << "\n(-1/2) <= (2/-4) = " << (c1 <= c2)
+            << "\n(-1/2) >= (2/-4) = " << (c1 >= c2)
+            << std::endl;
 }
