@@ -45,16 +45,13 @@ To provide an API for creating an object, where the factory method determines th
 
 ### Participants:
 `Product`
-* 1
-* 2
+* Defines the inteface of objects the factory method creates
 
 `ConcreteProduct`
-* 1
-* 2
+* Implements the Product interface
 
 `Creator`
-* 1
-* 2
+* Defines the factory method, which returns an object of type Product
 
 ### Variations:
 * Distinct class that implements that factory method
