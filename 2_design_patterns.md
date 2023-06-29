@@ -32,8 +32,8 @@ Creational design patterns focus on how objects are created, aiming to find appr
 ## Factory Method
 
 ### About:
-* Classification: Class pattern
-* Also Known As:  Virtual Constructor, Factory Pattern, Virtual Factory, Creation Method
+* **Classification:** Class pattern
+* **Also Known As:**  Virtual Constructor, Factory Pattern, Virtual Factory, Creation Method
 
 ### Purpose:
 To provide an API for creating an object, where the factory method determines the exact class of the object that will be created
@@ -54,9 +54,9 @@ To provide an API for creating an object, where the factory method determines th
 * Defines the factory method, which returns an object of type Product
 
 ### Variations:
-* Distinct class that implements that factory method
-* Free function (parameterized via `enum`, `std::string`, or `int`)
-* Class member function (typically via `std::shared_ptr`)
+* Class hierarchy where subclasses implement factory methods overrides
+* Single class that implements a parameterized factory method
+* Parameterized free function factory method
 
 ### Pros:
 * Familiarity (used in pretty much every well-designed OO system)
@@ -72,8 +72,8 @@ To provide an API for creating an object, where the factory method determines th
 ## Prototype
 
 ### About:
-* Classification: Class pattern
-* Also Known As:  Clone Pattern
+* **Classification:** Class pattern
+* **Also Known As:**  Clone Pattern
 
 ### Purpose:
 Create new objects by copying or cloning existing objects, thus avoiding the need for explicit instantiation and allowing for runtime determination of the object to be cloned
@@ -108,8 +108,8 @@ Create new objects by copying or cloning existing objects, thus avoiding the nee
 ## Singleton
 
 ### About:
-* Classification: Object pattern
-* Also Known As:  N/A
+* **Classification:** Object pattern
+* **Also Known As:** N/A
 
 ### Purpose:
 To ensure that there is only a single instance of a class throughout the application, and to provide a global point of access to that instance
@@ -160,8 +160,8 @@ Behavioral patterns are concerned with algorithms and the assignment of responsi
 ## Strategy
 
 ### About:
-* Classification: *Object pattern*
-* Also Known As:  *Policy*
+* **Classification:** Object pattern
+* **Also Known As:**  Policy
 
 ### Purpose:
 To define a family of algorithms and encapsulate them into objects
@@ -198,8 +198,8 @@ To define a family of algorithms and encapsulate them into objects
 ## Template Method
 
 ### About:
-* Classification: *Object pattern*
-* Also Known As:  *N/A*
+* **Classification:** Object pattern
+* **Also Known As:**  N/A
 
 ### Purpose:
 To define the skeleton of an algorithm consisting of various typical steps
@@ -219,7 +219,6 @@ To define the skeleton of an algorithm consisting of various typical steps
 
 ### Variations:
 * Non-Virtual Interface (NVI)
-* Hook Methods
 
 ### Pros:
 * Enables inversion control
@@ -235,8 +234,8 @@ To define the skeleton of an algorithm consisting of various typical steps
 ## Observer
 
 ### About:
-* Classification: *Object pattern*
-* Also Known As:  *Publisher-Subscriber*
+* **Classification:** Object pattern
+* **Also Known As:**  Publisher-Subscriber
 
 ### Purpose:
 To define 1-to-N dependencies between objects so that changes to one object cause all dependent objects to be notified
@@ -280,8 +279,8 @@ To define 1-to-N dependencies between objects so that changes to one object caus
 ## Visitor
 
 ### About:
-* Classification: *Object pattern*
-* Also Known As:  *N/A*
+* **Classification:** Object pattern
+* **Also Known As:**  N/A
 
 ### Purpose:
 To encapsulate an operation executed on an object within an object hierarchy
