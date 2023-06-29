@@ -172,21 +172,15 @@ To define a family of algorithms and encapsulate them into objects
 </p>
 
 ### Participants:
-`Context`
-* 1
-* 2
-
 `Strategy`
-* 1
-* 2
+* Declares an interface common to all concrete stategies
 
-`ConcreteStrategy1`
-* 1
-* 2
+`ConcreteStrategy`
+* Implements the algorithm using the Strategy interface
 
-`ConcreteStrategy2`
-* 1
-* 2
+`Context`
+* Configured with a ConcreteStrategy object
+* Maintains a reference to a Strategy obect
 
 ### Variations:
 * N/A
