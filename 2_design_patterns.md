@@ -32,7 +32,7 @@ Creational design patterns focus on how objects are created, aiming to find appr
 ## Factory Method
 
 ### About:
-* Classification: Class Pattern
+* Classification: Class pattern
 * Also Known As:  Virtual Constructor, Factory Pattern, Virtual Factory, Creation Method
 
 ### Purpose:
@@ -45,7 +45,7 @@ To provide an API for creating an object, where the factory method determines th
 
 ### Participants:
 `Product`
-* Defines the inteface of objects the factory method creates
+* Defines the interface of objects the factory method creates
 
 `ConcreteProduct`
 * Implements the Product interface
@@ -85,12 +85,13 @@ Create new objects by copying or cloning existing objects, thus avoiding the nee
 
 ### Participants:
 `Prototype`
-* 1
-* 2
+* Declares an interface for cloning itself
 
 `ConcretePrototype`
-* 1
-* 2
+* Implements an operation for cloning itself
+
+`Client`
+* Creates a new object by asking a prototype to clone itself
 
 ### Variations:
 * N/A
