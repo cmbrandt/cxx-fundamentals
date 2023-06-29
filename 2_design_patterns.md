@@ -36,7 +36,7 @@ Creational design patterns focus on how objects are created, aiming to find appr
 * **Also Known As:**  Virtual Constructor, Factory Pattern, Virtual Factory, Creation Method
 
 ### Purpose:
-To provide an API for creating an object, where the factory method determines the exact class of the object that will be created
+To provide an API for creating objects, where the factory method determines the exact class of the objects that will be created
 
 ### Structure:
 <p align="center">
@@ -59,13 +59,12 @@ To provide an API for creating an object, where the factory method determines th
 * Parameterized free function factory method
 
 ### Pros:
-* Familiarity (used in pretty much every well-designed OO system)
+* Familiarity (used in most well-designed OO systems)
 * Enables us to create differnt subclasses in a uniform way
 * Decouples object creation and their subsequent use
 
 ### Cons:
-* Increased complexity
-* Lack of extensibility
+* Class proliferation (when using a class hierarchy)
 * Runtime overhead
 
 
