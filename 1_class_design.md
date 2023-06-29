@@ -17,9 +17,9 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 * Move Assignment Operator
 
 ### [Additional Class Operations](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#additional-class-operations)
-* Topic One
-* Topic Two
-* Topic Three
+* Equality
+* Comparison
+* Other Non-Member Functions
 
 ### [Rule of Zero/Five](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#rule-of-zerofive)
 * Rule of Zero
@@ -56,11 +56,11 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 
 # Additional Class Operations
 
-## Topic One
+## Equality
 
-## Topic Two
+## Comparison
 
-## Topic Three
+## Other Non-Member Functions
 
 
 # Rule of Zero/Five
