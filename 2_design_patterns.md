@@ -54,13 +54,13 @@ To provide an API for creating objects, where the factory method determines the 
 * Defines the factory method, which returns an object of type Product
 
 ### Variations:
-* Class hierarchy where subclasses implement factory methods overrides
-* Single class that implements a parameterized factory method
+* Class hierarchy where subclasses implement factory method overrides
+* Concrete class that implements a parameterized factory method
 * Parameterized free function factory method
 
 ### Pros:
 * Familiarity (used in most well-designed OO systems)
-* Enables us to create differnt subclasses in a uniform way
+* Create different subclasses in a uniform way
 * Decouples object creation and their subsequent use
 
 ### Cons:
