@@ -242,7 +242,7 @@ Define a one-to-many dependency between objects so that when one object changes 
 ### Participants:
 `Subject`
 * Provides an interface for attaching and detaching Observer objects
-* Is a ware of its object
+* Any number of Observers may observer a subject
 
 `ConcreteSubject`
 * Stores state of interest to ConcreteObserver objects
@@ -258,7 +258,7 @@ Define a one-to-many dependency between objects so that when one object changes 
 
 ### Variations:
 * Subject may send a notification or a value
-* Observer may or may not pick up the value (if necessary)
+* Observer may or may not pick up the value
 
 ### Pros:
 * New Observers (subscribers) can easily be added to the Subject (publisher)
@@ -305,9 +305,9 @@ Separates algorithms from the objects on which they operatate, where new operati
 * std::variant with Overload pattern
 
 ### Pros:
+* Operations hierarchy and object hierarchy are (relatively) independent
 * A new ConcreteVisitor can easily be added to the operations hierarchy
-* [An operation is encapsulated in one visitor] ***
 
 ### Cons:
-* Modifying the object hierarchy with a new ConcreteElement is difficult
 * Widely regarded as the most complicated of the GoF patterns
+* Modifying the object hierarchy with a new ConcreteElement is difficult
