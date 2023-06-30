@@ -75,7 +75,7 @@ To provide an API for creating objects, where the factory method determines the 
 * **Also Known As:**  Clone Pattern
 
 ### Purpose:
-Create new objects by copying or cloning existing objects, thus avoiding the need for explicit instantiation and allowing for runtime determination of the object to be cloned
+Create new objects by cloning existing objects, providing a way to create instances without explicitly specifying their classes
 
 ### Structure:
 <p align="center">
@@ -91,9 +91,6 @@ Create new objects by copying or cloning existing objects, thus avoiding the nee
 
 `Client`
 * Creates a new object by asking a prototype to clone itself
-
-### Variations:
-* N/A
 
 ### Pros:
 * Reduces the need for subclassing to create new objects
@@ -122,17 +119,15 @@ To ensure that there is only a single instance of a class throughout the applica
 `Singleton`
 * Defines a static get_instance operation that allows clients to access its unqiue instance
 
-### Variations:
-* N/A
-
 ### Pros:
-* Ensures that there is only one instance of a class throughout the application
-* Provides a global access point to the single instance
+* Providing access to shared resources or services
+* Global access
+* Centralized control
 
 ### Cons:
 * Static initialization ordering
 * Thread safety
-* Hidden dependency
+* Global state
 
 
 # Structural Patterns
