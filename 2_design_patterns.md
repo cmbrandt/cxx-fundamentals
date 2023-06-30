@@ -196,7 +196,7 @@ Define a family of algorithms, encapsulate each one with a class, and make them 
 * **Also Known As:**  N/A
 
 ### Purpose:
-To define the skeleton of an algorithm consisting of various typical steps
+Define the skeleton of an algorithm in an operation, deferring some steps to subclasses
 
 ### Structure:
 <p align="center">
@@ -215,12 +215,12 @@ To define the skeleton of an algorithm consisting of various typical steps
 * Non-Virtual Interface (NVI)
 
 ### Pros:
-* Enables inversion control
+* Promotes code reuse by providing a common skeleton or template for algorithms
 * New variations of an algorithm are easy to implement by creating new subclasses
 * Common steps of the algorithm can be implemented directly in the interface class
 
 ### Cons:
-* Must subclass to specialize behavior
+* Relies on inheritance to reuse and customize behavior
 * Even small variations of an algorithm require the creation of a new class
 * The skeleton is fixed and cannot be changed (overcome by making the skeleton function virtual)
 
