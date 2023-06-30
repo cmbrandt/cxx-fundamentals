@@ -117,11 +117,10 @@ To ensure that there is only a single instance of a class throughout the applica
 
 ### Participants:
 `Singleton`
-* Defines a static get_instance operation that allows clients to access its unqiue instance
+* Defines a static get_instance operation that allows clients to access its unique instance
 
 ### Pros:
-* Providing access to shared resources or services
-* Global access
+* Providing global access to shared resources or services
 * Centralized control
 
 ### Cons:
@@ -174,7 +173,7 @@ Define a family of algorithms, encapsulate each one with a class, and make them 
 
 `Context`
 * Configured with a ConcreteStrategy object
-* Maintains a reference to a Strategy obect
+* Maintains a reference to a Strategy object
 
 ### Variations:
 * Policy (using templates)
@@ -187,7 +186,7 @@ Define a family of algorithms, encapsulate each one with a class, and make them 
 ### Cons:
 * Clients must know and choose the correct strategy
 * Increased number of classes
-* Increased runtime overhead of indirection
+* Increased runtime overhead
 
 
 ## Template Method
