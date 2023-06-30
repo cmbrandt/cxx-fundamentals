@@ -232,7 +232,7 @@ Define the skeleton of an algorithm in an operation, deferring some steps to sub
 * **Also Known As:**  Publisher-Subscriber
 
 ### Purpose:
-To define 1-to-N dependencies between objects so that changes to one object cause all dependent objects to be notified
+Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically
 
 ### Structure:
 <p align="center">
@@ -257,13 +257,12 @@ To define 1-to-N dependencies between objects so that changes to one object caus
 * Implements the Observer updating interface to keep its state consistenent with the subject's
 
 ### Variations:
-* Subject may send a notification, or a value
+* Subject may send a notification or a value
 * Observer may or may not pick up the value (if necessary)
 
 ### Pros:
-* New `Observers` (subscribers) can easily be added to the `Subject` (publisher)
-* `Observers` can register and unregister themselves at runtime
-* 3
+* New Observers (subscribers) can easily be added to the Subject (publisher)
+* Observers can register and unregister themselves at runtime
 
 ### Cons:
 * There is no guarantee of the order in which subscribers are notified
@@ -277,7 +276,7 @@ To define 1-to-N dependencies between objects so that changes to one object caus
 * **Also Known As:**  N/A
 
 ### Purpose:
-To encapsulate an operation executed on an object within an object hierarchy
+Separates algorithms from the objects on which they operatate, where new operations can be added to the existing object structures without modifying the structures
 
 ### Structure:
 <p align="center">
@@ -302,12 +301,13 @@ To encapsulate an operation executed on an object within an object hierarchy
 * Implements an accept operation that takes a visitor as an argument
 
 ### Variations:
-* N/A
+* std::variant with std::visit
+* std::variant with Overload pattern
 
 ### Pros:
-* A new `Visitor` (operation) can easily be added to the operations hierarchy
-* An operation is encapsulated in one visitor
+* A new ConcreteVisitor can easily be added to the operations hierarchy
+* [An operation is encapsulated in one visitor] ***
 
 ### Cons:
-* Modifying the object hierarchy with a new visitor object (eg, `ConcreteElement`) is difficult
+* Modifying the object hierarchy with a new ConcreteElement is difficult
 * Widely regarded as the most complicated of the GoF patterns
