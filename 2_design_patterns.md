@@ -158,7 +158,7 @@ Behavioral patterns are concerned with algorithms and the assignment of responsi
 * **Also Known As:**  Policy
 
 ### Purpose:
-To define a family of algorithms and encapsulate them into objects
+Define a family of algorithms, encapsulate each one with a class, and make them interchangeable
 
 ### Structure:
 <p align="center">
@@ -177,16 +177,17 @@ To define a family of algorithms and encapsulate them into objects
 * Maintains a reference to a Strategy obect
 
 ### Variations:
-* N/A
+* Policy (using templates)
 
 ### Pros:
 * Algorithms are encapsulated into objects and can be exchanged at runtime
-* Adding new strategyies is as simple as implementing a new `ConcreteStrategy`
-* Replaces the traditional `if/else` statements and `switch` statements
+* Adding new strategies is as simple as implementing a new ConcreteStrategy
+* Replaces the traditional if/else and switch statements
 
 ### Cons:
 * Clients must know and choose the correct strategy
-* The number of objects (strategies) increases heavily
+* Increased number of classes
+* Increased runtime overhead of indirection
 
 
 ## Template Method
