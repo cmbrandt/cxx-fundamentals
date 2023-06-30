@@ -9,9 +9,6 @@ Duo deleniti posidonium ut. Duo ne solum delicatissimi. At sed amet accusam. An 
 * Non-Virtual Interface (NVI)
 
 
-# Copy-and-Swap
-
-
 # Hidden Friend
 
 
@@ -23,3 +20,5 @@ Duo deleniti posidonium ut. Duo ne solum delicatissimi. At sed amet accusam. An 
 
 # Pointer to Implementation (Pimpl)
 
+
+# Non-Virtual Interface (NVI)
