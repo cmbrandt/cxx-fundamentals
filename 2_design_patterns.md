@@ -6,12 +6,12 @@ The book illustrates 23 classic software design patterns, categorized into three
 
 ## Content
 
-### [Creational Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_design_patterns.md#creational-patterns)
+### [Creational Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_design_patterns.md#creational-patterns-1)
 * Factory Method
 * Prototype
 * Singleton
 
-### [Structural Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_design_patterns.md#structural-patterns)
+### [Structural Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_design_patterns.md#structural-patterns-1)
 * Adapter
 * Decorator
 * Proxy
@@ -19,7 +19,7 @@ The book illustrates 23 classic software design patterns, categorized into three
 * Fascade
 * Composite
 
-### [Behavioral Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_design_patterns.md#behavioral-patterns)
+### [Behavioral Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_design_patterns.md#behavioral-patterns-1)
 * Strategy
 * Template Method
 * Observer
