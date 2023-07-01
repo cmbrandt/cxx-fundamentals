@@ -53,22 +53,27 @@ private:
   std::vector<std::unique_ptr<Component>> children;
 };
 
+void client(std::unique_ptr<Component> const& c)
+{
+  c->operation();
+}
+
 int main()
 {
   // Create a composite object
-  auto composite = std::make_unique<Composite>();
+  std::unique_ptr<Component> composite = std::make_unique<Composite>();
 
   // Create and add leaf objects to the composite
   composite->add(std::make_unique<Leaf>());
   composite->add(std::make_unique<Leaf>());
 
-  // Perform the operation on the composite
-  composite->operation();
+  // Perform the operation on the composite object
+  client(composite);
 
   // Remove the first leaf
   Component* first_child = composite->get_child(0);
   composite->remove(first_child);
 
-  // Perform the operation on the composite again
-  composite->operation();
+  // Perform the operation on the composite object again
+  client(composite);
 }
