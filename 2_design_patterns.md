@@ -16,7 +16,7 @@ The book illustrates 23 classic software design patterns, categorized into three
 * Decorator
 * Proxy
 * Bridge
-* Fascade
+* Facade
 * Composite
 
 ### [Behavioral Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_design_patterns.md#behavioral-patterns-1)
@@ -251,7 +251,7 @@ qewr
 * 2
 
 
-## Fascade
+## Facade
 
 
 ### About:
@@ -263,7 +263,7 @@ qewr
 
 ### Structure:
 <p align="center">
-    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/fascade.png" alt="Image" />
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/facade.png" alt="Image" />
 </p>
 
 ### Participants:
