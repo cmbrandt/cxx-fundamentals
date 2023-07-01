@@ -1,18 +1,18 @@
 #include <iostream>
 #include <memory>
 
-struct Target
-{
-  virtual ~Target() = default;
-  
-  virtual void request() const = 0;
-};
-
 struct Adaptee
 {
   void specific_request() const {
     std::cout << "Adaptee::specific_request" << std::endl;
   }
+};
+
+struct Target
+{
+  virtual ~Target() = default;
+  
+  virtual void request() const = 0;
 };
 
 // Adapter class may own a pointer to Adaptee
