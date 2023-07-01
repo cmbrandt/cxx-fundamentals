@@ -6,20 +6,20 @@ The book illustrates 23 classic software design patterns, categorized into three
 
 ## Content
 
-### [Creational Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_design_patterns.md#creational-patterns)
+### [Creational Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_design_patterns.md#creational-patterns-1)
 * Factory Method
 * Prototype
 * Singleton
 
-### [Structural Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_design_patterns.md#structural-patterns)
+### [Structural Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_design_patterns.md#structural-patterns-1)
 * Adapter
-* Bridge
 * Decorator
-* Composite
-* Fascade
 * Proxy
+* Bridge
+* Fascade
+* Composite
 
-### [Behavioral Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_design_patterns.md#behavioral-patterns)
+### [Behavioral Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_design_patterns.md#behavioral-patterns-1)
 * Strategy
 * Template Method
 * Observer
@@ -135,15 +135,170 @@ Structural design patterns focus on how to compose objects and classes to form l
 
 ## Adapter
 
-## Bridge
+
+### About:
+* **Classification:** xxx pattern
+* **Also Known As:** 
+
+### Purpose:
+qewr
+
+### Structure:
+<p align="center">
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/adapter_class.png" alt="Image" />
+</p>
+
+### Participants:
+`xxx`
+* asdf
+
+### Pros:
+* 1
+* 2
+
+### Cons:
+* 1
+* 2
+
 
 ## Decorator
 
-## Composite
+
+### About:
+* **Classification:** xxx pattern
+* **Also Known As:** 
+
+### Purpose:
+qewr
+
+### Structure:
+<p align="center">
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/bridge.png" alt="Image" />
+</p>
+
+### Participants:
+`xxx`
+* asdf
+
+### Pros:
+* 1
+* 2
+
+### Cons:
+* 1
+* 2
+
+
+## Proxy
+
+
+### About:
+* **Classification:** xxx pattern
+* **Also Known As:** 
+
+### Purpose:
+qewr
+
+### Structure:
+<p align="center">
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/proxy.png" alt="Image" />
+</p>
+
+### Participants:
+`xxx`
+* asdf
+
+### Pros:
+* 1
+* 2
+
+### Cons:
+* 1
+* 2
+
+
+## Bridge
+
+
+### About:
+* **Classification:** xxx pattern
+* **Also Known As:** 
+
+### Purpose:
+qewr
+
+### Structure:
+<p align="center">
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/bridge.png" alt="Image" />
+</p>
+
+### Participants:
+`xxx`
+* asdf
+
+### Pros:
+* 1
+* 2
+
+### Cons:
+* 1
+* 2
+
 
 ## Fascade
 
-## Proxy
+
+### About:
+* **Classification:** xxx pattern
+* **Also Known As:** 
+
+### Purpose:
+qewr
+
+### Structure:
+<p align="center">
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/fascade.png" alt="Image" />
+</p>
+
+### Participants:
+`xxx`
+* asdf
+
+### Pros:
+* 1
+* 2
+
+### Cons:
+* 1
+* 2
+
+
+## Composite
+
+
+### About:
+* **Classification:** xxx pattern
+* **Also Known As:** 
+
+### Purpose:
+qewr
+
+### Structure:
+<p align="center">
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/composite.png" alt="Image" />
+</p>
+
+### Participants:
+`xxx`
+* asdf
+
+### Pros:
+* 1
+* 2
+
+### Cons:
+* 1
+* 2
 
 
 # Behavioral Patterns

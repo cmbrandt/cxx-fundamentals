@@ -24,11 +24,11 @@ The material is intended for early career engineers, developers new to the C++ l
 
 ## [Classic Idioms](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/3_classic_idioms.md)
 
-* Copy-and-Swap
 * Hidden Friend
 * Argument-Dependent Lookup (ADL)
 * Resource Acquisition is Initialization (RAII)
 * Pointer to Implementation (Pimpl)
+* Non-Virtual Interface (NVI)
 
 ## [Modern Idioms](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/4_modern_idioms.md)
 
