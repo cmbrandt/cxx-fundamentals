@@ -144,8 +144,14 @@ Structural design patterns focus on how to compose objects and classes to form l
 qewr
 
 ### Structure:
+Adapter Class
 <p align="center">
     <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/adapter_class.png" alt="Image" />
+</p>
+
+Adapter Object
+<p align="center">
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/adapter_object.png" alt="Image" />
 </p>
 
 ### Participants:
