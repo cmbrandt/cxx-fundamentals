@@ -173,7 +173,7 @@ qewr
 
 ### Structure:
 <p align="center">
-    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/bridge.png" alt="Image" />
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/decorator.png" alt="Image" />
 </p>
 
 ### Participants:
