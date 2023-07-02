@@ -137,8 +137,8 @@ Structural design patterns focus on how to compose objects and classes to form l
 
 
 ### About:
-* **Classification:** xxx pattern
-* **Also Known As:** 
+* **Classification:** Both Class and Object pattern
+* **Also Known As:** Wrapper
 
 ### Purpose:
 Converts the interface of one class into another interface that clients expect, enabling them to interact seamlessly 
@@ -180,8 +180,8 @@ Adapter Object
 
 
 ### About:
-* **Classification:** xxx pattern
-* **Also Known As:** 
+* **Classification:** Object pattern
+* **Also Known As:** Wrapper
 
 ### Purpose:
 Dynamically extend or modify an object with responsibilities
@@ -217,8 +217,8 @@ Dynamically extend or modify an object with responsibilities
 
 
 ### About:
-* **Classification:** xxx pattern
-* **Also Known As:** 
+* **Classification:** Object pattern
+* **Also Known As:** Surrogate
 
 ### Purpose:
 Provide a surrogate, or placeholder, for another object to control access to it
@@ -251,8 +251,8 @@ Provide a surrogate, or placeholder, for another object to control access to it
 
 
 ### About:
-* **Classification:** xxx pattern
-* **Also Known As:** 
+* **Classification:** Object pattern
+* **Also Known As:** Handle/Body
 
 ### Purpose:
 Decouples the interface from the implementation, separating them into two hierarchies and enabling them to vary independently
@@ -289,8 +289,8 @@ Decouples the interface from the implementation, separating them into two hierar
 
 
 ### About:
-* **Classification:** xxx pattern
-* **Also Known As:** 
+* **Classification:** Object pattern
+* **Also Known As:** N/A
 
 ### Purpose:
 Provide a simplified interface to a library, a framework, or any other complex set of classes, making them easier to use
@@ -323,8 +323,8 @@ Subsystem classes
 
 
 ### About:
-* **Classification:** xxx pattern
-* **Also Known As:** 
+* **Classification:** Object pattern
+* **Also Known As:** N/A
 
 ### Purpose:
 Provide a way to represent complex structures of objects in a unified manner, so that clients can treat individual objects and groups of objects the same without having to distinguish between them
@@ -337,7 +337,8 @@ Provide a way to represent complex structures of objects in a unified manner, so
 ### Participants:
 `Component`
 * Declares the interface for objects in the composition
-* 
+* Implements default behavior for the interface common to all classes, as appropriate
+* Declaring an interface for accessing and managing its child components
 
 `Leaf`
 * Represents leaf objects in the composition
