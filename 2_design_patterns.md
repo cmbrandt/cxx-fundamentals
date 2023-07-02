@@ -141,7 +141,7 @@ Structural design patterns focus on how to compose objects and classes to form l
 * **Also Known As:** 
 
 ### Purpose:
-qewr
+Converts the interface of one class into another interface that clients expect, enabling them to interact seamlessly 
 
 ### Structure:
 Adapter Class
@@ -155,8 +155,17 @@ Adapter Object
 </p>
 
 ### Participants:
-`xxx`
-* asdf
+`Target`
+* Defines the domain-specific interface that Client uses
+
+`Client`
+* Collaborates with objets conforming to the Target interface
+
+`Adaptee`
+* Defines an existing interface that needs adapting
+
+`Adapter`
+* Adapts the interface of Adaptee to the Target interface
 
 ### Pros:
 * 1
@@ -175,7 +184,7 @@ Adapter Object
 * **Also Known As:** 
 
 ### Purpose:
-qewr
+Dynamically extend or modify an object with responsibilities
 
 ### Structure:
 <p align="center">
@@ -183,11 +192,20 @@ qewr
 </p>
 
 ### Participants:
-`xxx`
-* asdf
+`Component`
+* Defines the interface for objects that can have responsibilities added to them dynamically
+
+`ConcreteComponent`
+* Defines an object to which additional responsibilities can be attached
+
+`Decorator`
+* Maintains a reference to a Component object and defines an interface that conforms to Component's itnerface
+
+`ConcreteDecorator`
+* Adds responsibilities to the component
 
 ### Pros:
-* 1
+* Provides a flexible alternative to subclassing for extending functionality
 * 2
 
 ### Cons:
@@ -203,7 +221,7 @@ qewr
 * **Also Known As:** 
 
 ### Purpose:
-qewr
+Provide a surrogate, or placeholder, for another object to control access to it
 
 ### Structure:
 <p align="center">
@@ -211,8 +229,14 @@ qewr
 </p>
 
 ### Participants:
-`xxx`
-* asdf
+`Proxy`
+* qwert qewr qewt 
+
+`Subject`
+* Defines the common interface for RealSubject and Proxy so that a Proxy can be used anywhere a RealSubject is expected
+
+`RealSubject`
+* Defines the real object that the proxy represents
 
 ### Pros:
 * 1
@@ -231,7 +255,7 @@ qewr
 * **Also Known As:** 
 
 ### Purpose:
-qewr
+Decouples the interface from the implementation, separating them into two hierarchies and enabling them to vary independently
 
 ### Structure:
 <p align="center">
@@ -239,8 +263,18 @@ qewr
 </p>
 
 ### Participants:
-`xxx`
-* asdf
+`Abstraction`
+* Defines the abstraction's interface
+* Maintains a reference to an object of type Impementor
+
+`RefinedAbstraction`
+* Extends the interface defined by Abstraction
+
+`Implementor`
+* Defines the inteface for implementation classes (note that this interface doesn't have to conrrespond exactly to Abstraction's interface)
+
+`ConcreteImplementor`
+* Implements the Implementor interface and defines its concrete implementation
 
 ### Pros:
 * 1
@@ -259,7 +293,7 @@ qewr
 * **Also Known As:** 
 
 ### Purpose:
-qewr
+Provide a simplified interface to a library, a framework, or any other complex set of classes, making them easier to use
 
 ### Structure:
 <p align="center">
@@ -267,8 +301,14 @@ qewr
 </p>
 
 ### Participants:
-`xxx`
-* asdf
+`Facade`
+* Knows which subsystem classes are responsible for a request
+* Delegates client requests to appropriate subsytem objects
+
+Subsystem classes
+* Implement subsystem functionality
+* Handle work assigned by the Facade object
+* Have no knowledge of the facade; that is (e.g., they maintain no references to it)
 
 ### Pros:
 * 1
@@ -287,7 +327,7 @@ qewr
 * **Also Known As:** 
 
 ### Purpose:
-qewr
+Provide a way to represent complex structures of objects in a unified manner, so that clients can treat individual objects and groups of objects the same without having to distinguish between them
 
 ### Structure:
 <p align="center">
@@ -295,8 +335,22 @@ qewr
 </p>
 
 ### Participants:
-`xxx`
-* asdf
+`Component`
+* Declares the interface for objects in the composition
+* 
+
+`Leaf`
+* Represents leaf objects in the composition
+* Has no children
+* Defines behavior for primitive objects in the composition
+
+`Composite`
+* Defines behavior for components having children
+* Stores child components
+* Implements child-releated operations in the Component interface
+
+`Client`
+* Manipulates objects in the composition through the Component interface
 
 ### Pros:
 * 1
