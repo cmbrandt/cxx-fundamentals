@@ -71,7 +71,7 @@ To provide an API for creating objects, where the factory method determines the 
 ## Prototype
 
 ### About:
-* **Classification:** Class pattern
+* **Classification:** Object pattern
 * **Also Known As:**  Clone Pattern
 
 ### Purpose:
@@ -408,7 +408,7 @@ Define a family of algorithms, encapsulate each one with a class, and make them 
 ## Template Method
 
 ### About:
-* **Classification:** Object pattern
+* **Classification:** Class pattern
 * **Also Known As:**  N/A
 
 ### Purpose:
