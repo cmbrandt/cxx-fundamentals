@@ -3,41 +3,16 @@ Duo deleniti posidonium ut. Duo ne solum delicatissimi. At sed amet accusam. An 
 
 ## Content
 
-[**Hidden Friend**](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/3_classic_idioms.md#hidden-friend)
+* **Resource Acquisition is Initialization (RAII)**
 
-[**Argument-Dependent Lookup (ADL)**](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/3_classic_idioms.md#argument-dependent-lookup-adl)
+* **Pointer to Implementation (Pimpl)**
 
-[**Resource Acquisition is Initialization (RAII)**](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/3_classic_idioms.md#resource-acquisition-is-initialization-raii)
+* **Non-Virtual Interface (NVI)**
 
-[**Pointer to Implementation (Pimpl)**](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/3_classic_idioms.md#pointer-to-implementation-pimpl)
+* **Substitution Failure Is Not an Error (SFINAE)**
 
-[**Non-Virtual Interface (NVI)**](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/3_classic_idioms.md#non-virtual-interface-nvi)
+* **Tag Dispatch**
 
-## Hidden Friend
-
-### Intent
-
-
-### Motivation
-
-
-### Implementation
-
-
-### Consequences
-
-## Argument-Dependent Lookup (ADL)
-
-### Intent
-
-
-### Motivation
-
-
-### Implementation
-
-
-### Consequences
 
 ## Resource Acquisition is Initialization (RAII)
 
@@ -52,6 +27,7 @@ Duo deleniti posidonium ut. Duo ne solum delicatissimi. At sed amet accusam. An 
 
 ### Consequences
 
+
 ## Pointer to Implementation (Pimpl)
 
 ### Intent
@@ -65,7 +41,36 @@ Duo deleniti posidonium ut. Duo ne solum delicatissimi. At sed amet accusam. An 
 
 ### Consequences
 
+
 ## Non-Virtual Interface (NVI)
+
+### Intent
+
+
+### Motivation
+
+
+### Implementation
+
+
+### Consequences
+
+
+## Substitution Failure Is Not an Error (SFINAE)
+
+### Intent
+
+
+### Motivation
+
+
+### Implementation
+
+
+### Consequences
+
+
+## Tag Dispatch
 
 ### Intent
 
