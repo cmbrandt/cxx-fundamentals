@@ -4,7 +4,7 @@ Brute electram te has, aperiam equidem saperet mea in. Munere alienum hendrerit 
 ## Content
 * [Curiously Recurring Template Pattern (CRTP)](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/4_modern_idioms.md#curiously-recurring-template-pattern-crtp)
 * [Mixin](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/4_modern_idioms.md#mixin)
-* [Type Erasure](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/4_modern_idioms.md#type-erasure
+* [Type Erasure](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/4_modern_idioms.md#type-erasure)
 * [Overload Pattern](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/4_modern_idioms.md#overload-pattern)
 
 
