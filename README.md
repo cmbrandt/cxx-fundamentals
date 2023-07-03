@@ -24,11 +24,11 @@ The material is intended for early career engineers, developers new to the C++ l
 
 ## [Classic Idioms](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/3_classic_idioms.md)
 
-* Hidden Friend
-* Argument-Dependent Lookup (ADL)
 * Resource Acquisition is Initialization (RAII)
 * Pointer to Implementation (Pimpl)
 * Non-Virtual Interface (NVI)
+* Substitution Failure Is Not an Error (SFINAE)
+* Tag Dispatch
 
 ## [Modern Idioms](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/4_modern_idioms.md)
 
@@ -50,4 +50,4 @@ The material is intended for early career engineers, developers new to the C++ l
 * Parallelism
 * Cache Blocking
 * Benchmarking
-* `std::mdspan`
+* std::mdspan (C++23)
