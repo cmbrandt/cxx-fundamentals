@@ -3,18 +3,16 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 
 ## Content
 
-### [Visibility](https://github.com/cmbrandt/modern-cxx-seminar/edit/master/1_class_design.md#fundamentals-1)
+### [Preliminaries](https://github.com/cmbrandt/modern-cxx-seminar/edit/master/1_class_design.md#preliminaries-1)
 
-### [Data Members](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#special-member-functions)
+### [Data Members](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#member-functions)
 
-### [Member Functions](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#additional-class-operations)
+### [Member Functions](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#special-member-functions)
 
-### [Invariants](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#rule-of-zerofive)
-
-### [Non-Member Functions](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#class-hierarchies)
+### [Non-Member Functions](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#non-member-functions)
 
 
-# Visibility
+# Preliminaries
 
 
 
@@ -26,12 +24,5 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 
 
 
-# Invariants
-
-
-
 # Non-Member Functions
-
-
-
 
