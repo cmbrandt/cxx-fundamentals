@@ -8,12 +8,11 @@ The material is intended for early career engineers, developers new to the C++ l
 
 # Content
 
-## [Class Design: [ ... ](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design_fundamentals.md)
+## [Class Design: Essentials](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design_fundamentals.md)
 
-* Fundamentals
+* Preliminaries
 * Data Members
 * Member Functions
-* Invariants
 * Non-Member Functions
 
 ## [Class Design: Special Member Functions](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_class_design_special.md)
@@ -26,7 +25,7 @@ The material is intended for early career engineers, developers new to the C++ l
 
 ## [Class Design: Hierarchies](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/3_class_design_hierarchies.md)
 
-* Fundamentals
+* Preliminaries
 * Interface Inheritance
 * Implementation Inheritance
 * Polymorphism
@@ -55,7 +54,7 @@ The material is intended for early career engineers, developers new to the C++ l
 
 ## [Generic Programming](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/7_generic_programming.md)
 
-* Fundamentals
+* Preliminaries
 * Type Traits
 * Concepts
 * Translating Object-Oriented to Generics
