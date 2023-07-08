@@ -26,10 +26,11 @@ The material is intended for early career engineers, developers new to the C++ l
 
 ## [Class Design: Hierarchies](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md)
 
-* 1
-* 2
-* 3
-* 4
+* Inheritance Basics
+* Interface Inheritance
+* Implementation Inheritance
+* Polymorphism
+* Accessing Objects in a Hierarchy
 
 ## [Design Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_design_patterns.md)
 
