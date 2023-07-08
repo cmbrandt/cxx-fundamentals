@@ -14,15 +14,27 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 
 # Preliminaries
 
-
+* Syntax
+* Member Specification
+* Access Specifiers
 
 # Data Members
 
-
+* 1
+* 2
+* 3
 
 # Member Functions
 
-
+* Constructors
+* Destructor
+* Accessors
+* Mutators
+* Implementation
+* Interface
 
 # Non-Member Functions
 
+* Equality
+* Distinction
+* Ordering
