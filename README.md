@@ -24,7 +24,7 @@ The material is intended for early career engineers, developers new to the C++ l
 * Move Operations
 * Rule of Zero/Five
 
-## [Class Design: Heirarchies](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md)
+## [Class Design: Hierarchies](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md)
 
 * 1
 * 2
