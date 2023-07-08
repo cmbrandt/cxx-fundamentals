@@ -31,7 +31,7 @@ The material is intended for early career engineers, developers new to the C++ l
 * Polymorphism
 * Accessing Objects in a Hierarchy
 
-## [Design Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/4_design_patterns.md)
+## [Gang of Four (GoF) Design Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/4_design_patterns.md)
 
 * Creational Patterns
 * Structural Patterns
