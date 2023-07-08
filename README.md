@@ -8,9 +8,9 @@ The material is intended for early career engineers, developers new to the C++ l
 
 # Content
 
-## [Class Design: Fundamentals](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design_fundamentals.md)
+## [Class Design: [ ... ](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design_fundamentals.md)
 
-* Class Basics
+* Fundamentals
 * Data Members
 * Member Functions
 * Invariants
