@@ -8,13 +8,28 @@ The material is intended for early career engineers, developers new to the C++ l
 
 # Content
 
-## [Class Design](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md)
+## [Class Design: Fundamentals](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md)
 
-* Fundamentals
-* Special Member Functions
-* Additional Class Operations
+* Visibility
+* Data Members
+* Member Functions
+* Invariants
+* Non-Member Functions
+
+## [Class Design: Special Member Functions](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md)
+
+* Default Constructor
+* Destructor
+* Copy Operations
+* Move Operations
 * Rule of Zero/Five
-* Class Hierarchies
+
+## [Class Design: Heirarchies](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md)
+
+* 1
+* 2
+* 3
+* 4
 
 ## [Design Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_design_patterns.md)
 
