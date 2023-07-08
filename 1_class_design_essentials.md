@@ -3,13 +3,13 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 
 ## Content
 
-### [Preliminaries](https://github.com/cmbrandt/modern-cxx-seminar/edit/master/1_class_design.md#preliminaries-1)
+### [Preliminaries](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#preliminaries-1)
 
-### [Data Members](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#member-functions)
+### [Data Members](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#data-members-1)
 
-### [Member Functions](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#special-member-functions)
+### [Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#member-functions-1)
 
-### [Non-Member Functions](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#non-member-functions)
+### [Non-Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#non-member-functions-1)
 
 
 # Preliminaries
