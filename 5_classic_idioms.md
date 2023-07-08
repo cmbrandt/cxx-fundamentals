@@ -3,15 +3,11 @@ Duo deleniti posidonium ut. Duo ne solum delicatissimi. At sed amet accusam. An 
 
 ## Content
 
-* **Resource Acquisition is Initialization (RAII)**
-
-* **Pointer to Implementation (Pimpl)**
-
-* **Non-Virtual Interface (NVI)**
-
-* **Substitution Failure Is Not an Error (SFINAE)**
-
-* **Tag Dispatch**
+* [**Resource Acquisition is Initialization (RAII)**]()
+* [**Pointer to Implementation (Pimpl)**]()
+* [**Non-Virtual Interface (NVI)**]()
+* [**Substitution Failure Is Not an Error (SFINAE)**]()
+* [**Tag Dispatch**]()
 
 
 ## Resource Acquisition is Initialization (RAII)
