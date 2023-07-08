@@ -1,4 +1,4 @@
-# Class Design: Fundamentals
+# Class Design: Essentials
 Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primis volumus, dico commodo aliquip ex vim. Ad vix minim corpora patrioque, pro enim referrentur no. No quo affert oratio definitionem, sit ut enim consulatu. Eu sit reque causae.
 
 ## Content
