@@ -10,7 +10,7 @@ The material is intended for early career engineers, developers new to the C++ l
 
 ## [Class Design: Fundamentals](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design_fundamentals.md)
 
-* Visibility
+* Class Basics
 * Data Members
 * Member Functions
 * Invariants
