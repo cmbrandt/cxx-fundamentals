@@ -8,8 +8,18 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 ### [Destructor](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#special-member-functions)
 
 ### [Copy Operations](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#additional-class-operations)
+* Default Implementation
+* Temporary Swap Implementation
+* Optimized Implementation
+* std::unique_ptr Implemenetation
+* std::shared_ptr Implemenetation
 
 ### [Move Operations](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#class-hierarchies)
+* Default Implementation
+* Temporary Swap Implementation
+* Optimized Implementation
+* std::unique_ptr Implemenetation
+* std::shared_ptr Implemenetation
 
 ### [Rule of Zero/Five](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#rule-of-zerofive)
 * Rule of Zero
@@ -23,7 +33,6 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 
 
 # Copy Operations
-
 
 # Move Operations
 
