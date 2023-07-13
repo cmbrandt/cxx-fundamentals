@@ -4,22 +4,26 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 ## Content
 
 ### [Default Constructor](https://github.com/cmbrandt/modern-cxx-seminar/edit/master/1_class_design.md#fundamentals-1)
+* Compiler Generated
+* ...
 
 ### [Destructor](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#special-member-functions)
+* Compiler Generated
+* ...
 
 ### [Copy Operations](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#additional-class-operations)
-* Default Implementation
+* Compiler Generated
 * Temporary Swap Implementation
 * Optimized Implementation
-* std::unique_ptr Implemenetation
-* std::shared_ptr Implemenetation
+* std::unique_ptr Implementation
+* std::shared_ptr Implementation
 
 ### [Move Operations](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#class-hierarchies)
-* Default Implementation
+* Compiler Generated
 * Temporary Swap Implementation
 * Optimized Implementation
-* std::unique_ptr Implemenetation
-* std::shared_ptr Implemenetation
+* std::unique_ptr Implementation
+* std::shared_ptr Implementation
 
 ### [Rule of Zero/Five](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#rule-of-zerofive)
 * Rule of Zero
@@ -34,6 +38,7 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 
 # Copy Operations
 
+
 # Move Operations
 
 
@@ -42,5 +47,3 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 ## Rule of Zero
 
 ## Rule of Five
-
-
