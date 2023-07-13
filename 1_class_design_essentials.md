@@ -34,11 +34,118 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 
 # Data Members
 
+```
+struct Rational {
+  int num;
+  int den;
+};
+```
+
+
+```
+class Rational {
+public:
+  int num;
+  int den;
+};
+```
+
 
 
 # Member Functions
 
 
+## Constructors
+
+
+### Parameterized Constructor
+
+```
+class Rational {
+public:
+  Rational(int n, int d) {
+    num = n;
+    den = d;
+  }
+
+private:
+  int num;
+  int den;
+};
+```
+
+```
+class Rational {
+public:
+  Rational(int n, int d) : num{n}, den{d} { }
+
+private:
+  int num;
+  int den;
+};
+```
+
+### Default Constructor
+
+```
+class Rational {
+public:
+  Rational() : num{0}, den{1} { }
+  Rational(int n, int d) : num{n}, den{d} { }
+
+private:
+  int num;
+  int den;
+};
+```
+
+```
+class Rational {
+public:
+  Rational() = default;
+  Rational(int n, int d) : num{n}, den{d} { }
+
+private:
+  int num{0};
+  int den{1};
+};
+```
+
+## Destructor
+
+
+## Copy Operations
+
+### Copy Constructor
+
+### Copy Assignment Operator
+
+
+## Move Operations
+
+### Move Constructor
+
+### Move Assignment Operator
+
+
+## Accessors and Mutators
+
+### Accessors
+
+### Mutators
+
+
+## Implementation Functions
+
+### Greatest Common Factor
+
+### Normalize
+
 
 # Non-Member Functions
 
+## Equality
+
+## Distinction
+
+## Ordering
