@@ -111,35 +111,141 @@ private:
 };
 ```
 
+### Integer Initialization
+
+```
+class Rational {
+public:
+  Rational() = default;
+  explicit Rational(int n) : num{n} { }
+  Rational(int n, int d) : num{n}, den{d} { }
+
+private:
+  int num{0};
+  int den{1};
+};
+```
+
 ## Destructor
 
+```
+class Rational {
+public:
+  Rational() = default;
+  explicit Rational(int n) : num{n} { }
+  Rational(int n, int d) : num{n}, den{d} { }
+
+  ~Rational() = default;
+
+private:
+  int num{0};
+  int den{1};
+};
+```
 
 ## Copy Operations
 
+
 ### Copy Constructor
 
+```
+Rational::Rational(Rational const& other) {
+  num = other.num;
+  den = other.den;
+}
+```
+
+```
+Rational::Rational(Rational const& other) {
+: num{other.num}, den{other.den} { }
+```
+
 ### Copy Assignment Operator
+
+```
+Rational& Rational::operator=(Rational const& other) {
+  num = other.num;
+  den = other.den;
+}
+```
 
 
 ## Move Operations
 
 ### Move Constructor
 
+```
+Rational::Rational(Rational&& other) {
+: num{std::move(other.num)} , den{std::move(other.den)} { }
+```
+
 ### Move Assignment Operator
 
+```
+Rational& Rational::operator=(Rational&& other) {
+  num = std::move(other.num);
+  den = std::move(other.den);
+}
+```
 
 ## Accessors and Mutators
 
 ### Accessors
 
+```
+int Rational::get_num() const { return num; }
+int Rational::get_den() const { return den; }
+```
+
 ### Mutators
+
+```
+void Rational::set_num(int n) { num = n; }
+void Rational::set_den(int d) { den = d; }
+```
 
 
 ## Implementation Functions
 
 ### Greatest Common Factor
 
+```
+int Rational::gcf() {
+  int a = std::abs(num);
+  int b = den;
+  int tmp{};
+
+  while (b != 0) {
+    tmp = a % b;
+    a = b;
+    b = tmp;
+  }
+  return a;
+}
+```
+
 ### Normalize
+
+```
+void Rational::normalize() {
+  // Denominator cannot be zero
+  assert(den != 0);
+  
+  // Unique representation for zero
+  if (num == 0)
+    den = 1;
+  // Only the numerator can be negative
+  else if (den < 0) {
+    num = -num;
+    den = -den;
+  }
+  
+  // Simplify
+  int n = gcf();
+  num = num / n;
+  den = den / n;
+}
+```
 
 
 # Non-Member Functions
