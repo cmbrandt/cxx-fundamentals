@@ -16,11 +16,12 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 
 ### [Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#member-functions-1)
 
-* Constructors
-* Destructor
-* Accessors
-* Mutators
-* Implementation
+* [Constructors]()
+* [Destructor]()
+* [Copy Operations]()
+* [Move Operatoins]()
+* [Accessors and Mutators]()
+* [Implementation Methods]()
 
 ### [Non-Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#non-member-functions-1)
 
