@@ -16,12 +16,12 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 
 ### [Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#member-functions-1)
 
-* [Constructors]()
-* [Destructor]()
-* [Copy Operations]()
-* [Move Operations]()
-* [Accessors and Mutators]()
-* [Implementation Functions]()
+* [Constructors](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#constructors)
+* [Destructor](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#destructor)
+* [Copy Operations](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#copy-operations)
+* [Move Operations](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#move-operations)
+* [Accessors and Mutators](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#accessors-and-mutators)
+* [Implementation Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#implementation-functions)
 
 ### [Non-Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#non-member-functions-1)
 
