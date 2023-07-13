@@ -248,6 +248,8 @@ void Rational::normalize() {
 }
 ```
 
+Note: we need to update the implementation of the following functions to include a call to the normalize member function: parameterized constructors and mutators. All other member functions will preserver the previously established class invariants.
+
 
 # Non-Member Functions
 
