@@ -7,7 +7,7 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 
 * Access Specifiers
 * Value Types
-* Regular
+* Regular Types
 
 ### [Data Members](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#data-members-1)
 
@@ -52,21 +52,19 @@ public:
 ```
 
 
-
 # Member Functions
 
 
 ## Constructors
 
-
-### Parameterized Constructor
+### Default Constructor
 
 ```
 class Rational {
 public:
-  Rational(int n, int d) {
-    num = n;
-    den = d;
+  Rational() {
+    num = 0;
+    den = 1;
   }
 
 private:
@@ -78,21 +76,7 @@ private:
 ```
 class Rational {
 public:
-  Rational(int n, int d) : num{n}, den{d} { }
-
-private:
-  int num;
-  int den;
-};
-```
-
-### Default Constructor
-
-```
-class Rational {
-public:
   Rational() : num{0}, den{1} { }
-  Rational(int n, int d) : num{n}, den{d} { }
 
 private:
   int num;
@@ -104,7 +88,6 @@ private:
 class Rational {
 public:
   Rational() = default;
-  Rational(int n, int d) : num{n}, den{d} { }
 
 private:
   int num{0};
@@ -112,36 +95,25 @@ private:
 };
 ```
 
-### Integer Initialization
+### Parameterized Constructors
 
 ```
-class Rational {
-public:
-  Rational() = default;
-  explicit Rational(int n) : num{n} { }
-  Rational(int n, int d) : num{n}, den{d} { }
-
-private:
-  int num{0};
-  int den{1};
-};
+Rational::Rational(int n, int d) : num{n}, den{d} { }
 ```
+
+```
+explicit Rational::Rational(int n) : num{n} { }
+```
+
 
 ## Destructor
 
 ```
-class Rational {
-public:
-  Rational() = default;
-  explicit Rational(int n) : num{n} { }
-  Rational(int n, int d) : num{n}, den{d} { }
+~Rational::Rational() { };
+```
 
-  ~Rational() = default;
-
-private:
-  int num{0};
-  int den{1};
-};
+```
+~Rational() = default;
 ```
 
 ## Copy Operations
@@ -188,6 +160,7 @@ Rational& Rational::operator=(Rational&& other) {
   den = std::move(other.den);
 }
 ```
+
 
 ## Accessors and Mutators
 
