@@ -228,6 +228,47 @@ Note: we need to update the implementation of the following functions to include
 
 ## Equality
 
+```
+bool operator==(Rational const& lhs, Rational const& rhs) {
+  //
+  // implementation details
+  //
+}
+```
+
+
 ## Distinction
 
+```
+bool operator!=(Rational const& lhs, Rational const& rhs) {
+  return !operator==(lhs, rhs);
+}
+```
+
+
 ## Ordering
+
+```
+bool operator<(Rational const& lhs, Rational const& rhs) {
+  return !operator<(lhs, rhs);
+}
+```
+
+```
+bool operator>(Rational const& lhs, Rational const& rhs) {
+  return operator<(rhs, lhs);
+}
+```
+
+```
+bool operator<=(Rational const& lhs, Rational const& rhs) {
+  return !operator>(lhs, rhs);
+}
+```
+
+```
+bool operator>=(Rational const& lhs, Rational const& rhs) {
+  return !operator<(lhs, rhs);
+}
+```
+
