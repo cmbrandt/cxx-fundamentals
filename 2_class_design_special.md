@@ -15,15 +15,15 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 * Compiler Generated
 * Temporary Swap
 * Optimized
-* std::unique_ptr
-* std::shared_ptr
+* Using std::unique_ptr
+* Using std::shared_ptr
 
 ### [Move Operations](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#class-hierarchies)
 * Compiler
 * Temporary Swap
 * Optimized
-* std::unique_ptr
-* std::shared_ptr
+* Using std::unique_ptr
+* Using std::shared_ptr
 
 ### [Rule of Zero/Five](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#rule-of-zerofive)
 * Rule of Zero
