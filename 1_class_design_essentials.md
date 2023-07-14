@@ -230,8 +230,7 @@ Note: we need to update the implementation of the following functions to include
 ```
 constexpr bool operator==(Rational const& lhs, Rational const& rhs)
 {
-  return (lhs.num == rhs.num) and (rhs.num == lhs.num)
-     and (lhs.den == rhs.den) and (rhs.den == lhs.den);
+  return (lhs.num == rhs.num) and (lhs.den == rhs.den);
 }
 ```
 
