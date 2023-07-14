@@ -26,8 +26,7 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 ### [Non-Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#non-member-functions-1)
 
 * Equality
-* Distinction
-* Ordering
+* Comparison
 
 # Preliminaries
 
@@ -229,44 +228,52 @@ Note: we need to update the implementation of the following functions to include
 ## Equality
 
 ```
-constexpr bool operator==(Rational const& lhs, Rational const& rhs) {
+constexpr bool operator==(Rational const& lhs, Rational const& rhs)
+{
   return (lhs.num == rhs.num) and (rhs.num == lhs.num)
      and (lhs.den == rhs.den) and (rhs.den == lhs.den);
 }
 ```
 
-
-## Distinction
-
 ```
-constexpr bool operator!=(Rational const& lhs, Rational const& rhs) {
+constexpr bool operator!=(Rational const& lhs, Rational const& rhs)
+{
   return !operator==(lhs, rhs);
 }
 ```
 
 
-## Ordering
+## Comparison
 
 ```
-constexpr bool operator<(Rational const& lhs, Rational const& rhs) {
-  return !operator<(lhs, rhs);
+bool operator<(Rational const& lhs, Rational const& rhs)
+{
+  int    a = lhs.get_num();
+  int    c = rhs.get_num();
+  double b = lhs.get_den();
+  double d = rhs.get_den();
+
+  return (a/b) < (c/d);
 }
 ```
 
 ```
-constexpr bool operator>(Rational const& lhs, Rational const& rhs) {
+constexpr bool operator>(Rational const& lhs, Rational const& rhs)
+{
   return operator<(rhs, lhs);
 }
 ```
 
 ```
-constexpr bool operator<=(Rational const& lhs, Rational const& rhs) {
+constexpr bool operator<=(Rational const& lhs, Rational const& rhs)
+{
   return !operator>(lhs, rhs);
 }
 ```
 
 ```
-constexpr bool operator>=(Rational const& lhs, Rational const& rhs) {
+constexpr bool operator>=(Rational const& lhs, Rational const& rhs)
+{
   return !operator<(lhs, rhs);
 }
 ```
