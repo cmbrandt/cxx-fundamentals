@@ -32,6 +32,49 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 
 # Default Constructor
 
+[description of the default constructor]
+
+The compiler generates a default constructor if you have no other construcctor in your class.
+
+```
+// Compiler-generated default constructor available
+class Widget {
+public:
+  // ...
+};
+
+Widget w1;   // Ok! Compiler generated
+Widget w2{}; // Ok! Compiler generated
+```
+
+However, if you have any other construtor defined in your class, then the compiler does not generate a default constructor.
+
+```
+// No compiler-generated default constructor available
+class Widget {
+public:
+  Widget(Widget const&); // explicit declaration of copy ctor
+  // ...                 // default ctor no longer available
+};
+
+Widget w1;   // Error! No default constructor
+Widget w2{}; // Error! No default constructor
+```
+
+The compiler is not able to generate a default constructor if any data member or any base class is not default constructable
+
+```
+// No compiler-generated default constructor available
+class Widget {
+public:
+  // ...
+private:
+  NotDefaultConstructable member; // Data member without default ctor
+};
+
+Widget w1;   // Error! No default constructor
+Widget w2{}; // Error! No default constructor
+```
 
 # Destructor
 
