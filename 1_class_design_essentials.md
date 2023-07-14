@@ -248,25 +248,25 @@ constexpr bool operator!=(Rational const& lhs, Rational const& rhs) {
 ## Ordering
 
 ```
-bool operator<(Rational const& lhs, Rational const& rhs) {
+constexpr bool operator<(Rational const& lhs, Rational const& rhs) {
   return !operator<(lhs, rhs);
 }
 ```
 
 ```
-bool operator>(Rational const& lhs, Rational const& rhs) {
+constexpr bool operator>(Rational const& lhs, Rational const& rhs) {
   return operator<(rhs, lhs);
 }
 ```
 
 ```
-bool operator<=(Rational const& lhs, Rational const& rhs) {
+constexpr bool operator<=(Rational const& lhs, Rational const& rhs) {
   return !operator>(lhs, rhs);
 }
 ```
 
 ```
-bool operator>=(Rational const& lhs, Rational const& rhs) {
+constexpr bool operator>=(Rational const& lhs, Rational const& rhs) {
   return !operator<(lhs, rhs);
 }
 ```
