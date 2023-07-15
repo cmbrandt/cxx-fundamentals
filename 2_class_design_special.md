@@ -11,7 +11,7 @@ In some cases, the compiler may generate *delete* special member functions, wher
 
 ### [Default Constructor](https://github.com/cmbrandt/modern-cxx-seminar/edit/master/1_class_design.md#fundamentals-1)
 * Availability
-* Data Member Initialization
+* Initialization
 
 ### [Destructor](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#special-member-functions)
 * Availability
@@ -87,7 +87,7 @@ Widget w1;   // Error! No default constructor
 Widget w2{}; // Error! No default constructor
 ```
 
-## Data Member Initialization
+## Initialization
 
 The task of the compiler generated default constructor is to initialize an instance of its class with default values. When no explicit data member initializer is provided, the compiler will default initialize all data member of class type, but will not initialize the data members of fundamental type.
 
@@ -104,7 +104,7 @@ struct Widget {
 Widget w;          // Default initialization using the default constructor
 ```
 
-Value initialization chanages the fundamental behavior of the class, zero initializing every fundamental type and default constructing each class type. Still using the compiler generated default constructor below, the `int` is initialized to zero, the `std::string` remains an empty string, and the pointer is initialized to `nullptr`.
+Value initialization chanages the fundamental behavior of the class, value initializing every fundamental type and default constructing each class type. Still using the compiler generated default constructor below, the `int` is initialized to zero, the `std::string` remains an empty string, and the pointer is initialized to `nullptr`.
 
 ```
 // Ex 2: Value initialization
@@ -117,7 +117,7 @@ struct Widget {
 Widget w{};        // Value initialization using the default constructor
 ```
 
-An empty default constructor will initialize all data members of class (user-defined) type, but will not initialize the data members of fundamental type.
+By providing an explicit default constructor, the default constructor becomes responsible for initializing all data members of the class. Therefore, an empty default constructor will default initialize all data member of class type, but will not initialize the data members of fundamental type.
 
 ```
 // Ex 3: Explicit default constructor with value initialization
@@ -132,7 +132,7 @@ struct Widget {
 Widget w{};        // Value initialization with no default ctor
 ```
 
-The `= default` allows the compiler to generate the default constructor. `= default` counts as definition, plus may provide additional benefits (include `noexcept`).
+A better option is to ask the compiler to generate the default constuctor by defining it using `= default`. In doing so, fundamental type data members are value initialized and class type data members are default initialized. Asking for the compiler generated default constructor using `= default` may also provide bonus effects (e.g., `noexcept`).
 
 ```
 // Ex 4: Defaulted constructor with value initialization
@@ -146,8 +146,6 @@ struct Widget {
 
 Widget w{};           // Value initialization with declared default ctor
 ```
-
-
 
 
 # Destructor
