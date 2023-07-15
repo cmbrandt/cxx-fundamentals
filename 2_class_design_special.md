@@ -209,8 +209,178 @@ private:
 
 # Copy Operations
 
+## Manual Implementation
+
+```
+class Widget {
+public:
+  // Copy constructor
+  Widget(Widget const& other)
+  : idx{other.idx}
+  , str{other.str}
+  , ptr{other.ptr} { }                     // Shallow copy!
+
+  // Copy assignment operator
+  Widget& operator=(Widget const& other) {
+    idx = other.idx;
+    str = other.str;
+    ptr = other.ptr;                       // Shallow copy!
+    return *this;
+  }
+
+  // Destructor
+  ~Widget() { delete ptr; }
+
+private:
+  int idx{};
+  std::string str{};
+  Resource* ptr{nullptr};
+};
+```
+
+## Temporary Swap Idiom
+
+Notes on copy assignment operator
+* Follows the temporary-swap idiom
+* Implemented in terms of the copy constructor
+* Guards against self-assignment -> not necessary and may be removed
+
+```
+class Widget {
+public:
+  // Copy constructor
+  Widget(Widget const& other)
+  : idx{other.idx}
+  , str{other.str}
+  , ptr{other.ptr ? new Resource{*other.ptr} : nullptr} { }
+
+  // Copy assignment operator
+  Widget& operator=(Widget const& other) {
+    if (this == &other)
+      return *this;
+    Widget tmp{other};
+    swap(tmp);
+    return *this;
+  }
+
+  // Destructor
+  ~Widget() { delete ptr; }
+
+private:
+  int idx{};
+  std::string str{};
+  Resource* ptr{nullptr};
+};
+```
+
+## Optimized Implementation
+
+```
+class Widget {
+public:
+  // Copy constructor
+  Widget(Widget const& other)
+  : idx{other.idx}
+  , str{other.str}
+  , ptr{other.ptr ? new Resource{*other.ptr} : nullptr} { }
+
+  // Copy assignment operator
+  Widget& operator=(Widget const& other) {
+    if (ptr and &other.ptr) {
+      idx  = other.idx;
+      str  = other.str;
+      *ptr = *other.ptr;
+    }
+    else {
+      Widget tmp{other};
+      swap(tmp);
+    }
+    return *this;
+  }
+
+  // Destructor
+  ~Widget() { delete ptr; }
+
+private:
+  int idx{};
+  std::string str{};
+  Resource* ptr{nullptr};
+};
+```
+
+
+## Ownership Via std::unique_ptr
+
+```
+class Widget {
+public:
+  Widget(Widget const& other)
+  : idx{other.idx}
+  , str{other.str}
+  , ptr{other.ptr ? std::make_unique<Resource>(*other.ptr) : nullptr} { }
+
+  Widget& operator=(Widget const& other) {
+    if (ptr and &other.ptr) {
+      idx  = other.idx;
+      str  = other.str;
+      *ptr = *other.ptr;
+    }
+    else {
+      Widget tmp{other};
+      swap(tmp);
+    }
+    return *this;
+  }
+
+  // Destructor
+  ~Widget() = default;
+
+private:
+  int idx{};
+  std::string str{};
+  Resource* ptr{nullptr};
+};
+```
+
+## Ownership Via std::shared_ptr
+
+
+```
+class Widget {
+public:
+  // Copy Constructor
+  Widget(Widget const&) = default;
+
+  // Copy assignment operator
+  Widget& operator=(Widget const&) = default;
+
+  // Destructor
+  ~Widget() = default;
+
+private:
+  int idx{};
+  std::string str{};
+  Resource* ptr{nullptr};
+};
+```
 
 # Move Operations
+
+## Compiler Generated
+
+
+## Temporary Swap Idiom
+
+
+## Optimized Implementation
+
+
+## Ownership Via std::unique_ptr
+
+
+## Ownership Via std::shared_ptr
+
+
 
 
 # Rule of Zero/Five
