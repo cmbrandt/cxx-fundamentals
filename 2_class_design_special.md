@@ -15,15 +15,15 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 * Compiler Generated
 * Temporary Swap
 * Optimized
-* Using std::unique_ptr
-* Using std::shared_ptr
+* std::unique_ptr
+* std::shared_ptr
 
 ### [Move Operations](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#class-hierarchies)
-* Compiler
+* Compiler Generated
 * Temporary Swap
 * Optimized
-* Using std::unique_ptr
-* Using std::shared_ptr
+* std::unique_ptr
+* std::shared_ptr
 
 ### [Rule of Zero/Five](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#rule-of-zerofive)
 * Rule of Zero
@@ -209,9 +209,10 @@ private:
 
 # Copy Operations
 
-## Manual Implementation
+## Compiler Generated
 
 ```
+// Ex 1: ...
 class Widget {
 public:
   // Copy constructor
@@ -219,7 +220,6 @@ public:
   : idx{other.idx}
   , str{other.str}
   , ptr{other.ptr} { }                     // Shallow copy!
-
   // Copy assignment operator
   Widget& operator=(Widget const& other) {
     idx = other.idx;
@@ -227,9 +227,7 @@ public:
     ptr = other.ptr;                       // Shallow copy!
     return *this;
   }
-
-  // Destructor
-  ~Widget() { delete ptr; }
+  // Note: default dtor -> possible resource leak!
 
 private:
   int idx{};
@@ -248,34 +246,7 @@ Notes on copy assignment operator
 
 
 ```
-class Widget {
-public:
-  // Move constructor
-  Widget(Widget const& other);
-
-  // Copy assignment operator
-  Widget& operator=(Widget const& other);
-
-  // Destructor
-  ~Widget() { delete ptr; }
-
-  void swap(Widget& other) noexcept {
-    using std::swap;
-    swap(idx, other.idx);
-    swap(str, other.str);
-    swap(ptr, other.ptr);
-  }
-  // ...
-
-private:
-  int idx{};
-  std::string str{};
-  Resource* ptr{nullptr};
-};
-```
-
-
-```
+// Ex 2: ...
 class Widget {
 public:
   // Copy constructor
@@ -283,7 +254,6 @@ public:
   : idx{other.idx}
   , str{other.str}
   , ptr{other.ptr ? new Resource{*other.ptr} : nullptr} { }
-
   // Copy assignment operator
   Widget& operator=(Widget const& other) {
     if (this == &other)
@@ -292,7 +262,12 @@ public:
     swap(tmp);
     return *this;
   }
-
+  void swap(Widget& other) noexcept {
+    using std::swap;
+    swap(idx, other.idx);
+    swap(str, other.str);
+    swap(ptr, other.ptr);
+  }
   // Destructor
   ~Widget() { delete ptr; }
 
@@ -306,6 +281,7 @@ private:
 ## Optimized Implementation
 
 ```
+// Ex 3: ...
 class Widget {
 public:
   // Copy constructor
@@ -313,7 +289,6 @@ public:
   : idx{other.idx}
   , str{other.str}
   , ptr{other.ptr ? new Resource{*other.ptr} : nullptr} { }
-
   // Copy assignment operator
   Widget& operator=(Widget const& other) {
     if (ptr and &other.ptr) {
@@ -327,7 +302,6 @@ public:
     }
     return *this;
   }
-
   // Destructor
   ~Widget() { delete ptr; }
 
@@ -339,16 +313,18 @@ private:
 ```
 
 
-## Ownership Via std::unique_ptr
+## std::unique_ptr
 
 ```
+// Ex 4: ...
 class Widget {
 public:
+  // Copy constructor
   Widget(Widget const& other)
   : idx{other.idx}
   , str{other.str}
   , ptr{other.ptr ? std::make_unique<Resource>(*other.ptr) : nullptr} { }
-
+  // Copy assignment operator
   Widget& operator=(Widget const& other) {
     if (ptr and &other.ptr) {
       idx  = other.idx;
@@ -361,7 +337,6 @@ public:
     }
     return *this;
   }
-
   // Destructor
   ~Widget() = default;
 
@@ -372,18 +347,17 @@ private:
 };
 ```
 
-## Ownership Via std::shared_ptr
+## std::shared_ptr
 
 
 ```
+// Ex 5: ...
 class Widget {
 public:
   // Copy Constructor
   Widget(Widget const&) = default;
-
   // Copy assignment operator
   Widget& operator=(Widget const&) = default;
-
   // Destructor
   ~Widget() = default;
 
@@ -396,9 +370,10 @@ private:
 
 # Move Operations
 
-## Manual Implementation
+## Compiler Generated
 
 ```
+// Ex 1: ...
 class Widget {
 public:
   // Move constructor
@@ -406,7 +381,6 @@ public:
   : idx{std::move(other.idx)}
   , str{std::move(other.str)}
   , ptr{std::move(other.ptr)} { } // Shallow copy!
-
   // Move assignment operator
   Widget& operator=(Widget&& other) noexcept {
     idx = std::move(other.idx);
@@ -414,7 +388,6 @@ public:
     ptr = std::move(other.ptr); // Shallow copy!
     return *this;
   }
-
   // Destructor
   ~Widget() { delete ptr; }
 
@@ -433,6 +406,7 @@ Notes on move assignment operator
 * Guards against self-assignment -> not necessary and may be removed
 
 ```
+// Ex 2: ...
 class Widget {
 public:
   // Move constructor
@@ -440,7 +414,6 @@ public:
   : idx{std::move(other.idx)}
   , str{std::move(other.str)}
   , ptr{std::exchange(other.ptr, {})} { }
-
   // Move assignment operator
   Widget& operator=(Widget&& other) noexcept {
     if (this == &other)
@@ -449,7 +422,6 @@ public:
     swap(tmp);
     return *this;
   }
-
   // Destructor
   ~Widget() { delete ptr; }
 
@@ -463,6 +435,7 @@ private:
 ## Optimized Implementation
 
 ```
+// Ex 3: ...
 class Widget {
 public:
   // Move constructor
@@ -470,7 +443,6 @@ public:
   : idx{std::move(other.idx)}
   , str{std::move(other.str)}
   , ptr{std::exchange(other.ptr, {})} { }
-
   // Move assignment operator
   Widget& operator=(Widget&& other) noexcept {
     delete ptr;
@@ -479,7 +451,6 @@ public:
     ptr = other.ptr; other.ptr = nullptr;
     return *this;
   }
-
   // Destructor
   ~Widget() { delete ptr; }
 
@@ -491,21 +462,16 @@ private:
 ```
 
 
-## Ownership Via std::unique_ptr
+## std::unique_ptr
 
 ```
+// Ex 4: ...
 class Widget {
 public:
-  // Parameterized constructor
-  Widget(int i, std::string s, Resource p)
-  : idx{i}, str{s}, ptr{std::make_unique<Resource>(p)} { }
-
   // Move Constructor
   Widget(Widget&&) = default;
-
   // Move assignment operator
   Widget& operator=(Widget&&) = default;
-
   // Destructor
   ~Widget() = default;
 
@@ -516,22 +482,17 @@ private:
 };
 ```
 
-## Ownership Via std::shared_ptr
+## std::shared_ptr
 
 
 ```
+// Ex 5: ...
 class Widget {
 public:
-  // Parameterized constructor
-  Widget(int i, std::string s, Resource p)
-  : idx{i}, str{s}, ptr{std::make_shared<Resource>(p)} { }
-
   // Move Constructor
   Widget(Widget&&) = default;
-
   // Move assignment operator
   Widget& operator=(Widget&&) = default;
-
   // Destructor
   ~Widget() = default;
 
