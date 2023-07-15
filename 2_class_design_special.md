@@ -240,10 +240,40 @@ private:
 
 ## Temporary Swap Idiom
 
+
 Notes on copy assignment operator
 * Follows the temporary-swap idiom
 * Implemented in terms of the copy constructor
 * Guards against self-assignment -> not necessary and may be removed
+
+
+```
+class Widget {
+public:
+  // Move constructor
+  Widget(Widget const& other);
+
+  // Copy assignment operator
+  Widget& operator=(Widget const& other);
+
+  // Destructor
+  ~Widget() { delete ptr; }
+
+  void swap(Widget& other) noexcept {
+    using std::swap;
+    swap(idx, other.idx);
+    swap(str, other.str);
+    swap(ptr, other.ptr);
+  }
+  // ...
+
+private:
+  int idx{};
+  std::string str{};
+  Resource* ptr{nullptr};
+};
+```
+
 
 ```
 class Widget {
@@ -366,19 +396,151 @@ private:
 
 # Move Operations
 
-## Compiler Generated
+## Manual Implementation
 
+```
+class Widget {
+public:
+  // Move constructor
+  Widget(Widget&& other) noexcept
+  : idx{std::move(other.idx)}
+  , str{std::move(other.str)}
+  , ptr{std::move(other.ptr)} { } // Shallow copy!
+
+  // Move assignment operator
+  Widget& operator=(Widget&& other) noexcept {
+    idx = std::move(other.idx);
+    str = std::move(other.str);
+    ptr = std::move(other.ptr); // Shallow copy!
+    return *this;
+  }
+
+  // Destructor
+  ~Widget() { delete ptr; }
+
+private:
+  int idx{};
+  std::string str{};
+  Resource* ptr{nullptr};
+};
+```
 
 ## Temporary Swap Idiom
 
+Notes on move assignment operator
+* Follows the temporary-swap idiom
+* Implemented in terms of the move constructor
+* Guards against self-assignment -> not necessary and may be removed
+
+```
+class Widget {
+public:
+  // Move constructor
+  Widget(Widget&& other) noexcept
+  : idx{std::move(other.idx)}
+  , str{std::move(other.str)}
+  , ptr{std::exchange(other.ptr, {})} { }
+
+  // Move assignment operator
+  Widget& operator=(Widget&& other) noexcept {
+    if (this == &other)
+      return *this;
+    Widget tmp{std::move(other)};
+    swap(tmp);
+    return *this;
+  }
+
+  // Destructor
+  ~Widget() { delete ptr; }
+
+private:
+  int idx{};
+  std::string str{};
+  Resource* ptr{nullptr};
+};
+```
 
 ## Optimized Implementation
+
+```
+class Widget {
+public:
+  // Move constructor
+  Widget(Widget&& other) noexcept
+  : idx{std::move(other.idx)}
+  , str{std::move(other.str)}
+  , ptr{std::exchange(other.ptr, {})} { }
+
+  // Move assignment operator
+  Widget& operator=(Widget&& other) noexcept {
+    delete ptr;
+    idx = std::move(other.idx);
+    str = std::move(other.str);
+    ptr = other.ptr; other.ptr = nullptr;
+    return *this;
+  }
+
+  // Destructor
+  ~Widget() { delete ptr; }
+
+private:
+  int idx{};
+  std::string str{};
+  Resource* ptr{nullptr};
+};
+```
 
 
 ## Ownership Via std::unique_ptr
 
+```
+class Widget {
+public:
+  // Parameterized constructor
+  Widget(int i, std::string s, Resource p)
+  : idx{i}, str{s}, ptr{std::make_unique<Resource>(p)} { }
+
+  // Move Constructor
+  Widget(Widget&&) = default;
+
+  // Move assignment operator
+  Widget& operator=(Widget&&) = default;
+
+  // Destructor
+  ~Widget() = default;
+
+private:
+  int idx{};
+  std::string str{};
+  std::unique_ptr<Resource> ptr{nullptr};
+};
+```
 
 ## Ownership Via std::shared_ptr
+
+
+```
+class Widget {
+public:
+  // Parameterized constructor
+  Widget(int i, std::string s, Resource p)
+  : idx{i}, str{s}, ptr{std::make_shared<Resource>(p)} { }
+
+  // Move Constructor
+  Widget(Widget&&) = default;
+
+  // Move assignment operator
+  Widget& operator=(Widget&&) = default;
+
+  // Destructor
+  ~Widget() = default;
+
+private:
+  int idx{};
+  std::string str{};
+  std::shared_ptr<Resource> ptr{nullptr};
+};
+```
 
 
 
