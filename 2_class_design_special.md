@@ -14,7 +14,7 @@ In some cases, the compiler may generate *delete* special member functions, wher
 * Data Member Initialization
 
 ### [Destructor](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#special-member-functions)
-* Default Destructor Availability
+* Availability
 * ...
 
 ### [Copy Operations](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#additional-class-operations)
@@ -45,7 +45,7 @@ In C++, the standard describes the default constructor for a class as a construc
 
 ## Availability
 
-If a class has no other explicitly defined constructors, the compiler will implicitly declare and define a default constructor for it. This implicitly defined default constructor is equivalent to an explicitly defined defined one.
+If a class has no other explicitly defined constructors, the compiler will implicitly declare and define a default constructor for it. This implicitly defined default constructor is (nearly) equivalent to an explicitly defined defined one (differing only in certain cases of initialization).
 
 ```
 // Ex 1: Compiler-generated default constructor available
@@ -87,16 +87,11 @@ Widget w1;   // Error! No default constructor
 Widget w2{}; // Error! No default constructor
 ```
 
-
-
-
-
-
-
 ## Data Member Initialization
 
+The task of the compiler generated default constructor is to initialize an instance of its class with default values. When no explicit data member initializer is provided, the compiler will default initialize all data member of class type, but will not initialize the data members of fundamental type.
 
-The compiler generated default constructor will initialize all data members of class (user-defined) type, but will not initialize the data members of fundamental type.
+In the example below, `int` is representative of a fundamental type, `std::string` is representative of a class type, and the pointer the class type `Resource` is treated by the compiler as a fundamental type. Using default initialization, we see that the `std::string` is initialized (to an empty string), while the `int` and the pointer are uninitialized.
 
 ```
 // Ex 1: Default initialization
@@ -106,10 +101,10 @@ struct Widget {
   Resource* ptr;   // Uninitialized
 };
 
-Widget w;          // Default initialization
+Widget w;          // Default initialization using the default constructor
 ```
 
-If no default constructor is declared, value initialization with (1) zero-initialize the object, and (2) default-initialzie all non-trivial data members.
+Value initialization chanages the fundamental behavior of the class, zero initializing every fundamental type and default constructing each class type. Still using the compiler generated default constructor below, the `int` is initialized to zero, the `std::string` remains an empty string, and the pointer is initialized to `nullptr`.
 
 ```
 // Ex 2: Value initialization
@@ -119,7 +114,7 @@ struct Widget {
   Resource* ptr;   // Initialized to nullptr
 };
 
-Widget w{};        // Value initialization with no default ctor
+Widget w{};        // Value initialization using the default constructor
 ```
 
 An empty default constructor will initialize all data members of class (user-defined) type, but will not initialize the data members of fundamental type.
