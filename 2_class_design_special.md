@@ -27,9 +27,10 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 * std::unique_ptr
 * std::shared_ptr
 
-### [Rule of Zero/Five](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#rule-of-zerofive)
-* Rule of Zero
+### [Rule of Three/Five/Zero](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#rule-of-threefivezero)
+* Rule of Three
 * Rule of Five
+* Rule of Zero
 
 
 # Default Constructor
@@ -619,8 +620,17 @@ private:
 
 
 
-# Rule of Zero/Five
+# Rule of Three/Five/Zero
+
+
+## Rule of Three
+
+If a class requires a user-defined destructor, a user-defined copy constructor, or a user-defined copy assignment operator, it almost certainly requires all three. [continued]
+
+## Rule of Five
+
+The Rule of Five refers to the relationship between special member function, where if a class requires a user-defined copy constructor, copy assignment operator, move constructor, move assignment operator, or destructor, it almost certainly requires all five. [continued]
 
 ## Rule of Zero
 
-## Rule of Five
+The Rule of Zero states that "if you can avoid defining default operations, do." This class is the simplest implementation and gives the cleanest semantics. [continued]
