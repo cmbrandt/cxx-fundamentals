@@ -30,10 +30,10 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 * Rule of Five
 
 
-## Default Constructor
+# Default Constructor
 
 
-### Data Member Initialization
+## Data Member Initialization
 
 
 The compiler generated default constructor will initialize all data members of class (user-defined) type, but will not initialize the data members of fundamental type.
@@ -43,7 +43,7 @@ The compiler generated default constructor will initialize all data members of c
 struct Widget {
   int idx;         // Uninitialized
   std::string str; // Default (empty string)
-  int* ptr;        // Uninitialized
+  Resource* ptr;   // Uninitialized
 };
 
 Widget w;          // Default initialization
@@ -56,7 +56,7 @@ If no default constructor is declared, value initialization with (1) zero-initia
 struct Widget {
   int idx;         // Initialized to 0
   std::string str; // Default (empty string)
-  int* ptr;        // Initialized to nullptr
+  Resource* ptr;   // Initialized to nullptr
 };
 
 Widget w{};        // Value initialization with no default ctor
@@ -70,7 +70,7 @@ struct Widget {
   Widget() { }
   int idx;         // Uninitialized
   std::string str; // Default (empty string)
-  int* ptr;        // Uninitialized
+  Resource* ptr;   // Uninitialized
 };
 
 Widget w{};        // Value initialization with no default ctor
@@ -84,21 +84,21 @@ struct Widget {
   Widget() = default;
   int idx;         // Initialized to 0
   std::string str; // Default (empty string)
-  int* ptr;        // Initialized to nullptr
+  Resource* ptr;   // Initialized to nullptr
 };
 
 Widget w{};        // Value initialization with declared default ctor
 ```
 
 
-### Default Constructor Availability
+## Default Constructor Availability
 
 [*description of the default constructor*]
 
 The compiler generates a default constructor if you have no other constructor in your class.
 
 ```
-// Compiler-generated default constructor available
+// Ex 1: Compiler-generated default constructor available
 class Widget {
 public:
   // ...
@@ -111,7 +111,7 @@ Widget w2{}; // Ok! Compiler generated
 However, if you have any other constructor defined in your class, then the compiler does not generate a default constructor.
 
 ```
-// No compiler-generated default constructor available
+// Ex 2: No compiler-generated default constructor available
 class Widget {
 public:
   Widget(Widget const&); // explicit declaration of copy ctor
@@ -125,7 +125,7 @@ Widget w2{}; // Error! No default constructor
 Additionally, the compiler is not able to generate a default constructor if any data member or any base class is not default constructable.
 
 ```
-// No compiler-generated default constructor available
+// Ex 3: No compiler-generated default constructor available
 class Widget {
 public:
   // ...
@@ -137,17 +137,84 @@ Widget w1;   // Error! No default constructor
 Widget w2{}; // Error! No default constructor
 ```
 
-## Destructor
+# Destructor
 
 
-## Copy Operations
+
+```
+// Ex 1: Compiler-generated destructor available
+class Widget {
+public:
+  // ...
+};
+
+Widget w1;   // Ok! Compiler generated
+Widget w2{}; // Ok! Compiler generated
+```
 
 
-## Move Operations
 
 
-## Rule of Zero/Five
 
-### Rule of Zero
+```
+// Ex 2: Explicit declaration of destructor
+class Widget {
+public:
+  ~Widget(); // explicit declaration of dtor
+  // ...     // compiler does not generate dtor
+};
 
-### Rule of Five
+Widget w1;   // Ok! Manual destructor
+Widget w2{}; // Ok! Manual destructor
+```
+
+
+
+
+```
+// Ex 3: Explicit defintion of empty destructor
+class Widget {
+public:
+  // ...
+  ~Widget()        // The compiler generated destructor destroys the
+  {                // std::string data member, but does not perform
+                   // any special action for the integer and pointer...
+  }                // potential resource leak!
+
+private:
+  int idx;         // fundamental type
+  std::string str; // class (user-defined) type
+  Resource* ptr;   // possible resource
+};
+```
+
+
+```
+// Ex 4: Explicit defintion of destructor to delete pointer
+class Widget {
+public:
+  // ...
+  ~Widget()        // The compiler generated destructor destroys the
+  {                // std::string data member, but does not perform
+    delete ptr;    // any special action for the integer and pointer...
+  }                // potential resource leak!
+
+private:
+  int idx;         // fundamental type
+  std::string str; // class (user-defined) type
+  Resource* ptr;   // possible resource
+};
+```
+
+
+# Copy Operations
+
+
+# Move Operations
+
+
+# Rule of Zero/Five
+
+## Rule of Zero
+
+## Rule of Five
