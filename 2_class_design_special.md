@@ -6,7 +6,6 @@ Default special member functions can be explicitly declared using `= default`. T
 
 In some cases, the compiler may generate *delete* special member functions, where they will not be defined and therefore not callable. These cases vary for each function, and are illustrated below. To prevent the automatic generation of a special member function, it can be declared using `= delete`.
 
-
 ## Content
 
 ### [Default Constructor](https://github.com/cmbrandt/modern-cxx-seminar/edit/master/1_class_design.md#fundamentals-1)
@@ -150,9 +149,11 @@ Widget w{};           // Value initialization with defaulted ctor
 
 # Destructor
 
-A destructor is a member function that is invoked automatically when the object goes out of scope or it explicitly destroyed by a call to `delete`. The destructor for a class first executes its body, then calls the destructor for each non-static data members of class type, for all non-virtual direct base classes, and (if the class is the most derived class in a hierarchy), for each virtual base class. The default destructor does not perform any action for fundamental types. 
+The primary responsibility of a destructor is to ensure proper cleanup and deallocation of resources held by an object. It is a member function that is invoked automatically when the object goes out of scope or it explicitly destroyed by a call to `delete`.
 
-When a destructor is not explicitly declared or defined, the compiler will provide a default constructor. For many classes this is sufficient. A custom destructor is only necessary when the class stores a handle to system resources that need to be released, or pointers that own the memory they point to.
+The destructor for a class first executes all statements and expressions in its body, then calls the destructor for each non-static data members of class type, for all non-virtual direct base classes, and (if the class is the most derived class in a hierarchy), for each virtual base class. The default destructor does not perform any action for fundamental types. 
+
+When a destructor is not explicitly declared or defined, the compiler will provide a default constructor, which is sufficient for many classes. A custom destructor is only necessary when the class stores a handle to system resources that need to be released, or pointers that own the memory they point to.
 
 ## Default Destructor
 
@@ -166,7 +167,7 @@ public:
 
 private:
   int idx;         // Fundamental type
-  std::string str; // Class (user-defined) type
+  std::string str; // Class type
 };
 ```
 
@@ -181,53 +182,53 @@ public:
 
 private:
   int idx;         // Fundamental type
-  std::string str; // Class (user-defined) type
+  std::string str; // Class type
 };
 ```
 
 ## Custom Destructor
 
-The responsibility of the destructor is to clean up an object. When the lifetime of an object ends, all outstanding responsibilities should be taken care of.
-
-In the example below, assume that the Resource pointer owns dynamically allocated memory. In this situation, the compiler generated destructor does not help us at all. The compiler generated destructor (or any default destructor, compiler generated or manually implemented) will not clean up the pointer or any memory associated with it.
+In the example below, the `Resource` pointer could be either owning or non-owning. In this situation, the default destructor (either compiler generator or explicitly defined) performs no action on the pointer, which could lead to a resource leak.
 
 ```
-// Ex 3: Explicit defintion of empty destructor
+// Ex 3: Explicit defintion of default destructor
 class Widget {
 public:
   // ...
-  ~Widget()        // ...
-  {                // ...
-                   // ...
-  }                // ...
+  ~Widget()        // Default destructor destroys the std::string
+  {                // member but does performs no action on the
+                   // int and pointer members...
+  }                // Potential resource leak!
 
 private:
   int idx;         // Fundamental type
-  std::string str; // Class (user-defined) type
+  std::string str; // Class type
   Resource* ptr;   // Possible resource
 };
 ```
 
-For that case, a custom destructor will be required to prevent a resource leak. In the example below, `delete` is called in the body of the destructor, which releases the memory associated with it, before then calling the destructor for the `std::string` data member.
+For this case, a custom destructor will be required to prevent a potential resource leak. In the example below, `delete` is called on the `Resource` pointer in the body of the destructor, releasing any memory associated with it and eliminating any chance of a resource leak.
+
+After exiting the body of the destructor, the destructor for the `std::string` data member is called, and no action is performed on the `int` data member.
 
 ```
 // Ex 4: Explicit defintion of destructor to delete pointer
 class Widget {
 public:
   // ...
-  ~Widget()        // ...
-  {                // ...
-    delete ptr;    // ...
+  ~Widget()        // Custom destructor deletes the pointer member
+  {                // before destroying the std::string member,
+    delete ptr;    // no action performed on the int member...
   }                // No resource leak!
 
 private:
   int idx;         // Fundamental type
-  std::string str; // Class (user-defined) type
+  std::string str; // Class type
   Resource* ptr;   // Possible resource
 };
 ```
 
-Typically, destructors do not pose much of a problem. They are, however, a sign that other special member functions need to be address, such as copy operations and move operations.
+Typically, destructors do not pose a problem. However, they are a sign that other special member functions need to be explicitly defined, such as copy operations and move operations.
 
 
 # Copy Operations
@@ -236,7 +237,7 @@ asdf asdf  asdf as fasd fas
 
 ## Compiler Generated
 
-Below is the compiler-generated copy constructor and copy assignment operator. The default operations perform element-by-element copy. Note that this performs a shallow copy of our Resource.
+Below is the compiler-generated copy constructor and copy assignment operator. The default operations perform element-by-element copy. Note that this performs a shallow copy of our `Resource` pointer.
 
 ```
 // Ex 1: Compiiler generated copy operations
