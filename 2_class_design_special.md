@@ -14,8 +14,8 @@ In some cases, the compiler may generate *delete* special member functions, wher
 * Initialization
 
 ### [Destructor](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#special-member-functions)
-* Availability
-* ...
+* Default Destructor
+* Custom Destructor
 
 ### [Copy Operations](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#additional-class-operations)
 * Compiler Generated
@@ -150,6 +150,10 @@ Widget w{};           // Value initialization with defaulted ctor
 
 # Destructor
 
+A destructor is a member function that is invoked automatically when the object goes out of scope or it explicitly destroyed by a call to `delete`. A destructor has the same name as the class, preceded by a tilde (`~`).
+
+When a destructor is not explicitly declared or defined, the compiler will provide a default constructor. [consisting of?] For many classes this is sufficient. A custom destructor is only necessary when the class stores a handle to system resources that need to be released, or pointers that own the memory they point to.
+
 
 
 ```
@@ -163,9 +167,7 @@ Widget w1;   // Ok! Compiler generated
 Widget w2{}; // Ok! Compiler generated
 ```
 
-
-
-
+adf adf  adfda fa adf adf
 
 ```
 // Ex 2: Explicit declaration of destructor
@@ -179,8 +181,7 @@ Widget w1;   // Ok! Manual destructor
 Widget w2{}; // Ok! Manual destructor
 ```
 
-
-
+adf daf dafdaf a dfad fad fa 
 
 ```
 // Ex 3: Explicit defintion of empty destructor
@@ -199,6 +200,7 @@ private:
 };
 ```
 
+adf adsfad fad fad fa 
 
 ```
 // Ex 4: Explicit defintion of destructor to delete pointer
@@ -217,8 +219,12 @@ private:
 };
 ```
 
+Typically, destructors do not pose much of a problem. They are, however, a sign that other special member functions need to be address, such as copy operations and move operations.
+
 
 # Copy Operations
+
+asdf asdf  asdf as fasd fas 
 
 ## Compiler Generated
 
