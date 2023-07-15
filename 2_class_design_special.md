@@ -160,8 +160,8 @@ Widget w2{}; // Ok! Compiler generated
 // Ex 2: Explicit declaration of destructor
 class Widget {
 public:
-  ~Widget(); // explicit declaration of dtor
-  // ...     // compiler does not generate dtor
+  ~Widget(); // Explicit declaration of dtor
+  // ...     // Compiler provides empty dtor
 };
 
 Widget w1;   // Ok! Manual destructor
@@ -179,12 +179,12 @@ public:
   ~Widget()        // The compiler generated destructor destroys the
   {                // std::string data member, but does not perform
                    // any special action for the integer and pointer...
-  }                // potential resource leak!
+  }                // Potential resource leak!
 
 private:
-  int idx;         // fundamental type
-  std::string str; // class (user-defined) type
-  Resource* ptr;   // possible resource
+  int idx;         // Fundamental type
+  std::string str; // Class (user-defined) type
+  Resource* ptr;   // Possible resource
 };
 ```
 
@@ -197,12 +197,12 @@ public:
   ~Widget()        // The compiler generated destructor destroys the
   {                // std::string data member, but does not perform
     delete ptr;    // any special action for the integer and pointer...
-  }                // potential resource leak!
+  }                // Potential resource leak!
 
 private:
-  int idx;         // fundamental type
-  std::string str; // class (user-defined) type
-  Resource* ptr;   // possible resource
+  int idx;         // Fundamental type
+  std::string str; // Class (user-defined) type
+  Resource* ptr;   // Possible resource
 };
 ```
 
