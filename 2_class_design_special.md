@@ -220,6 +220,7 @@ public:
   : idx{other.idx}
   , str{other.str}
   , ptr{other.ptr} { }                     // Shallow copy!
+
   // Copy assignment operator
   Widget& operator=(Widget const& other) {
     idx = other.idx;
@@ -227,6 +228,7 @@ public:
     ptr = other.ptr;                       // Shallow copy!
     return *this;
   }
+
   // Note: default dtor -> possible resource leak!
 
 private:
@@ -254,6 +256,7 @@ public:
   : idx{other.idx}
   , str{other.str}
   , ptr{other.ptr ? new Resource{*other.ptr} : nullptr} { }
+
   // Copy assignment operator
   Widget& operator=(Widget const& other) {
     if (this == &other)
@@ -262,12 +265,14 @@ public:
     swap(tmp);
     return *this;
   }
+
   void swap(Widget& other) noexcept {
     using std::swap;
     swap(idx, other.idx);
     swap(str, other.str);
     swap(ptr, other.ptr);
   }
+
   // Destructor
   ~Widget() { delete ptr; }
 
@@ -289,6 +294,7 @@ public:
   : idx{other.idx}
   , str{other.str}
   , ptr{other.ptr ? new Resource{*other.ptr} : nullptr} { }
+
   // Copy assignment operator
   Widget& operator=(Widget const& other) {
     if (ptr and &other.ptr) {
@@ -302,6 +308,7 @@ public:
     }
     return *this;
   }
+
   // Destructor
   ~Widget() { delete ptr; }
 
@@ -324,6 +331,7 @@ public:
   : idx{other.idx}
   , str{other.str}
   , ptr{other.ptr ? std::make_unique<Resource>(*other.ptr) : nullptr} { }
+
   // Copy assignment operator
   Widget& operator=(Widget const& other) {
     if (ptr and &other.ptr) {
@@ -337,6 +345,7 @@ public:
     }
     return *this;
   }
+
   // Destructor
   ~Widget() = default;
 
