@@ -352,7 +352,7 @@ public:
 private:
   int idx{};
   std::string str{};
-  Resource* ptr{nullptr};
+  std::unique_ptr<Resource> ptr{nullptr};
 };
 ```
 
@@ -375,7 +375,7 @@ public:
 private:
   int idx{};
   std::string str{};
-  Resource* ptr{nullptr};
+  std::shared_ptr<Resource> ptr{nullptr};
 };
 ```
 
