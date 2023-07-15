@@ -101,7 +101,7 @@ struct Widget {
   Resource* ptr;   // Uninitialized
 };
 
-Widget w;          // Default initialization using the default constructor
+Widget w;          // Default initialization using the default ctor
 ```
 
 Value initialization chanages the fundamental behavior of the class, value initializing every fundamental type and default constructing each class type. Still using the compiler generated default constructor below, the `int` is initialized to zero, the `std::string` remains an empty string, and the pointer is initialized to `nullptr`.
@@ -114,25 +114,25 @@ struct Widget {
   Resource* ptr;   // Initialized to nullptr
 };
 
-Widget w{};        // Value initialization using the default constructor
+Widget w{};        // Value initialization using the default ctor
 ```
 
 By providing an explicit default constructor, the default constructor becomes responsible for initializing all data members of the class. Therefore, an empty default constructor will default initialize all data member of class type, but will not initialize the data members of fundamental type.
 
 ```
-// Ex 3: Explicit default constructor with value initialization
+// Ex 3: Explicit empty default constructor with value initialization
 struct Widget {
-  Widget() { }     // Explicit default constructor
+  Widget() { }     // Explicit empty default constructor
 
   int idx;         // Uninitialized
   std::string str; // Default (empty string)
   Resource* ptr;   // Uninitialized
 };
 
-Widget w{};        // Value initialization with no default ctor
+Widget w{};        // Value initialization with explicit empty default ctor
 ```
 
-A better option is to ask the compiler to generate the default constuctor by defining it using `= default`. In doing so, fundamental type data members are value initialized and class type data members are default initialized. Asking for the compiler generated default constructor using `= default` may also provide bonus effects (e.g., `noexcept`).
+A better option is to ask the compiler to generate the default constuctor by declaring it with `= default`. In doing so, fundamental type data members are value initialized and class type data members are default initialized. Asking for the compiler generated default constructor using `= default` may also provide bonus effects (e.g., `noexcept`).
 
 ```
 // Ex 4: Defaulted constructor with value initialization
@@ -144,7 +144,7 @@ struct Widget {
   Resource* ptr;      // Initialized to nullptr
 };
 
-Widget w{};           // Value initialization with declared default ctor
+Widget w{};           // Value initialization with defaulted ctor
 ```
 
 
