@@ -281,7 +281,7 @@ private:
 Here we use the copy-and-swap idiom in for our copy assignment operator. This is safe against self-assignment. However, this is not the most efficient implementation of this operation.
 
 ```
-// Ex 3: Temporary-swap idioim
+// Ex 3: Temporary-swap idiom
 class Widget {
 public:
   // Copy constructor
@@ -366,7 +366,7 @@ private:
 Using std::unique_ptr to manage the Resource. We no longer need to explicitly define the destructor.
 
 ```
-// Ex 5: ...
+// Ex 5: std::unique_ptr
 class Widget {
 public:
   // Copy constructor
@@ -412,7 +412,7 @@ private:
 Using std::shared_ptr to manage the Resource. We no longer need to explicitly define copy operations. However, using std::shared_ptr changes the semantics of the class. Do not use std::shared_ptr just to eliminate the need to explicitly define copy operations.
 
 ```
-// Ex 6: ...
+// Ex 6: std::shared_ptr
 class Widget {
 public:
   // Copy Constructor
@@ -435,15 +435,18 @@ private:
 
 ## Compiler Generated
 
+
+
 ```
-// Ex 1: ...
+// Ex 1: Compiler generated
 class Widget {
 public:
   // Move constructor
   Widget(Widget&& other) noexcept
-  : idx{std::move(other.idx)}
-  , str{std::move(other.str)}
-  , ptr{std::move(other.ptr)} { } // Shallow copy!
+    : idx{std::move(other.idx)}
+    , str{std::move(other.str)}
+    , ptr{std::move(other.ptr)} // Shallow copy!
+  { }
 
   // Move assignment operator
   Widget& operator=(Widget&& other) noexcept {
@@ -453,7 +456,37 @@ public:
     return *this;
   }
 
-  // Note: default dtor -> possible resource leak!
+private:
+  int idx{};
+  std::string str{};
+  Resource* ptr{};
+};
+```
+
+
+
+## Manual Implementation
+
+
+
+```
+// Ex 2: Manual implementation
+class Widget {
+public:
+  // Move constructor
+  Widget(Widget&& other) noexcept
+    : idx{std::move(other.idx)}
+    , str{std::move(other.str)}
+    , ptr{std::move(other.ptr)} // Shallow copy!
+  { }
+
+  // Move assignment operator
+  Widget& operator=(Widget&& other) noexcept {
+    idx = std::move(other.idx);
+    str = std::move(other.str);
+    ptr = std::move(other.ptr); // Shallow copy!
+    return *this;
+  }
 
 private:
   int idx{};
@@ -462,6 +495,8 @@ private:
 };
 ```
 
+
+
 ## Temporary Swap Idiom
 
 Notes on move assignment operator
@@ -469,8 +504,10 @@ Notes on move assignment operator
 * Implemented in terms of the move constructor
 * Guards against self-assignment -> not necessary and may be removed
 
+
+
 ```
-// Ex 2: ...
+// Ex 3: Temporary-swap idiom
 class Widget {
 public:
   // Move constructor
@@ -500,8 +537,10 @@ private:
 
 ## Optimized Implementation
 
+
+
 ```
-// Ex 3: ...
+// Ex 4: Optimized implementation
 class Widget {
 public:
   // Move constructor
@@ -532,8 +571,10 @@ private:
 
 ## std::unique_ptr
 
+
+
 ```
-// Ex 4: ...
+// Ex 5: std::unique_ptr
 class Widget {
 public:
   // Move Constructor
@@ -556,7 +597,7 @@ private:
 
 
 ```
-// Ex 5: ...
+// Ex 6: std::shared_ptr
 class Widget {
 public:
   // Move Constructor
