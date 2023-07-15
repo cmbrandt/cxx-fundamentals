@@ -365,8 +365,10 @@ class Widget {
 public:
   // Copy Constructor
   Widget(Widget const&) = default;
+
   // Copy assignment operator
   Widget& operator=(Widget const&) = default;
+
   // Destructor
   ~Widget() = default;
 
@@ -390,6 +392,7 @@ public:
   : idx{std::move(other.idx)}
   , str{std::move(other.str)}
   , ptr{std::move(other.ptr)} { } // Shallow copy!
+
   // Move assignment operator
   Widget& operator=(Widget&& other) noexcept {
     idx = std::move(other.idx);
@@ -397,8 +400,8 @@ public:
     ptr = std::move(other.ptr); // Shallow copy!
     return *this;
   }
-  // Destructor
-  ~Widget() { delete ptr; }
+
+  // Note: default dtor -> possible resource leak!
 
 private:
   int idx{};
@@ -423,6 +426,7 @@ public:
   : idx{std::move(other.idx)}
   , str{std::move(other.str)}
   , ptr{std::exchange(other.ptr, {})} { }
+
   // Move assignment operator
   Widget& operator=(Widget&& other) noexcept {
     if (this == &other)
@@ -431,6 +435,7 @@ public:
     swap(tmp);
     return *this;
   }
+
   // Destructor
   ~Widget() { delete ptr; }
 
@@ -452,6 +457,7 @@ public:
   : idx{std::move(other.idx)}
   , str{std::move(other.str)}
   , ptr{std::exchange(other.ptr, {})} { }
+
   // Move assignment operator
   Widget& operator=(Widget&& other) noexcept {
     delete ptr;
@@ -460,6 +466,7 @@ public:
     ptr = other.ptr; other.ptr = nullptr;
     return *this;
   }
+
   // Destructor
   ~Widget() { delete ptr; }
 
@@ -479,8 +486,10 @@ class Widget {
 public:
   // Move Constructor
   Widget(Widget&&) = default;
+
   // Move assignment operator
   Widget& operator=(Widget&&) = default;
+
   // Destructor
   ~Widget() = default;
 
@@ -500,8 +509,10 @@ class Widget {
 public:
   // Move Constructor
   Widget(Widget&&) = default;
+
   // Move assignment operator
   Widget& operator=(Widget&&) = default;
+
   // Destructor
   ~Widget() = default;
 
