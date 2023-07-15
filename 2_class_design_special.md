@@ -70,7 +70,8 @@ An empty default constructor will initialize all data members of class (user-def
 ```
 // Ex 3: Explicit default constructor with value initialization
 struct Widget {
-  Widget() { }
+  Widget() { }     // Explicit default constructor
+
   int idx;         // Uninitialized
   std::string str; // Default (empty string)
   Resource* ptr;   // Uninitialized
@@ -82,15 +83,16 @@ Widget w{};        // Value initialization with no default ctor
 The `= default` allows the compiler to generate the default constructor. `= default` counts as definition, plus may provide additional benefits (include `noexcept`).
 
 ```
-// Ex 4: Declared default constructor with value initialization
+// Ex 4: Defaulted constructor with value initialization
 struct Widget {
-  Widget() = default;
-  int idx;         // Initialized to 0
-  std::string str; // Default (empty string)
-  Resource* ptr;   // Initialized to nullptr
+  Widget() = default; // Defaulted consructor
+
+  int idx;            // Initialized to 0
+  std::string str;    // Default (empty string)
+  Resource* ptr;      // Initialized to nullptr
 };
 
-Widget w{};        // Value initialization with declared default ctor
+Widget w{};           // Value initialization with declared default ctor
 ```
 
 
@@ -117,8 +119,8 @@ However, if you have any other constructor defined in your class, then the compi
 // Ex 2: No compiler-generated default constructor available
 class Widget {
 public:
-  Widget(Widget const&); // explicit declaration of copy ctor
-  // ...                 // default ctor no longer available
+  Widget(Widget const&); // Explicit declaration of copy ctor
+  // ...                 // Default ctor no longer available
 };
 
 Widget w1;   // Error! No default constructor
@@ -133,7 +135,7 @@ class Widget {
 public:
   // ...
 private:
-  NotDefaultConstructable member; // Data member without default ctor
+  NotDefaultConstructable member; // Data member without a default ctor
 };
 
 Widget w1;   // Error! No default constructor
@@ -434,6 +436,12 @@ private:
 
 # Move Operations
 
+Move semantics [eg copy ctor and copy assignment operator] were added to the C++ standard with C++11. [more background information about what move semantics are and why they are important.]
+
+We can think of copy operations and move operations as an overload set with distinct behavioral and performance characteristics. For example, if a class does not explicitly define move operations, a class will default to copy operations when a move operation is invoked by another function. In this way, we can think of copy as a generalized move.
+
+Also, when constructing a new object from an existing object, where the existing object is no longer needed, we may choose move construct the new object, which could be orders of magnitude faster than copy construction. While this may not always be the case (depending on the type itself), the standard does guarantee that a move operation will never be slower than a coppy operation. In this way, we can thinkg of move as an optimized copy.
+
 ## Compiler Generated
 
 
@@ -622,14 +630,25 @@ private:
 
 # Rule of Three/Five/Zero
 
+The Rule of Three, The Rule of Five, and the Rule of Zero, are names of [idioms] that refer to the nuanced relationships between the special member functions: specifically, the destructor, copy constructor, copy assinment operator, move constructor, and move assignment operator. For example, if you explicitly define [a destructor], the compiler will [implicitly the copy constructor and copy assignment operator]. Likewise, if you explicitly define [a move constructor], the compiler will [implicitly delete the copy constructor and copy assignment operator].
+
+The full list of ... displayed below.
+
+[ IMAGE ]
+
+The Rule of Three, Rule of Five, and Rule of Zero are a set of guidelines that have been been established to follow about when and under what circumstances special member functions should be explicitly defined.
 
 ## Rule of Three
 
 If a class requires a user-defined destructor, a user-defined copy constructor, or a user-defined copy assignment operator, it almost certainly requires all three. [continued]
 
+This guideline was established long before move semantics (e.g., move constructor and move assignment operator) we added to the standard with C++11. This rule is still observed today, but now tends to be treated as a special case of the Rule of Five.
+
 ## Rule of Five
 
-The Rule of Five refers to the relationship between special member function, where if a class requires a user-defined copy constructor, copy assignment operator, move constructor, move assignment operator, or destructor, it almost certainly requires all five. [continued]
+The Rule of Five refers to the relationship between special member function, where if a class requires a user-defined copy constructor, copy assignment operator, move constructor, move assignment operator, or destructor, it almost certainly requires all five.
+
+As mentioned above, the Rule of Five was established after move semantics were added to the language with C++11. As an extension to the Rule of Three, 
 
 ## Rule of Zero
 
