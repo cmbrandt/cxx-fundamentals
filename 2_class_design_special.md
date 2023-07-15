@@ -187,9 +187,9 @@ private:
 
 ## Custom Destructor
 
-adsf ads fads fads fasd fasd fadss fads. fda fasd
+The responsibility of the destructor is to clean up an object. When the lifetime of an object ends, all outstanding responsibilities should be taken care of.
 
-ads fads fads fads fads fda fads
+In the example below, assume that the Resource pointer owns dynamically allocated memory. In this situation, the compiler generated destructor does not help us at all. The compiler generated destructor (or any default destructor, compiler generated or manually implemented) will not clean up the pointer or any memory associated with it.
 
 ```
 // Ex 3: Explicit defintion of empty destructor
@@ -208,7 +208,7 @@ private:
 };
 ```
 
-adf adsfad fad fad fa 
+For that case, a custom destructor will be required to prevent a resource leak. In the example below, `delete` is called in the body of the destructor, which releases the memory associated with it, before then calling the destructor for the `std::string` data member.
 
 ```
 // Ex 4: Explicit defintion of destructor to delete pointer
