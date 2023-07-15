@@ -8,29 +8,29 @@ In some cases, the compiler may generate *delete* special member functions, wher
 
 ## Content
 
-### [Default Constructor](https://github.com/cmbrandt/modern-cxx-seminar/edit/master/1_class_design.md#fundamentals-1)
+### [Default Constructor](https://github.com/cmbrandt/cxx-fundamentals/blob/master/2_class_design_special.md#default-constructor-1)
 * Availability
 * Initialization
 
-### [Destructor](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#special-member-functions)
+### [Destructor](https://github.com/cmbrandt/cxx-fundamentals/blob/master/2_class_design_special.md#destructor-1)
 * Default Destructor
 * Custom Destructor
 
-### [Copy Operations](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#additional-class-operations)
+### [Copy Operations](https://github.com/cmbrandt/cxx-fundamentals/blob/master/2_class_design_special.md#copy-operations-1)
 * Compiler Generated
 * Manual Implementation
-* Temporary Swap
+* Temporary Swap Implementation
 * Optimized Implementation
-* std::unique_ptr
-* std::shared_ptr
+* std::unique_ptr Implementation
+* std::shared_ptr Implementation
 
-### [Move Operations](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#class-hierarchies)
+### [Move Operations](https://github.com/cmbrandt/cxx-fundamentals/blob/master/2_class_design_special.md#move-operations-1)
 * Compiler Generated
 * Manual Implementation
-* Temporary Swap
+* Temporary Swap Implementation
 * Optimized Implementation
-* std::unique_ptr
-* std::shared_ptr
+* std::unique_ptr Implementation
+* std::shared_ptr Implementation
 
 ### [Rule of Three/Five/Zero](https://github.com/cmbrandt/cxx-fundamentals/blob/master/2_class_design_special.md#rule-of-threefivezero-1)
 * Rule of Three
