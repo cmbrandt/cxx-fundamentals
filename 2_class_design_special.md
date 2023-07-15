@@ -27,7 +27,7 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 * std::unique_ptr
 * std::shared_ptr
 
-### [Rule of Three/Five/Zero](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#rule-of-threefivezero)
+### [Rule of Three/Five/Zero](https://github.com/cmbrandt/cxx-fundamentals/blob/master/2_class_design_special.md#rule-of-threefivezero-1)
 * Rule of Three
 * Rule of Five
 * Rule of Zero
