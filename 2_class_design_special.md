@@ -8,7 +8,7 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 * Default Constructor Availability
 
 ### [Destructor](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#special-member-functions)
-* Compiler Generated
+* Default Destructor Availability
 * ...
 
 ### [Copy Operations](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#additional-class-operations)
@@ -199,10 +199,10 @@ private:
 class Widget {
 public:
   // ...
-  ~Widget()        // The compiler generated destructor destroys the
-  {                // std::string data member, but does not perform
-    delete ptr;    // any special action for the integer and pointer...
-  }                // Potential resource leak!
+  ~Widget()        // ...
+  {                // ...
+    delete ptr;    // ...
+  }                // No resource leak!
 
 private:
   int idx;         // Fundamental type
@@ -521,14 +521,13 @@ class Widget {
 public:
   // Move constructor
   Widget(Widget&& other) noexcept
-  : idx{std::move(other.idx)}
-  , str{std::move(other.str)}
-  , ptr{std::exchange(other.ptr, {})} { }
+    : idx{std::move(other.idx)}
+    , str{std::move(other.str)}
+    , ptr{std::exchange(other.ptr, {})}
+  { }
 
   // Move assignment operator
   Widget& operator=(Widget&& other) noexcept {
-    if (this == &other)
-      return *this;
     Widget tmp{std::move(other)};
     swap(tmp);
     return *this;
@@ -536,6 +535,13 @@ public:
 
   // Destructor
   ~Widget() { delete ptr; }
+
+  void swap(Widget& other) noexcept {
+    using std::swap;
+    swap(idx, other.idx);
+    swap(str, other.str);
+    swap(ptr, other.ptr);
+  }
 
 private:
   int idx{};
@@ -554,9 +560,10 @@ class Widget {
 public:
   // Move constructor
   Widget(Widget&& other) noexcept
-  : idx{std::move(other.idx)}
-  , str{std::move(other.str)}
-  , ptr{std::exchange(other.ptr, {})} { }
+    : idx{std::move(other.idx)}
+    , str{std::move(other.str)}
+    , ptr{std::exchange(other.ptr, {})}
+  { }
 
   // Move assignment operator
   Widget& operator=(Widget&& other) noexcept {
@@ -565,6 +572,13 @@ public:
     str = std::move(other.str);
     ptr = other.ptr; other.ptr = nullptr;
     return *this;
+  }
+
+  void swap(Widget& other) noexcept {
+    using std::swap;
+    swap(idx, other.idx);
+    swap(str, other.str);
+    swap(ptr, other.ptr);
   }
 
   // Destructor
@@ -586,11 +600,11 @@ private:
 // Ex 5: std::unique_ptr
 class Widget {
 public:
-  // Move Constructor
-  Widget(Widget&&) = default;
+  // Move constructor
+  Widget(Widget&&) noexcept = default;
 
   // Move assignment operator
-  Widget& operator=(Widget&&) = default;
+  Widget& operator=(Widget&&) noexcept = default;
 
   // Destructor
   ~Widget() = default;
@@ -609,11 +623,11 @@ private:
 // Ex 6: std::shared_ptr
 class Widget {
 public:
-  // Move Constructor
-  Widget(Widget&&) = default;
+  // Move constructor
+  Widget(Widget&&) noexcept = default;
 
   // Move assignment operator
-  Widget& operator=(Widget&&) = default;
+  Widget& operator=(Widget&&) noexcept = default;
 
   // Destructor
   ~Widget() = default;
