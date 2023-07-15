@@ -13,6 +13,7 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 
 ### [Copy Operations](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#additional-class-operations)
 * Compiler Generated
+* Manual Implementation
 * Temporary Swap
 * Optimized
 * std::unique_ptr
@@ -20,6 +21,7 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 
 ### [Move Operations](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#class-hierarchies)
 * Compiler Generated
+* Manual Implementation
 * Temporary Swap
 * Optimized
 * std::unique_ptr
@@ -211,60 +213,93 @@ private:
 
 ## Compiler Generated
 
+Below is the compiler-generated copy constructor and copy assignment operator. The default operations perform element-by-element copy. Note that this performs a shallow copy of our Resource.
+
 ```
-// Ex 1: ...
+// Ex 1: Compiiler generated copy operations
 class Widget {
 public:
   // Copy constructor
   Widget(Widget const& other)
-  : idx{other.idx}
-  , str{other.str}
-  , ptr{other.ptr} { }                     // Shallow copy!
+    : idx{other.idx}
+    , str{other.str}
+    , ptr{other.ptr} // Shallow copy!
+  { } 
 
   // Copy assignment operator
   Widget& operator=(Widget const& other) {
     idx = other.idx;
     str = other.str;
-    ptr = other.ptr;                       // Shallow copy!
+    ptr = other.ptr; // Shallow copy!
     return *this;
   }
-
-  // Note: default dtor -> possible resource leak!
 
 private:
   int idx{};
   std::string str{};
-  Resource* ptr{nullptr};
+  Resource* ptr{};
 };
 ```
 
-## Temporary Swap Idiom
 
+## Manual Implementation
 
-Notes on copy assignment operator
-* Follows the temporary-swap idiom
-* Implemented in terms of the copy constructor
-* Guards against self-assignment -> not necessary and may be removed
-
+We explicitly copy the Resource. To ensure we do not leak our Resource, we need to explicitly delete the Resource in our copy assignment operation. However, by doing this, we are no longer safe against self-assignment.
 
 ```
-// Ex 2: ...
+// Ex 2: Manual implementation
+class Widget {
+  // Copy constructor
+  Widget(Widget const& other)
+    : idx{other.idx}
+    , str{other.str}
+    , ptr{other.ptr ? new Resource{*other.ptr} : nullptr}
+  { }
+
+  // Copy assignment operator
+  Widget& operator=(Widget const& other) {
+    delete ptr;
+    idx = other.idx;
+    str = other.str;
+    ptr = other.ptr ? new Resource{*other.ptr} : nullptr;
+    return *this;
+  }
+
+  // Destructor
+  ~Widget() { delete ptr; }
+
+private:
+  int idx{};
+  std::string str{};
+  Resource* ptr{};
+};
+```
+
+
+## Temporary Swap Idiom
+
+Here we use the copy-and-swap idiom in for our copy assignment operator. This is safe against self-assignment. However, this is not the most efficient implementation of this operation.
+
+```
+// Ex 3: Temporary-swap idioim
 class Widget {
 public:
   // Copy constructor
   Widget(Widget const& other)
-  : idx{other.idx}
-  , str{other.str}
-  , ptr{other.ptr ? new Resource{*other.ptr} : nullptr} { }
+    : idx{other.idx}
+    , str{other.str}
+    , ptr{other.ptr ? new Resource{*other.ptr} : nullptr}
+  { }
 
   // Copy assignment operator
   Widget& operator=(Widget const& other) {
-    if (this == &other)
-      return *this;
     Widget tmp{other};
     swap(tmp);
     return *this;
   }
+
+  // Destructor
+  ~Widget() { delete ptr; }
 
   void swap(Widget& other) noexcept {
     using std::swap;
@@ -273,27 +308,26 @@ public:
     swap(ptr, other.ptr);
   }
 
-  // Destructor
-  ~Widget() { delete ptr; }
-
 private:
   int idx{};
   std::string str{};
-  Resource* ptr{nullptr};
+  Resource* ptr{};
 };
 ```
 
 ## Optimized Implementation
 
+adf af adsf adsf ads
+
 ```
-// Ex 3: ...
+// Ex 4: Optimized implementation
 class Widget {
-public:
   // Copy constructor
   Widget(Widget const& other)
-  : idx{other.idx}
-  , str{other.str}
-  , ptr{other.ptr ? new Resource{*other.ptr} : nullptr} { }
+    : idx{other.idx}
+    , str{other.str}
+    , ptr{other.ptr ? new Resource{*other.ptr} : nullptr}
+  { }
 
   // Copy assignment operator
   Widget& operator=(Widget const& other) {
@@ -312,25 +346,35 @@ public:
   // Destructor
   ~Widget() { delete ptr; }
 
+  void swap(Widget& other) noexcept {
+    using std::swap;
+    swap(idx, other.idx);
+    swap(str, other.str);
+    swap(ptr, other.ptr);
+  }
+
 private:
   int idx{};
   std::string str{};
-  Resource* ptr{nullptr};
+  Resource* ptr{};
 };
 ```
 
 
 ## std::unique_ptr
 
+Using std::unique_ptr to manage the Resource. We no longer need to explicitly define the destructor.
+
 ```
-// Ex 4: ...
+// Ex 5: ...
 class Widget {
 public:
   // Copy constructor
   Widget(Widget const& other)
-  : idx{other.idx}
-  , str{other.str}
-  , ptr{other.ptr ? std::make_unique<Resource>(*other.ptr) : nullptr} { }
+    : idx{other.idx}
+    , str{other.str}
+    , ptr{other.ptr ? std::make_unique<Resource>(*other.ptr) : nullptr}
+  { }
 
   // Copy assignment operator
   Widget& operator=(Widget const& other) {
@@ -347,20 +391,28 @@ public:
   }
 
   // Destructor
-  ~Widget() = default;
+  ~Widget() { delete ptr; }
+
+  void swap(Widget& other) noexcept {
+    using std::swap;
+    swap(idx, other.idx);
+    swap(str, other.str);
+    swap(ptr, other.ptr);
+  }
 
 private:
   int idx{};
   std::string str{};
-  std::unique_ptr<Resource> ptr{nullptr};
+  std::unique_ptr<Resource> ptr{};
 };
 ```
 
 ## std::shared_ptr
 
+Using std::shared_ptr to manage the Resource. We no longer need to explicitly define copy operations. However, using std::shared_ptr changes the semantics of the class. Do not use std::shared_ptr just to eliminate the need to explicitly define copy operations.
 
 ```
-// Ex 5: ...
+// Ex 6: ...
 class Widget {
 public:
   // Copy Constructor
@@ -375,7 +427,7 @@ public:
 private:
   int idx{};
   std::string str{};
-  std::shared_ptr<Resource> ptr{nullptr};
+  std::shared_ptr<Resource> ptr{};
 };
 ```
 
@@ -406,7 +458,7 @@ public:
 private:
   int idx{};
   std::string str{};
-  Resource* ptr{nullptr};
+  Resource* ptr{};
 };
 ```
 
@@ -442,7 +494,7 @@ public:
 private:
   int idx{};
   std::string str{};
-  Resource* ptr{nullptr};
+  Resource* ptr{};
 };
 ```
 
@@ -473,7 +525,7 @@ public:
 private:
   int idx{};
   std::string str{};
-  Resource* ptr{nullptr};
+  Resource* ptr{};
 };
 ```
 
@@ -496,7 +548,7 @@ public:
 private:
   int idx{};
   std::string str{};
-  std::unique_ptr<Resource> ptr{nullptr};
+  std::unique_ptr<Resource> ptr{};
 };
 ```
 
@@ -519,7 +571,7 @@ public:
 private:
   int idx{};
   std::string str{};
-  std::shared_ptr<Resource> ptr{nullptr};
+  std::shared_ptr<Resource> ptr{};
 };
 ```
 
