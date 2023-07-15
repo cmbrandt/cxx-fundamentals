@@ -6,7 +6,7 @@ Default special member functions can be explicitly declared using `= default`. T
 
 In some cases, the compiler may generate *delete* special member functions, where they will not be defined and therefore not callable. These cases vary for each function, and are illustrated below. To prevent the automatic generation of a special member function, it can be declared using `= delete`.
 
-## Content
+# Content
 
 ### [Default Constructor](https://github.com/cmbrandt/cxx-fundamentals/blob/master/2_class_design_special.md#default-constructor-1)
 * Availability
@@ -300,7 +300,7 @@ private:
 ```
 
 
-## Temporary Swap Idiom
+## Temporary Swap Implementation
 
 Here we use the copy-and-swap idiom in for our copy assignment operator. This is safe against self-assignment. However, this is not the most efficient implementation of this operation.
 
@@ -385,7 +385,7 @@ private:
 ```
 
 
-## std::unique_ptr
+## std::unique_ptr Implementation
 
 Using std::unique_ptr to manage the Resource. We no longer need to explicitly define the destructor.
 
@@ -431,7 +431,7 @@ private:
 };
 ```
 
-## std::shared_ptr
+## std::shared_ptr Implementation
 
 Using std::shared_ptr to manage the Resource. We no longer need to explicitly define copy operations. However, using std::shared_ptr changes the semantics of the class. Do not use std::shared_ptr just to eliminate the need to explicitly define copy operations.
 
@@ -527,7 +527,7 @@ private:
 
 
 
-## Temporary Swap Idiom
+## Temporary Swap Implementation
 
 Notes on move assignment operator
 * Follows the temporary-swap idiom
@@ -613,7 +613,7 @@ private:
 ```
 
 
-## std::unique_ptr
+## std::unique_ptr Implementation
 
 
 
@@ -637,7 +637,7 @@ private:
 };
 ```
 
-## std::shared_ptr
+## std::shared_ptr Implementation
 
 
 ```
