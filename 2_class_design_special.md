@@ -15,7 +15,7 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 * Compiler Generated
 * Manual Implementation
 * Temporary Swap
-* Optimized
+* Optimized Implementation
 * std::unique_ptr
 * std::shared_ptr
 
@@ -23,7 +23,7 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 * Compiler Generated
 * Manual Implementation
 * Temporary Swap
-* Optimized
+* Optimized Implementation
 * std::unique_ptr
 * std::shared_ptr
 
