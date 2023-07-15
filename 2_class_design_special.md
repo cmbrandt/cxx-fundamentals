@@ -10,8 +10,8 @@ In some cases, the compiler may generate *delete* special member functions, wher
 ## Content
 
 ### [Default Constructor](https://github.com/cmbrandt/modern-cxx-seminar/edit/master/1_class_design.md#fundamentals-1)
+* Availability
 * Data Member Initialization
-* Default Constructor Availability
 
 ### [Destructor](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design.md#special-member-functions)
 * Default Destructor Availability
@@ -43,11 +43,9 @@ In some cases, the compiler may generate *delete* special member functions, wher
 
 In C++, the standard describes the default constructor for a class as a constructor that can be called with no arguments (this includes a constructor whose parameters all have default arguments). Default constructors are significant because they are invoked in certain circumstances; and therefore, in these circumstances, it is an error for a class to not have a default constructor.
 
-## Default Constructor Availability
+## Availability
 
 If a class has no other explicitly defined constructors, the compiler will implicitly declare and define a default constructor for it. This implicitly defined default constructor is equivalent to an explicitly defined defined one.
-
-[The compiler generates a default constructor if you have no other constructor in your class.]
 
 ```
 // Ex 1: Compiler-generated default constructor available
@@ -62,8 +60,6 @@ Widget w2{}; // Ok! Compiler generated
 
 If constructors are explicitly defined for a class, but they are all non-default, the compiler will not implicitly define a default construcctor, leading to a situation where the class does not have a default constructor. This is the reason for a typical error, as demonstrated below.
 
-[However, if you have any other constructor defined in your class, then the compiler does not generate a default constructor.]
-
 ```
 // Ex 2: No compiler-generated default constructor available
 class Widget {
@@ -77,8 +73,6 @@ Widget w2{}; // Error! No default constructor
 ```
 
 A compiler generated default constructor will be defined as deleted if any class members aren't default-constructable. For example, all members of class type (and their class type members) must have a default constructor and destructors that are accessible.
-
-[Additionally, the compiler is not able to generate a default constructor if any data member or any base class is not default constructable.]
 
 ```
 // Ex 3: No compiler-generated default constructor available
