@@ -19,7 +19,7 @@ In some cases, the compiler may generate *delete* special member functions, wher
 ### [Copy Operations](https://github.com/cmbrandt/cxx-fundamentals/blob/master/2_class_design_special.md#copy-operations-1)
 * Compiler Generated
 * Manual Implementation
-* Temporary Swap Implementation
+* Copy-and-Swap Implementation
 * Optimized Implementation
 * std::unique_ptr Implementation
 * std::shared_ptr Implementation
@@ -27,7 +27,7 @@ In some cases, the compiler may generate *delete* special member functions, wher
 ### [Move Operations](https://github.com/cmbrandt/cxx-fundamentals/blob/master/2_class_design_special.md#move-operations-1)
 * Compiler Generated
 * Manual Implementation
-* Temporary Swap Implementation
+* Copy-and-Swap Implementation
 * Optimized Implementation
 * std::unique_ptr Implementation
 * std::shared_ptr Implementation
@@ -235,11 +235,13 @@ Typically, destructors do not pose a problem. However, they are a sign that othe
 
 Every class has a copy constructor and a copy assignment operator: either they are available, or they are (implicitly) deleted.
 
-The compiler generates copy operations if (1) they are not explicitly declared, (2) no move operation is declared, and (3) all base classes and data members can be copy constructed and copy assigned. In the case that (2) and (3) are not met, the compiler implicitly deletes the copy constructor and copy assignment operator.
+The compiler generates copy operations if (1) they are not explicitly declared, (2) no move operation is declared, and (3) all base classes and data members can be copy constructed and copy assigned. In the case that (2) and (3) are not met, the compiler implicitly deletes the copy operations.
 
 ## Compiler Generated
 
 Below is the compiler-generated copy constructor and copy assignment operator. Both operations accept a `Widget` by reference-to-const` and perform a member-wise copy operation. This is a very basic way to generate the operations, and works well for most types. However, the element-wise copy operation performs a shallow copy on the resource, meaning that the pointer is copied rather than copying the underlying object.
+
+Note that we have included a manual destructor to to delete our resource, per our examples above.
 
 ```
 // Ex 1: Compiiler generated copy operations
@@ -260,6 +262,8 @@ public:
     return *this;
   }
 
+  // NEED EXPLICIT DTOR
+
 private:
   int idx{};
   std::string str{};
@@ -267,15 +271,13 @@ private:
 };
 ```
 
-By performing a shallow copy on the resource, then multiple `Widget` instances will hold the same pointer. The implication of this is that the destructor for each instance will call delete on the same pointer, leading to undefined behavior.
+By performing a shallow copy on the resource, multiple `Widget` instances will hold the same pointer. The implication of this is that the destructor for each instance will call delete on the same pointer, leading to undefined behavior.
 
 ## Manual Implementation
 
-To improve upon this implementation, both the copy constructor and the copy assignment operator perform a deep copy of the resource. This eliminates the potential for undefined behavior from the compiler generated operations.
+To improve upon this implementation, both the copy constructor and the copy assignment operator perform a deep copy of the resource. This eliminates the potential shared resource, and the undefined behavior associated with it.
 
-
-
-We explicitly copy the Resource. To ensure we do not leak our Resource, we need to explicitly delete the Resource in our copy assignment operation. However, by doing this, we are no longer safe against self-assignment.
+In the copy assignment operator, before creating the deep copy to assign to the member pointer, the existing resource must be deleted before the assignment to ensure the existing resource is not leaked. This poses a problem in the case of self-assignment, where the object is copy assigned to itself. If the copy assignment operator attempts to copy the deleted resource, undefined behavior occurs and the program becomes invalid.
 
 ```
 // Ex 2: Manual implementation
@@ -306,10 +308,13 @@ private:
 };
 ```
 
+Observe the number of details that need to be addressed as a result of the class explicitly managing the pointer data member. The copy constructor and copy assignment operator need to deal with `new`, `delete`, dangling pointers, and `nullpt`s.
 
-## Temporary Swap Implementation
+## Copy-and-Swap Implementation
 
-Here we use the copy-and-swap idiom in for our copy assignment operator. This is safe against self-assignment. However, this is not the most efficient implementation of this operation.
+The copy assignment operator utilizes the copy-and-swap idiom. Initially, the parameter other is passed to the copy constructor, and the resultant object is stored in the local variable `tmp`. Then, the `swap` member function is invoked to efficiently exchange the current state with the contents of `tmp`. As the copy assignment operator scope concludes, the local variable `tmp` is automatically destructed.
+
+The `swap` member function itself performs a member-wise swap for each data member. By bringing `std::swap` into scope, argument-dependent lookup (ADL) enables the appropriate implementation of `swap` for each data member, ensuring the most efficient swapping of the underlying data.
 
 ```
 // Ex 3: Temporary-swap idiom
