@@ -40,7 +40,7 @@ To provide an API for creating objects, where the factory method determines the 
 
 ### Structure:
 <p align="center">
-    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/factory_method.png" alt="Image" />
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/design_patterns_factory_method.png" alt="Image" />
 </p>
 
 ### Participants:
@@ -79,7 +79,7 @@ Create new objects by cloning existing objects, providing a way to create instan
 
 ### Structure:
 <p align="center">
-    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/prototype.png" alt="Image" />
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/design_patterns_prototype.png" alt="Image" />
 </p>
 
 ### Participants:
@@ -112,7 +112,7 @@ To ensure that there is only a single instance of a class throughout the applica
 
 ### Structure:
 <p align="center">
-    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/singleton.png" alt="Image" />
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/design_patterns_singleton.png" alt="Image" />
 </p>
 
 ### Participants:
@@ -146,12 +146,12 @@ Converts the interface of one class into another interface that clients expect, 
 ### Structure:
 Adapter Class
 <p align="center">
-    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/adapter_class.png" alt="Image" />
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/design_patterns_adapter_class.png" alt="Image" />
 </p>
 
 Adapter Object
 <p align="center">
-    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/adapter_object.png" alt="Image" />
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/design_patterns_adapter_object.png" alt="Image" />
 </p>
 
 ### Participants:
@@ -188,7 +188,7 @@ Dynamically extend or modify an object with responsibilities
 
 ### Structure:
 <p align="center">
-    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/decorator.png" alt="Image" />
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/design_patterns_decorator.png" alt="Image" />
 </p>
 
 ### Participants:
@@ -225,7 +225,7 @@ Provide a surrogate, or placeholder, for another object to control access to it
 
 ### Structure:
 <p align="center">
-    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/proxy.png" alt="Image" />
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/design_patterns_proxy.png" alt="Image" />
 </p>
 
 ### Participants:
@@ -259,7 +259,7 @@ Decouples the interface from the implementation, separating them into two hierar
 
 ### Structure:
 <p align="center">
-    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/bridge.png" alt="Image" />
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/design_patterns_bridge.png" alt="Image" />
 </p>
 
 ### Participants:
@@ -297,7 +297,7 @@ Provide a simplified interface to a library, a framework, or any other complex s
 
 ### Structure:
 <p align="center">
-    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/facade.png" alt="Image" />
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/design_patterns_facade.png" alt="Image" />
 </p>
 
 ### Participants:
@@ -331,7 +331,7 @@ Provide a way to represent complex structures of objects in a unified manner, so
 
 ### Structure:
 <p align="center">
-    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/composite.png" alt="Image" />
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/design_patterns_composite.png" alt="Image" />
 </p>
 
 ### Participants:
@@ -377,7 +377,7 @@ Define a family of algorithms, encapsulate each one with a class, and make them 
 
 ### Structure:
 <p align="center">
-    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/strategy.png" alt="Image" />
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/design_patterns_strategy.png" alt="Image" />
 </p>
 
 ### Participants:
@@ -416,7 +416,7 @@ Define the skeleton of an algorithm in an operation, deferring some steps to sub
 
 ### Structure:
 <p align="center">
-    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/template_method.png" alt="Image" />
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/design_patterns_template_method.png" alt="Image" />
 </p>
 
 ### Participants:
@@ -452,7 +452,7 @@ Define a one-to-many dependency between objects so that when one object changes 
 
 ### Structure:
 <p align="center">
-    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/observer.png" alt="Image" />
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/design_patterns_observer.png" alt="Image" />
 </p>
 
 ### Participants:
@@ -496,7 +496,7 @@ Separates algorithms from the objects on which they operatate, where new operati
 
 ### Structure:
 <p align="center">
-    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/visitor.png" alt="Image" />
+    <img src="https://github.com/cmbrandt/modern-cxx-seminar/blob/master/img/design_patterns_visitor.png" alt="Image" />
 </p>
 
 ### Participants:
