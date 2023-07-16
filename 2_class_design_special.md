@@ -12,7 +12,7 @@ In some cases, the compiler may generate *delete* special member functions, wher
 * Rule of Three
 * Rule of Five
 * Rule of Zero
-* 
+
 ### [Default Constructor](https://github.com/cmbrandt/cxx-fundamentals/blob/master/2_class_design_special.md#default-constructor-1)
 * Availability
 * Initialization
