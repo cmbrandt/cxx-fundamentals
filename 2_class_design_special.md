@@ -669,7 +669,9 @@ The Rule of Three, The Rule of Five, and the Rule of Zero, are names of [idioms]
 
 The full list of ... displayed below.
 
-[ IMAGE ]
+<p align="center">
+    <img src="https://github.com/cmbrandt/cxx-fundamentals/blob/master/img/special_member_functions_howard_hinnant2.png" alt="Image" />
+</p>
 
 The Rule of Three, Rule of Five, and Rule of Zero are a set of guidelines that have been been established to follow about when and under what circumstances special member functions should be explicitly defined.
 
