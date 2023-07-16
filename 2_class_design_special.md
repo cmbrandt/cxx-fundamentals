@@ -188,7 +188,7 @@ private:
 
 ## Custom Destructor
 
-In the example below, the `Resource` pointer could be either owning or non-owning. In this situation, the default destructor (either compiler generator or explicitly defined) performs no action on the pointer, which could lead to a resource leak.
+In the example below, the `Resource` pointer could be either owning or non-owning. The default destructor (either compiler generator or explicitly defined) performs no action on the pointer, which could lead to a resource leak.
 
 ```
 // Ex 3: Explicit defintion of default destructor
@@ -207,7 +207,7 @@ private:
 };
 ```
 
-For this case, a custom destructor will be required to prevent a potential resource leak. In the example below, `delete` is called on the `Resource` pointer in the body of the destructor, releasing any memory associated with it and eliminating any chance of a resource leak.
+For this case, a custom destructor will be required to prevent a potential resource leak. Below, `delete` is called on the `Resource` pointer in the body of the custom destructor, releasing any memory associated with it and eliminating any chance of a resource leak.
 
 After exiting the body of the destructor, the destructor for the `std::string` data member is called, and no action is performed on the `int` data member.
 
