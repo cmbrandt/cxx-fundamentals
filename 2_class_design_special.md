@@ -661,8 +661,6 @@ private:
 ```
 
 
-
-
 # Rule of Three/Five/Zero
 
 The Rule of Three, Rule of Five, and Rule of Zero are well-known conventions that refer to the dependencies between special member functions: specifically, the destructor, copy constructor, copy assinment operator, move constructor, and move assignment operator.
@@ -699,8 +697,6 @@ The Rule of Five can be thought of as an extension to the Rule of Three for mode
 
 The Rule of Zero states that, when possible, classes should avoid explicitly defining any special member functions.
 
-The general idea is that a class should not define any of the special member fuctions unless the class is solely dedicated to resource management. This stems from the single responsibility principle, where a class should be responsible for one thing.
-
-When a class is composed exclusively of fundamental types (excluding raw pointers), and any resource maintained within the class is managed by another class that is specialized for resource management, then all special member functions may be defaulted.
+The fundamental concept is that a class should only define special member fuctions if it is solely dedicated to resource management. This stems from the single responsibility principle, where a class should be focused on a single concern. If a class consists solely of fundamental types (excluding raw pointers) and any resources maintained within are managed by a specialized resource mangement class, then all special member functions can be defaulted.
 
 Overall, the Rule of Zero promotes safer, more efficient, and less error-prone code, contributing to better software quality and developer productivity. It leverages the C++ language features to handle resource management automatically, leaving developers to focus on the logic and design of their classes rather than getting bogged down with low-level resource management details.
