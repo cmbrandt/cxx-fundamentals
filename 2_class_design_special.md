@@ -233,11 +233,13 @@ Typically, destructors do not pose a problem. However, they are a sign that othe
 
 # Copy Operations
 
-asdf asdf  asdf as fasd fas 
+Every class has a copy constructor and a copy assignment operator: either they are available, or they are (implicitly) deleted.
+
+The compiler generates copy operations if (1) they are not explicitly declared, (2) no move operation is declared, and (3) all base classes and data members can be copy constructed and copy assigned. In the case that (2) and (3) are not met, the compiler implicitly deletes the copy constructor and copy assignment operator.
 
 ## Compiler Generated
 
-Below is the compiler-generated copy constructor and copy assignment operator. The default operations perform element-by-element copy. Note that this performs a shallow copy of our `Resource` pointer.
+Below is the compiler-generated copy constructor and copy assignment operator. Both operations accept a `Widget` by reference-to-const` and perform a member-wise copy operation. This is a very basic way to generate the operations, and works well for most types. However, the element-wise copy operation performs a shallow copy on the resource, meaning that the pointer is copied rather than copying the underlying object.
 
 ```
 // Ex 1: Compiiler generated copy operations
@@ -265,8 +267,13 @@ private:
 };
 ```
 
+By performing a shallow copy on the resource, then multiple `Widget` instances will hold the same pointer. The implication of this is that the destructor for each instance will call delete on the same pointer, leading to undefined behavior.
 
 ## Manual Implementation
+
+To improve upon this implementation, both the copy constructor and the copy assignment operator perform a deep copy of the resource. This eliminates the potential for undefined behavior from the compiler generated operations.
+
+
 
 We explicitly copy the Resource. To ensure we do not leak our Resource, we need to explicitly delete the Resource in our copy assignment operation. However, by doing this, we are no longer safe against self-assignment.
 
