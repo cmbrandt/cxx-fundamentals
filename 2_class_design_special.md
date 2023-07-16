@@ -441,11 +441,11 @@ private:
 };
 ```
 
- 
+Note that we have been working with the Rule of Three, explicitly defining the destructor, as well as the copy constructor and copy assignment operator.
 
 ## std::unique_ptr Implementation
 
-Using std::unique_ptr to manage the Resource. We no longer need to explicitly define the destructor.
+Per the C++ Core Guidelines, classes should not have owning pointers as data members. By switching ownership of the resource from a raw pointer to a `std::unique_ptr`, the class no longer need to worry about cleanup and the destructor can be defaulted. The copy operations must still be explicitly defined, since `std::unique_ptr` itself cannot be copied.
 
 ```
 // Ex 5: std::unique_ptr implementation
@@ -473,7 +473,7 @@ public:
   }
 
   // Destructor
-  ~Widget() { delete ptr; }
+  ~Widget() = default;
 
   void swap(Widget& other) noexcept {
     using std::swap;
@@ -491,7 +491,9 @@ private:
 
 ## std::shared_ptr Implementation
 
-Using std::shared_ptr to manage the Resource. We no longer need to explicitly define copy operations. However, using std::shared_ptr changes the semantics of the class. Do not use std::shared_ptr just to eliminate the need to explicitly define copy operations.
+Another option for managing the resouce is to use `std::shared_ptr`. Note that this fundamentally changes the semantics of the class, as up to this point each instance of `Widget` has owned its own resource. By using `std::shared_ptr`, instances of the class would all share the same resource, which is a significant change in behavior.
+
+However, by using `std::shared_ptr` to own the resource, the copy constructor and copy assignment operator may be defaulted as well.
 
 ```
 // Ex 6: std::shared_ptr implementation
@@ -512,6 +514,9 @@ private:
   std::shared_ptr<Resource> ptr{};
 };
 ```
+
+This is the Rule of Zero. Classes that do not require an explicit destructor, copy constructor, and copy assignment operator are much easier to work with.
+
 
 # Move Operations
 
