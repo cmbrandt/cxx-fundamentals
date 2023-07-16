@@ -34,6 +34,7 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 
 # Data Members
 
+`struct` has default `public` access:
 ```
 struct Rational {
   int num;
@@ -41,7 +42,8 @@ struct Rational {
 };
 ```
 
-
+`class` has default `private` acces. The snippet below is equivalent to the snippet abovve. 
+Member intializer list:
 ```
 class Rational {
 public:
@@ -58,6 +60,7 @@ public:
 
 ### Default Constructor
 
+Assignment:
 ```
 class Rational {
 public:
@@ -72,6 +75,7 @@ private:
 };
 ```
 
+Member intializer list:
 ```
 class Rational {
 public:
@@ -83,6 +87,7 @@ private:
 };
 ```
 
+In-class member initializer (with defaulted constructor):
 ```
 class Rational {
 public:
@@ -96,9 +101,11 @@ private:
 
 ### Parameterized Constructors
 
+Each parameter is 
 ```
 Rational::Rational(int n, int d) : num{n}, den{d} { }
 ```
+
 
 ```
 explicit Rational::Rational(int n) : num{n} { }
@@ -107,10 +114,12 @@ explicit Rational::Rational(int n) : num{n} { }
 
 ## Destructor
 
+Explicit default destructor
 ```
 ~Rational::Rational() { };
 ```
 
+Defaulted destructor
 ```
 ~Rational() = default;
 ```
@@ -120,6 +129,7 @@ explicit Rational::Rational(int n) : num{n} { }
 
 ### Copy Constructor
 
+Assignment in the body of the constructor
 ```
 Rational::Rational(Rational const& other) {
   num = other.num;
@@ -127,9 +137,10 @@ Rational::Rational(Rational const& other) {
 }
 ```
 
+Using member initializers
 ```
 Rational::Rational(Rational const& other) {
-: num{other.num}, den{other.den} { }
+  : num{other.num}, den{other.den} { }
 ```
 
 ### Copy Assignment Operator
@@ -152,7 +163,6 @@ Rational::Rational(Rational&& other) {
 ```
 
 ### Move Assignment Operator
-
 ```
 Rational& Rational::operator=(Rational&& other) {
   num = std::move(other.num);
