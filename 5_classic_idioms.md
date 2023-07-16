@@ -1,5 +1,8 @@
 # Classic Idioms
-Duo deleniti posidonium ut. Duo ne solum delicatissimi. At sed amet accusam. An nostro aliquando pri. Ex his impedit mediocrem sadipscing, eligendi invidunt has ut, iudico maluisset cu pri.
+
+A programming idiom is a common and recognizable pattern of code or technique used to solve specific problems in software development. It represents a concise and effective way of expressing a solution within the context of a particular programming language or paradigm. Idioms often improve code readability, maintainability, and performance.
+
+[...]
 
 ## Content
 
