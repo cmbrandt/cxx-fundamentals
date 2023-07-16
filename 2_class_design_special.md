@@ -351,9 +351,13 @@ private:
 };
 ```
 
+This implementation builds on existing functions that we already know and trust, specifically the copy constructor and the destructor. This implementation is short, safe against self-assigment, and also provides a strong exception guarantee. However, this is not the fastest possible implementation of the copy assignment operator, and could be further improved upon.
+
 ## Optimized Implementation
 
-adf af adsf adsf ads
+If both `Widget` objects, `this` and `other`, have valid pointers, then each member can be exlicitly copied. This includes the explicit copy of the resource, where each pointer is dereferenced and a copy assignment is performed. This case does not need to be checked for self-assignment, the data members resolve that themselves.
+
+However, if one of pointers is not valid, then the `else` branch will use the copy-and-swap idiom.
 
 ```
 // Ex 4: Optimized implementation
@@ -370,7 +374,7 @@ class Widget {
     if (ptr and &other.ptr) {
       idx  = other.idx;
       str  = other.str;
-      *ptr = *other.ptr;
+      *ptr = *other.ptr; // Copy assignment of the resource
     }
     else {
       Widget tmp{other};
@@ -395,6 +399,7 @@ private:
   Resource* ptr{};
 };
 ```
+
 
 
 ## std::unique_ptr Implementation
