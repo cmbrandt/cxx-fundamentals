@@ -8,6 +8,11 @@ In some cases, the compiler may generate *delete* special member functions, wher
 
 # Content
 
+### [Rule of Three/Five/Zero](https://github.com/cmbrandt/cxx-fundamentals/blob/master/2_class_design_special.md#rule-of-threefivezero-1)
+* Rule of Three
+* Rule of Five
+* Rule of Zero
+* 
 ### [Default Constructor](https://github.com/cmbrandt/cxx-fundamentals/blob/master/2_class_design_special.md#default-constructor-1)
 * Availability
 * Initialization
@@ -36,6 +41,47 @@ In some cases, the compiler may generate *delete* special member functions, wher
 * Rule of Three
 * Rule of Five
 * Rule of Zero
+
+
+# Rule of Three/Five/Zero
+
+The Rule of Three, Rule of Five, and Rule of Zero are well-known conventions that refer to the dependencies between special member functions: specifically, the destructor, copy constructor, copy assinment operator, move constructor, and move assignment operator.
+
+For example, if a class explicitly defines a copy constructor, the compiler will implicitly delete the move constructor and move assignment operator. Likewise, if a class explicitly defines a move constructor, the compiler will not declare a destructor, copy constructor, copy assignment operator, or move assignment operator.
+
+The table below illustrates the full list of dependencies among special member functions.
+
+<p align="center">
+    <img src="https://github.com/cmbrandt/cxx-fundamentals/blob/master/img/special_member_functions_howard_hinnant2.png" alt="Image" />
+</p>
+
+The Rule of Three, Rule of Five, and Rule of Zero server as a set of guidelines to follow about when and under what circumstances special member functions should be explicitly defined.
+
+## Rule of Three
+
+If a class requires a user-defined destructor, a user-defined copy constructor, or a user-defined copy assignment operator, it mostly likely requires all three.
+
+When objects of class type are copied or copy-assigned in various situations (passing/returning by value, manipulating a container, etc.), these special member functions will be called. If they are not explicitly defined by the user, they are implicitly defined by the compiler.
+
+The implicitly-defined special member functions are typically incorrect if the class manages a resource whose handle is an object of non-class type (raw pointer, POSIX file descriptor, etc.), whose destructor does nothing, and whose copy constructor and copy assignment operator perform a shallow copy.
+
+The Rule of Three states that if a class explicitly defines any of the destructor, copy constructor, or copy assignment operator, then it should explicitly define all three.
+
+## Rule of Five
+
+With the advent of C++11, the Rule of Three can be broadened to the Rule of Five. C++11 provides move semantics, which enable the efficient transfer of resources from one object to another by reducing unnecessary copies and memory allocations. These operations are performed using rvalue references with move constructors and move assignment operators.
+
+More formally, the Rule of Five states that if a class explicitly define any of the destructor, copy constructor, copy assignment operator, move constructor, or move assignment operator, then it should explicitly define all five.
+
+The Rule of Five can be thought of as an extension to the Rule of Three for modern C++.
+
+## Rule of Zero
+
+The Rule of Zero states that, when possible, classes should avoid explicitly defining any special member functions.
+
+The fundamental concept is that a class should only define special member fuctions if it is solely dedicated to resource management. This stems from the single responsibility principle, where a class should be focused on a single concern. If a class consists solely of fundamental types (excluding raw pointers) and any resources maintained within are managed by a specialized resource mangement class, then all special member functions can be defaulted.
+
+Overall, the Rule of Zero promotes safer, more efficient, and less error-prone code, contributing to better software quality and developer productivity. It leverages the C++ language features to handle resource management automatically, leaving developers to focus on the logic and design of their classes rather than getting bogged down with low-level resource management details.
 
 
 # Default Constructor
@@ -244,7 +290,7 @@ Below is the compiler-generated copy constructor and copy assignment operator. B
 Note that we have included a manual destructor to to delete our resource, per our examples above.
 
 ```
-// Ex 1: Compiiler generated copy operations
+// Ex 1: Compiiler generated
 class Widget {
 public:
   // Copy constructor
@@ -317,7 +363,7 @@ The copy assignment operator utilizes the copy-and-swap idiom. Initially, the pa
 The `swap` member function itself performs a member-wise swap for each data member. By bringing `std::swap` into scope, argument-dependent lookup (ADL) enables the appropriate implementation of `swap` for each data member, ensuring the most efficient swapping of the underlying data.
 
 ```
-// Ex 3: Temporary-swap idiom
+// Ex 3: Copy-and-swap implementation
 class Widget {
 public:
   // Copy constructor
@@ -400,14 +446,14 @@ private:
 };
 ```
 
-
+ 
 
 ## std::unique_ptr Implementation
 
 Using std::unique_ptr to manage the Resource. We no longer need to explicitly define the destructor.
 
 ```
-// Ex 5: std::unique_ptr
+// Ex 5: std::unique_ptr implementation
 class Widget {
 public:
   // Copy constructor
@@ -453,7 +499,7 @@ private:
 Using std::shared_ptr to manage the Resource. We no longer need to explicitly define copy operations. However, using std::shared_ptr changes the semantics of the class. Do not use std::shared_ptr just to eliminate the need to explicitly define copy operations.
 
 ```
-// Ex 6: std::shared_ptr
+// Ex 6: std::shared_ptr implementation
 class Widget {
 public:
   // Copy Constructor
