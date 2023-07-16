@@ -37,11 +37,6 @@ In some cases, the compiler may generate *delete* special member functions, wher
 * std::unique_ptr Implementation
 * std::shared_ptr Implementation
 
-### [Rule of Three/Five/Zero](https://github.com/cmbrandt/cxx-fundamentals/blob/master/2_class_design_special.md#rule-of-threefivezero-1)
-* Rule of Three
-* Rule of Five
-* Rule of Zero
-
 
 # Rule of Three/Five/Zero
 
