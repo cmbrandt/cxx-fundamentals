@@ -103,7 +103,7 @@ struct Widget {
 Widget w;          // Default initialization using the default ctor
 ```
 
-Value initialization chanages the fundamental behavior of the class, value initializing every fundamental type and default constructing each class type. Still using the compiler generated default constructor below, the `int` is initialized to zero, the `std::string` remains an empty string, and the pointer is initialized to `nullptr`.
+Value initialization chanages the [fundamental] behavior of the class, value initializing every fundamental type and default constructing each class type. Still using the compiler generated default constructor below, the `int` is initialized to zero, the `std::string` remains an empty string, and the pointer is initialized to `nullptr`.
 
 ```
 // Ex 2: Value initialization
@@ -697,4 +697,10 @@ The Rule of Five can be thought of as an extension to the Rule of Three for mode
 
 ## Rule of Zero
 
-The Rule of Zero states that "if you can avoid defining default operations, do." This class is the simplest implementation and gives the cleanest semantics. [continued]
+The Rule of Zero states that, when possible, classes should avoid explicitly defining any special member functions.
+
+The general idea is that a class should not define any of the special member fuctions unless the class is solely dedicated to resource management. This stems from the single responsibility principle, where a class should be responsible for one thing.
+
+When a class is composed exclusively of fundamental types (excluding raw pointers), and any resource maintained within the class is managed by another class that is specialized for resource management, then all special member functions may be defaulted.
+
+Overall, the Rule of Zero promotes safer, more efficient, and less error-prone code, contributing to better software quality and developer productivity. It leverages the C++ language features to handle resource management automatically, leaving developers to focus on the logic and design of their classes rather than getting bogged down with low-level resource management details.
