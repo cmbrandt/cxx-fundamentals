@@ -665,9 +665,9 @@ private:
 
 # Rule of Three/Five/Zero
 
-The Rule of Three, The Rule of Five, and the Rule of Zero, are names of [idioms] that refer to the nuanced relationships between the special member functions: specifically, the destructor, copy constructor, copy assinment operator, move constructor, and move assignment operator. For example, if you explicitly define [a destructor], the compiler will [implicitly the copy constructor and copy assignment operator]. Likewise, if you explicitly define [a move constructor], the compiler will [implicitly delete the copy constructor and copy assignment operator].
+The Rule of Three, Rule of Five, and Rule of Zero are well-known conventions that refer to the dependencies between special member functions: specifically, the destructor, copy constructor, copy assinment operator, move constructor, and move assignment operator. For example, if a class explicitly defines a copy constructor, the compiler will implicitly delete the move constructor and move assignment operator. Likewise, if a class explicitly defines a move constructor, the compiler will not declare a destructor, copy constructor, or copy assignment operator.
 
-The full list of ... displayed below.
+The table below illustrates the full list of dependencies.
 
 <p align="center">
     <img src="https://github.com/cmbrandt/cxx-fundamentals/blob/master/img/special_member_functions_howard_hinnant2.png" alt="Image" />
@@ -691,7 +691,7 @@ With the advent of C++11 the Rule of Three can be broadened to The Rule of Five.
 
 More formally, the Rule of Five states that if a class explicitly define any of the destructor, copy constructor, copy assignment operator, move constructor, or move assignment operator, then it should explicitly define all five.
 
-The Rule of Five can be thought of as an extension to the Rule of Three for "modern C++".
+The Rule of Five can be thought of as an extension to the Rule of Three for modern C++.
 
 ## Rule of Zero
 
