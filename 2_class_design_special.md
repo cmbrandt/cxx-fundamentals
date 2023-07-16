@@ -677,15 +677,21 @@ The Rule of Three, Rule of Five, and Rule of Zero are a set of guidelines that h
 
 ## Rule of Three
 
-If a class requires a user-defined destructor, a user-defined copy constructor, or a user-defined copy assignment operator, it almost certainly requires all three. [continued]
+If a class requires a user-defined destructor, a user-defined copy constructor, or a user-defined copy assignment operator, it mostly likely requires all three.
 
-This guideline was established long before move semantics (e.g., move constructor and move assignment operator) we added to the standard with C++11. This rule is still observed today, but now tends to be treated as a special case of the Rule of Five.
+When objects of user-defined types are copied are copy-assigned in various situations (passing/returning by value, manipulating a container, etc.), these special member functions will be called, if accessible. If they are not explicitly user-defined, they are implicitly defined by the compiler.
+
+The implicitly-defined special member functions are typically incorrect if the class manages a resource whose handle is an object of non-class type (raw pointer, POSIX file descriptor, etc.), whose destructor does nothing, and whose copy constructor and copy assignment operator perform a "shallow copy" (copy the value of the handle, without duplicating the underlying resource).
+
+The Rule of Three states that if a class explicitly define any of the destructor, copy constructor, or copy assignment operator, then it should explicitly define all three.
 
 ## Rule of Five
 
-The Rule of Five refers to the relationship between special member function, where if a class requires a user-defined copy constructor, copy assignment operator, move constructor, move assignment operator, or destructor, it almost certainly requires all five.
+With the advent of C++11 the Rule of Three can be broadened to The Rule of Five. C++11 implements move semantics, which enable the efficient transfer of resources from one object to another by reducing unnecessary copies and memory allocations. This is performed using rvalue references with move constructors and move assignment operators.
 
-As mentioned above, the Rule of Five was established after move semantics were added to the language with C++11. As an extension to the Rule of Three, 
+More formally, the Rule of Five states that if a class explicitly define any of the destructor, copy constructor, copy assignment operator, move constructor, or move assignment operator, then it should explicitly define all five.
+
+The Rule of Five can be thought of as an extension to the Rule of Three for "modern C++".
 
 ## Rule of Zero
 
