@@ -520,11 +520,11 @@ This is the Rule of Zero. Classes that do not require an explicit destructor, co
 
 # Move Operations
 
-Move semantics [eg copy ctor and copy assignment operator] were added to the C++ standard with C++11. [more background information about what move semantics are and why they are important.]
+C++11 introduced move semantics, which encompass move constructors and move assignment operators, to enhance the language's resource management and performance. Move semantics allow efficient transfer of resources from one object to another, improving the efficiency of operations involving temporary or expiring objects.
 
-We can think of copy operations and move operations as an overload set with distinct behavioral and performance characteristics. For example, if a class does not explicitly define move operations, a class will default to copy operations when a move operation is invoked by another function. In this way, we can think of copy as a generalized move.
+Copy and move operations can be regarded as separate behaviors with distinct performance characteristics. If a class doesn't explicitly define move operations, it defaults to using copy operations when invoked by other functions. Consequently, copy serves as a more general form of move.
 
-Also, when constructing a new object from an existing object, where the existing object is no longer needed, we may choose move construct the new object, which could be orders of magnitude faster than copy construction. While this may not always be the case (depending on the type itself), the standard does guarantee that a move operation will never be slower than a coppy operation. In this way, we can thinkg of move as an optimized copy.
+Furthermore, in scenarios where an existing object is no longer needed and a new object is being constructed, move construction can be significantly faster than copy construction, though its performance may vary depending on the object's type. Thus, move operations can be seen as an optimized form of copy, enhancing efficiency in specific contexts.
 
 ## Compiler Generated
 
