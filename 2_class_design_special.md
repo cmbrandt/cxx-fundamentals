@@ -526,9 +526,13 @@ Copy and move operations can be regarded as separate behaviors with distinct per
 
 Furthermore, in scenarios where an existing object is no longer needed and a new object is being constructed, move construction can be significantly faster than copy construction, though its performance may vary depending on the object's type. Thus, move operations can be seen as an optimized form of copy, enhancing efficiency in specific contexts.
 
+[when the compiler generates default move operations]
+
 ## Compiler Generated
 
-
+[below is the compiler-generator move operations]
+* member-wise move
+* included a manual destructor
 
 ```
 // Ex 1: Compiler generated
@@ -549,6 +553,9 @@ public:
     return *this;
   }
 
+  // Destructor
+  ~Widget() { delete ptr; }
+
 private:
   int idx{};
   std::string str{};
@@ -556,11 +563,14 @@ private:
 };
 ```
 
-
+[shallow copy on resource, same problem we saw previously]
+[still undefined behavior]
 
 ## Manual Implementation
 
-
+[cleaned up by exchanging resources]
+[move assignment deletes the existing resource before move assigning]
+[still a problem for self assignment]
 
 ```
 // Ex 2: Manual implementation
@@ -570,16 +580,20 @@ public:
   Widget(Widget&& other) noexcept
     : idx{std::move(other.idx)}
     , str{std::move(other.str)}
-    , ptr{std::move(other.ptr)} // Shallow copy!
+    , ptr{std::exchange(other.ptr, {})}
   { }
 
   // Move assignment operator
   Widget& operator=(Widget&& other) noexcept {
+    delete ptr;
     idx = std::move(other.idx);
     str = std::move(other.str);
-    ptr = std::move(other.ptr); // Shallow copy!
+    ptr = std::exchange(other.ptr, {}); // Problem with self-assignment
     return *this;
   }
+
+  // Destructor
+  ~Widget() { delete ptr; }
 
 private:
   int idx{};
@@ -587,17 +601,13 @@ private:
   Resource* ptr{};
 };
 ```
-
+[
 
 
 ## Temporary Swap Implementation
 
-Notes on move assignment operator
-* Follows the temporary-swap idiom
-* Implemented in terms of the move constructor
-* Guards against self-assignment -> not necessary and may be removed
-
-
+[safe against self-assignment]
+[not optimal performance]
 
 ```
 // Ex 3: Temporary-swap idiom
@@ -636,7 +646,8 @@ private:
 
 ## Optimized Implementation
 
-
+[extend the manual implementation by setting the other resource to nullptr]
+[
 
 ```
 // Ex 4: Optimized implementation
@@ -658,15 +669,15 @@ public:
     return *this;
   }
 
+  // Destructor
+  ~Widget() { delete ptr; }
+
   void swap(Widget& other) noexcept {
     using std::swap;
     swap(idx, other.idx);
     swap(str, other.str);
     swap(ptr, other.ptr);
   }
-
-  // Destructor
-  ~Widget() { delete ptr; }
 
 private:
   int idx{};
@@ -685,10 +696,10 @@ private:
 class Widget {
 public:
   // Move constructor
-  Widget(Widget&&) noexcept = default;
+  Widget(Widget&& other) = default;
 
   // Move assignment operator
-  Widget& operator=(Widget&&) noexcept = default;
+  Widget& operator=(Widget&& other) = default;
 
   // Destructor
   ~Widget() = default;
@@ -708,10 +719,10 @@ private:
 class Widget {
 public:
   // Move constructor
-  Widget(Widget&&) noexcept = default;
+  Widget(Widget&& other) = default;
 
   // Move assignment operator
-  Widget& operator=(Widget&&) noexcept = default;
+  Widget& operator=(Widget&& other) = default;
 
   // Destructor
   ~Widget() = default;
