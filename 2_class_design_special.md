@@ -303,7 +303,8 @@ public:
     return *this;
   }
 
-  // NEED EXPLICIT DTOR
+  // Destructor
+  ~Widget() { delete ptr; }
 
 private:
   int idx{};
