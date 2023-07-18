@@ -1,6 +1,6 @@
 # Class Design: Special Member Functions
 
-The *special member functions* are class member functions that, in certain cases, the compiler automatically generates for you. These functions include the default constructor, destructor, copy constructor, copy assignment operator, move constructor, and move assignment operator. If a class does not define one or more of the special member functions, then the compiler may implicitly declare and define them. The compiler-generated implementations are called the *default* member functions, and are not generated if they are not needed.
+The special member functions are class member functions that, in certain cases, the compiler automatically generates for you. These functions include the default constructor, destructor, copy constructor, copy assignment operator, move constructor, and move assignment operator. If a class does not define one or more of the special member functions, then the compiler may implicitly declare and define them. The compiler-generated implementations are called the default member functions, and are not generated if they are not needed.
 
 Default special member functions can be explicitly declared using `= default`. The compiler will define the function only if needed, in the same way as if the function was not declared at all.
 
