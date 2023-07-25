@@ -32,7 +32,7 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 
 
 
-# Data Members
+## Data Members
 
 `struct` has default `public` access:
 ```cpp
@@ -51,6 +51,12 @@ public:
   int den;
 };
 ```
+## Invariants
+
+* Unique representation for zero
+* Unique representation for 1
+* Consistent representation for negative values
+* 
 
 
 # Member Functions
