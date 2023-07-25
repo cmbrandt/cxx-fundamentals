@@ -35,7 +35,7 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 # Data Members
 
 `struct` has default `public` access:
-```
+```cpp
 struct Rational {
   int num;
   int den;
@@ -44,7 +44,7 @@ struct Rational {
 
 `class` has default `private` acces. The snippet below is equivalent to the snippet abovve. 
 Member intializer list:
-```
+```cpp
 class Rational {
 public:
   int num;
@@ -61,7 +61,7 @@ public:
 ### Default Constructor
 
 Assignment:
-```
+```cpp
 class Rational {
 public:
   Rational() {
@@ -76,7 +76,7 @@ private:
 ```
 
 Member intializer list:
-```
+```cpp
 class Rational {
 public:
   Rational() : num{0}, den{1} { }
@@ -88,7 +88,7 @@ private:
 ```
 
 In-class member initializer (with defaulted constructor):
-```
+```cpp
 class Rational {
 public:
   Rational() = default;
@@ -102,12 +102,12 @@ private:
 ### Parameterized Constructors
 
 Each parameter is 
-```
+```cpp
 Rational::Rational(int n, int d) : num{n}, den{d} { }
 ```
 
 
-```
+```cpp
 explicit Rational::Rational(int n) : num{n} { }
 ```
 
@@ -115,12 +115,12 @@ explicit Rational::Rational(int n) : num{n} { }
 ## Destructor
 
 Explicit default destructor
-```
+```cpp
 ~Rational::Rational() { };
 ```
 
 Defaulted destructor
-```
+```cpp
 ~Rational() = default;
 ```
 
@@ -130,7 +130,7 @@ Defaulted destructor
 ### Copy Constructor
 
 Assignment in the body of the constructor
-```
+```cpp
 Rational::Rational(Rational const& other) {
   num = other.num;
   den = other.den;
@@ -138,14 +138,14 @@ Rational::Rational(Rational const& other) {
 ```
 
 Using member initializers
-```
+```cpp
 Rational::Rational(Rational const& other) {
   : num{other.num}, den{other.den} { }
 ```
 
 ### Copy Assignment Operator
 
-```
+```cpp
 Rational& Rational::operator=(Rational const& other) {
   num = other.num;
   den = other.den;
@@ -157,13 +157,13 @@ Rational& Rational::operator=(Rational const& other) {
 
 ### Move Constructor
 
-```
+```cpp
 Rational::Rational(Rational&& other) {
 : num{std::move(other.num)} , den{std::move(other.den)} { }
 ```
 
 ### Move Assignment Operator
-```
+```cpp
 Rational& Rational::operator=(Rational&& other) {
   num = std::move(other.num);
   den = std::move(other.den);
@@ -175,14 +175,14 @@ Rational& Rational::operator=(Rational&& other) {
 
 ### Accessors
 
-```
+```cpp
 int Rational::get_num() const { return num; }
 int Rational::get_den() const { return den; }
 ```
 
 ### Mutators
 
-```
+```cpp
 void Rational::set_num(int n) { num = n; }
 void Rational::set_den(int d) { den = d; }
 ```
@@ -192,7 +192,7 @@ void Rational::set_den(int d) { den = d; }
 
 ### Greatest Common Factor
 
-```
+```cpp
 int Rational::gcf() {
   int a = std::abs(num);
   int b = den;
@@ -209,7 +209,7 @@ int Rational::gcf() {
 
 ### Normalize
 
-```
+```cpp
 void Rational::normalize() {
   // Denominator cannot be zero
   assert(den != 0);
@@ -237,7 +237,7 @@ Note: we need to update the implementation of the following functions to include
 
 ## Equality
 
-```
+```cpp
 constexpr bool operator==(Rational const& lhs, Rational const& rhs)
 {
   return (lhs.num == rhs.num) and (lhs.den == rhs.den);
@@ -254,7 +254,7 @@ constexpr bool operator!=(Rational const& lhs, Rational const& rhs)
 
 ## Comparison
 
-```
+```cpp
 bool operator<(Rational const& lhs, Rational const& rhs)
 {
   int    a = lhs.get_num();
@@ -266,21 +266,21 @@ bool operator<(Rational const& lhs, Rational const& rhs)
 }
 ```
 
-```
+```cpp
 constexpr bool operator>(Rational const& lhs, Rational const& rhs)
 {
   return operator<(rhs, lhs);
 }
 ```
 
-```
+```cpp
 constexpr bool operator<=(Rational const& lhs, Rational const& rhs)
 {
   return !operator>(lhs, rhs);
 }
 ```
 
-```
+```cpp
 constexpr bool operator>=(Rational const& lhs, Rational const& rhs)
 {
   return !operator<(lhs, rhs);
