@@ -107,16 +107,20 @@ private:
 
 ### Parameterized Constructors
 
-Each parameter is 
-```cpp
-Rational::Rational(int n, int d) : num{n}, den{d} { }
-```
-
+Constructing an instance using only a single integer value, the parameter is used to initialize `num`, while `den` is initialized to one using the in-class member initializer.
 
 ```cpp
 explicit Rational::Rational(int n) : num{n} { }
 ```
 
+Using a pair of integers, both `num` and `dem` are initialized using a member initializer list. Within the constructor body, the private member function `normalize` is called, which will be discussed later.
+
+
+```cpp
+Rational::Rational(int n, int d) : num{n}, den{d} {
+  normalize(); // private implementation function
+}
+```
 
 ## Destructor
 
