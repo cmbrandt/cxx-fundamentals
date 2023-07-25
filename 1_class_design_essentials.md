@@ -6,8 +6,8 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 ### [Preliminaries](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#preliminaries-1)
 
 * Access Specifiers
-* Value Types
-* Regular Types
+* Value Semantics
+* Semiregular and Regular Types
 
 ### [Data Members](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#data-members-1)
 
