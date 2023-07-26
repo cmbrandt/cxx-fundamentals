@@ -175,7 +175,7 @@ The rational number class is a **plain old data** class, which does not require 
 
 ## Copy Operations
 
-The copy operations of a class include the copy constructor and copy assignment operator. The copy constructor ... The copy assignment operator...
+C++ copy operations refer to two speical member functions, the copy constructor and copy assignment operator. The copy constructor creates a new object as a copy of an existing object, while the copy assignment operator is used for assigning the contents of one object to another object.
 
 ### Copy Constructor
 
@@ -200,7 +200,7 @@ Rational::Rational(Rational const& other)
 
 ### Copy Assignment Operator
 
-The operation differs from the copy constructor, in that the copy constructor is used to create a new object as a copy of an existing object during object initialization, while the copy assignment operator is used for assignming an existing object's contents to another object after both objects have already been initialized.
+The default copy assignment operator performs a member-wise copy assignment of each data member.
 
 ```cpp
 // Copy assignment operator
