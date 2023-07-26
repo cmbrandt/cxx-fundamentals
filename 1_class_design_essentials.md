@@ -177,28 +177,40 @@ The rational number class is a **plain old data** class, which does not require 
 
 ### Copy Constructor
 
-Assignment in the body of the constructor
+The copy constructor is a special member function used to create a new object as a copy of an existing object. The copy constructor is responsible for performing a member-wise copy of each data member from the source object to the newly created object.
+
+The copy constructor defined below performs element-wise copy assignment in the constructor body.
+
 ```cpp
+// Copy constructor using copy assignment
 Rational::Rational(Rational const& other) {
   num = other.num;
   den = other.den;
 }
 ```
 
+As with other constructors, the preferred definition of the copy constructor uses member initializers to perform the member-wise copy.
+
 Using member initializers
 ```cpp
+// Copy constructor using member initializers
 Rational::Rational(Rational const& other) {
   : num{other.num}, den{other.den} { }
 ```
 
+The copy assignment operator is a special member function that assigns the contents of one object to another object of the same class. The operation differs from the copy constructor, in that the copy constructor is used to create a new object as a copy of an existing object during object initialization, while the copy assignment operator is used for assignming an existing object's contents to another object after both objects have already been initialized.
+
 ### Copy Assignment Operator
 
 ```cpp
+// Copy assignment operator
 Rational& Rational::operator=(Rational const& other) {
   num = other.num;
   den = other.den;
 }
 ```
+
+Once again, since the rational number class is a **plain old data** class, both the copy constructor and copy assignment operator may be defaulted, opting to use the compiler generated versions instead.
 
 
 ## Move Operations
