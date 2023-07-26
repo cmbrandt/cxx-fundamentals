@@ -86,8 +86,11 @@ private:
 
 # Member Functions
 
+In C++, member functions (also referred to as methods), are functions defined within a class and work with the class's data members (attributes). They serve as the primary means of interacting with the data encapsulated in the class and play a vital role in implementing the class's behavior and operations.
 
 ## Constructors
+
+A C++ constructor is a special member function within a class that is automatically called when an object of that class is created. The primary purpose of a constructor is to initialize the object's data members to specific values, ensuring that the object starts in a valid and consistent state. Constructors play a fundamental role in the process of object creation and are essential for proper memory allocation and initialization of object attributes.
 
 ### Default Constructor
 
