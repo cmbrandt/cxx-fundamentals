@@ -216,21 +216,33 @@ Once again, since the rational number class is a **plain old data** class, both 
 
 ## Move Operations
 
+C++ move operations allow for the efficient transfer of resources from one object to another. Comprising the move constructor and move assignment operator, they are essential for implementing move semantics and improving performance in situations where objects are temporary or about to be destructed.
+
 ### Move Constructor
 
+The move constructor initializes a new object by "stealing" the resources from the source object, leaving the source object in a valid but unspecified state. This enables faster object creation by avoiding expensive deep copying of resources and, instead, transferring ownership of the resources to the new object.
+
+The move constructor below is implemented using member initilizers to perform a member-wise move.
+
 ```cpp
+// Move constructor using member initializers
 Rational::Rational(Rational&& other)
   : num{std::move(other.num)} , den{std::move(other.den)} { }
 ```
 
+The move assignment operator assigns the contents of one object to another object, efficiently transferring resources from the source object to the target object. The member-wise move assignment operations avoid unnecessary duplication of resources for data members that provide move operations themselves.
+
 ### Move Assignment Operator
 ```cpp
+// Move assignment operator
 Rational& Rational::operator=(Rational&& other)
 {
   num = std::move(other.num);
   den = std::move(other.den);
 }
 ```
+
+Again, because the rational number class is a **plain old data** class, both the move constructor and move assignment operator may be defaulted, opting to use the compiler generated versions instead.
 
 
 ## Accessors and Mutators
