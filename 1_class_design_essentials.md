@@ -23,7 +23,7 @@ Below, we will explore the design and implementation of a rational number class.
 ### [Non-Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#non-member-functions-1)
 
 * Equality
-* Comparison
+* Ordering
 
 
 # Representation
@@ -299,7 +299,7 @@ constexpr bool operator!=(Rational const& lhs, Rational const& rhs)
 ```
 
 
-## Comparison
+## Ordering
 
 ```cpp
 bool operator<(Rational const& lhs, Rational const& rhs)
