@@ -2,7 +2,7 @@
 
 A C++ class is a user-defined data type that serves as a blueprint for creating objects. It encapsulates data members, which represent the state or characteristics of the objects, and member functions, defining the behavior or actions that can be performed on those objects. Classes enable code organization, data encapsulation, and code reusability in C++, allowing you to model real-world entities or abstract concepts and work with objects in a structured and intuitive manner.
 
-Below, we will explore the design and implementation of a rational number class. Mathematical abstractions are ideal for demonstrating C++ class design because they provide a straightforward and intuitive representation of data and behavior. We will begin with the design and representation of the class, then work through the implementation of all member and non-member functions, emphasizing idiomatic C++ design along the way.
+Below, we will explore the design and implementation of a rational number class. Mathematical abstractions are ideal for demonstrating C++ class design because they provide a straightforward and intuitive representation of data and behavior. We will begin with the high-level representation of the class, then work through the implementation of all member and non-member functions, emphasizing idiomatic C++ design along the way.
 
 ## Content
 
@@ -12,10 +12,9 @@ Below, we will explore the design and implementation of a rational number class.
 * Encapsulation
 * Functionality
 
-
 ### [Data Members](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#data-members-1)
 
-* Representation
+* Data Members
 * Invariants
 
 ### [Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#member-functions-1)
@@ -32,20 +31,17 @@ Below, we will explore the design and implementation of a rational number class.
 * Equality
 * Comparison
 
-### [Preliminaries](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#preliminaries-1)
 
-* Access Specifiers
-* Value Semantics
-* Semiregular and Regular Types
+# Rational Number Class
 
-
-
-# Preliminaries
-
-
-
+A rational number is expressed as the quotient of two numbers: `n/d` (numerator over denominator). Typical operations performed on rational numbers include basic arithmetic operations (addition, substraction, multiplication, and division), equality, distinction, and ordering.
 
 ## Data Members
+
+
+
+
+
 
 `struct` has default `public` access:
 ```cpp
@@ -64,12 +60,24 @@ public:
   int den;
 };
 ```
+
 ## Invariants
 
-* Unique representation for zero
-* Unique representation for 1
-* Consistent representation for negative values
-* 
+A class invariant is a condition or property that must always hold true for all instances of a class throughout its lifetime. They are established when an object is fully constructed, and must be preserved throughout any state change.
+
+Properties that exist for the set of all rational numbers include the following:
+* For all n, n/0 is undefined
+* For all m, n, it is the case that 0/m = 0/n
+* For all n and d it is the case that n/-d and -n/d
+* Note that 1/2 = 2/4 = 3/6 = 4/8
+
+To preserver these properties, the following class invariants can be established:
+* to prevent undefined values, `assert` when the denominator is set to zero
+* to provide a unique representation for zero, set d = 1 when n = 0
+* to provide a consistent representation for negative values, ensure that only the numerator may be negative
+* to ensure equality among equivalent values, always represent the object as a reduced fraction
+
+The properties can be captured by a private member function, and will be described later herein.
 
 
 # Member Functions
