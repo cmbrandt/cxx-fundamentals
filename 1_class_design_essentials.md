@@ -2,14 +2,16 @@
 
 A C++ class is a user-defined data type that serves as a blueprint for creating objects. It encapsulates data members, which represent the state or characteristics of the objects, and member functions, defining the behavior or actions that can be performed on those objects. Classes enable code organization, data encapsulation, and code reusability in C++, allowing you to model real-world entities or abstract concepts and work with objects in a structured and intuitive manner.
 
+Below, we will explore the design and implementation of a rational number class. Mathematical abstractions are ideal for demonstrating C++ class design because they provide a straightforward and intuitive representation of data and behavior. We will begin with the design and representation of the class, then work through the implementation of all member and non-member functions, emphasizing idiomatic C++ design along the way.
 
 ## Content
 
-### [Preliminaries](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#preliminaries-1)
+### [Rational Number Class]()
 
-* Access Specifiers
-* Value Semantics
-* Semiregular and Regular Types
+* Representation
+* Encapsulation
+* Functionality
+
 
 ### [Data Members](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#data-members-1)
 
@@ -30,7 +32,16 @@ A C++ class is a user-defined data type that serves as a blueprint for creating 
 * Equality
 * Comparison
 
+### [Preliminaries](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#preliminaries-1)
+
+* Access Specifiers
+* Value Semantics
+* Semiregular and Regular Types
+
+
+
 # Preliminaries
+
 
 
 
