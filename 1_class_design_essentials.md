@@ -230,9 +230,10 @@ Rational::Rational(Rational&& other)
   : num{std::move(other.num)} , den{std::move(other.den)} { }
 ```
 
+### Move Assignment Operator
+
 The move assignment operator assigns the contents of one object to another object, efficiently transferring resources from the source object to the target object. The member-wise move assignment operations avoid unnecessary duplication of resources for data members that provide move operations themselves.
 
-### Move Assignment Operator
 ```cpp
 // Move assignment operator
 Rational& Rational::operator=(Rational&& other)
