@@ -716,8 +716,6 @@ private:
 
 As was shown previously, when the resource is owned by `std::shared_ptr` the copy constructor and copy assignment operator may be defaulted as well. This effectively eliminates the need to explicitly define any of the move operations, copy operations, or destructor.
 
-This is what is referred to as the Rule of Zero.
-
 ```cpp
 // Ex 6: std::shared_ptr
 class Widget {
@@ -738,3 +736,4 @@ private:
 };
 ```
 
+This is referred to as the Rule of Zero.
