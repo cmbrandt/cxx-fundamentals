@@ -159,13 +159,15 @@ Rational::Rational(int n, int d) : num{n}, den{d} {
 
 ## Destructor
 
-Explicit default destructor
+
 ```cpp
+// Explicit default destructor
 ~Rational::Rational() { };
 ```
 
-Defaulted destructor
+
 ```cpp
+// Defaulted destructor
 ~Rational() = default;
 ```
 
