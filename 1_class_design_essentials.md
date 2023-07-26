@@ -58,7 +58,6 @@ User-defined types are declared using the keywords `class` and `struct`, which a
 
 The following two class definitions can be considered equivalent definitions:
 
-
 ```cpp
 // struct has default public access
 struct Rational {
@@ -94,8 +93,12 @@ A C++ constructor is a special member function within a class that is automatica
 
 ### Default Constructor
 
-Assignment:
+A default constructor is a constructor that accepts no arguments and is used to create objects of the class with default initial values for its data members. If no other constructor is explicitly defined for the class, the compiler will provide generate a default constructor for the class.
+
+The default constructor performs member-wise assignment for each data member.
+
 ```cpp
+// assignment
 class Rational {
 public:
   Rational() {
@@ -110,7 +113,9 @@ private:
 ```
 
 Member intializer list:
+
 ```cpp
+// member initializer list
 class Rational {
 public:
   Rational() : num{0}, den{1} { }
@@ -121,8 +126,10 @@ private:
 };
 ```
 
-In-class member initializer (with defaulted constructor):
+adsf das fasd fasd fa dsf
+
 ```cpp
+// in-class member initializer with defaulted constructor
 class Rational {
 public:
   Rational() = default;
