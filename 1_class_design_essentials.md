@@ -8,8 +8,8 @@ Below, we will explore the design and implementation of a rational number class.
 
 ### [Representation]()
 
-* Data Members
 * Invariants
+* Accessibility
 
 ### [Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#member-functions-1)
 
@@ -30,40 +30,15 @@ Below, we will explore the design and implementation of a rational number class.
 
 A rational number is expressed as the quotient of two numbers: `n/d` (numerator over denominator). Typical operations performed on rational numbers include basic arithmetic operations (addition, substraction, multiplication, and division), equality, distinction, and ordering.
 
-## Data Members
-
-
-
-
-
-
-`struct` has default `public` access:
-```cpp
-struct Rational {
-  int num;
-  int den;
-};
-```
-
-`class` has default `private` acces. The snippet below is equivalent to the snippet abovve. 
-Member intializer list:
-```cpp
-class Rational {
-public:
-  int num;
-  int den;
-};
-```
-
 ## Invariants
 
 A class invariant is a condition or property that must always hold true for all instances of a class throughout its lifetime. They are established when an object is fully constructed, and must be preserved throughout any state change.
 
 Properties that exist for the set of all rational numbers include the following:
-* For all $n$, $\frac{n}{0}$ is undefined
-* For all $m$, $n$, it is the case that $\frac{0}{m} = \frac{0}{n}$
-* For all $n$, $d$, it is the case that $\frac{n}{\text{-}d} = \frac{\text{-}n}{d}$
-* Note that $\frac{1}{2} = \frac{2}{4} = \frac{3}{6} = \frac{4}{8}$
+* for all $n$, $\frac{n}{0}$ is undefined
+* for all $m$, $n$, it is the case that $\frac{0}{m} = \frac{0}{n}$
+* for all $n$, $d$, it is the case that $\frac{n}{\text{-}d} = \frac{\text{-}n}{d}$
+* note that $\frac{1}{2} = \frac{2}{4} = \frac{3}{6} = \frac{4}{8}$
 
 To preserver these properties, the following class invariants can be established:
 * to prevent undefined values, `assert` when the denominator is set to zero
@@ -71,8 +46,43 @@ To preserver these properties, the following class invariants can be established
 * to provide a consistent representation for negative values, ensure that only the numerator may be negative
 * to ensure equality among equivalent values, always represent the object as a reduced fraction
 
-The properties can be captured by a private member function, and will be described later herein.
+These properties can be captured by a private member function, which will be described later herein.
 
+## Accessibililty
+
+Direct access to data members allows programmers to break invariants established by the constructor. The internal details of a class can be protected by changing the visibility of data members and member functions.
+
+C++ provides the following three access specifiers: `public`, `protected`, and `private`. Public members for a part of the public interface of a class, and are accessible anywhere. Protected members of a class are only accessible (1) to the members and friends of that class, and (2) to the members of any derived class of that class. Private members form the implementation of a class, and are only accessible to the members and friends of that class.
+
+User-defined types are declared using the keywords `class` and `struct`, which are identical except for the default member acess: `struct` is public by default, while `class` is private by default.
+
+The following two class definitions can be considered equivalent definitions:
+
+
+```cpp
+// struct has default public access
+struct Rational {
+  // Constructors
+  // Assignment operators
+  // Destructor
+private:
+  int num;
+  int den;
+};
+```
+
+```cpp
+// class has default private access
+class Rational {
+public:
+  // Constructors
+  // Assignment operators
+  // Destructor
+private:
+  int num;
+  int den;
+};
+```
 
 # Member Functions
 
