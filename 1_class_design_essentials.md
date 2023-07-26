@@ -159,12 +159,13 @@ Rational::Rational(int n, int d) : num{n}, den{d} {
 
 ## Destructor
 
+The destructor is responsible for cleaning up all resources associated with the class. The default destructor implementation has an empty body, as depicted below.
 
 ```cpp
 // Explicit default destructor
 ~Rational::Rational() { };
 ```
-
+The rational number class is a **plain old data** class, which does not require any special instructions for cleanup. As such, it may be defaulted.
 
 ```cpp
 // Defaulted destructor
