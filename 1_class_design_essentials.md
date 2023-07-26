@@ -142,13 +142,13 @@ private:
 
 ### Parameterized Constructors
 
-Constructing an instance using only a single integer value, the parameter is used to initialize `num`, while `den` is initialized to one using the default values provided to the in-class member initializers.
+Constructing an instance using only a single integer value, the parameter is used to initialize `num`, while `den` is initialized to one using the default values provided to the in-class member initializers, thereby preserving the invariants of the class and providing a representation that defaults to a reduced form.
 
 ```cpp
 explicit Rational::Rational(int n) : num{n} { }
 ```
 
-Using a pair of integers, both `num` and `dem` are initialized using a member initializer list. Within the constructor body, the private member function `normalize` is called, which will be discussed later.
+Using a pair of integers, both `num` and `dem` are initialized using a member initializer list. Since this function has the ability to overwrite both default values, the class invariants will need to be established during construction. Therefore, within the constructor body, the private member function `normalize` is called, which will be discussed later.
 
 
 ```cpp
