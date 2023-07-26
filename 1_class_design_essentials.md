@@ -112,7 +112,7 @@ private:
 };
 ```
 
-Member intializer list:
+Member-wise assignment in the body of the constuctor is inefficient because (...). Instead, prefer to use member initializer lists.
 
 ```cpp
 // member initializer list
@@ -126,7 +126,7 @@ private:
 };
 ```
 
-adsf das fasd fasd fa dsf
+Things can be simplified even further by using in-class initializers for defining default data member values. This also allows the default constructor to be defaulted by the compiler (defining it using `= default`).
 
 ```cpp
 // in-class member initializer with defaulted constructor
@@ -142,7 +142,7 @@ private:
 
 ### Parameterized Constructors
 
-Constructing an instance using only a single integer value, the parameter is used to initialize `num`, while `den` is initialized to one using the in-class member initializer.
+Constructing an instance using only a single integer value, the parameter is used to initialize `num`, while `den` is initialized to one using the default values provided to the in-class member initializers.
 
 ```cpp
 explicit Rational::Rational(int n) : num{n} { }
