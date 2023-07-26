@@ -6,13 +6,7 @@ Below, we will explore the design and implementation of a rational number class.
 
 ## Content
 
-### [Rational Number Class]()
-
-* Representation
-* Encapsulation
-* Functionality
-
-### [Data Members](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#data-members-1)
+### [Representation]()
 
 * Data Members
 * Invariants
