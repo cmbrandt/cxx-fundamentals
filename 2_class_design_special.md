@@ -87,7 +87,7 @@ In C++, the standard describes the default constructor for a class as a construc
 
 If a class has no other explicitly defined constructors, the compiler will implicitly declare and define a default constructor for it. This implicitly defined default constructor is (nearly) equivalent to an explicitly defined defined one (differing only in certain cases of initialization).
 
-```
+```cpp
 // Ex 1: Compiler-generated default constructor available
 class Widget {
 public:
@@ -100,7 +100,7 @@ Widget w2{}; // Ok! Compiler generated
 
 If constructors are explicitly defined for a class, but they are all non-default, the compiler will not implicitly define a default construcctor, leading to a situation where the class does not have a default constructor. This is the reason for a typical error, as demonstrated below.
 
-```
+```cpp
 // Ex 2: No compiler-generated default constructor available
 class Widget {
 public:
@@ -114,7 +114,7 @@ Widget w2{}; // Error! No default constructor
 
 A compiler generated default constructor will be defined as deleted if any class members aren't default-constructable. For example, all members of class type (and their class type members) must have a default constructor and destructors that are accessible.
 
-```
+```cpp
 // Ex 3: No compiler-generated default constructor available
 class Widget {
 public:
@@ -133,7 +133,7 @@ The task of the compiler generated default constructor is to initialize an insta
 
 In the example below, `int` is representative of a fundamental type, `std::string` is representative of a class type, and the pointer the class type `Resource` is treated by the compiler as a fundamental type. Using default initialization, we see that the `std::string` is initialized (to an empty string), while the `int` and the pointer are uninitialized.
 
-```
+```cpp
 // Ex 1: Default initialization
 struct Widget {
   int idx;         // Uninitialized
@@ -146,7 +146,7 @@ Widget w;          // Default initialization using the default ctor
 
 Value initialization chanages the [fundamental] behavior of the class, value initializing every fundamental type and default constructing each class type. Still using the compiler generated default constructor below, the `int` is initialized to zero, the `std::string` remains an empty string, and the pointer is initialized to `nullptr`.
 
-```
+```cpp
 // Ex 2: Value initialization
 struct Widget {
   int idx;         // Initialized to 0
@@ -159,7 +159,7 @@ Widget w{};        // Value initialization using the default ctor
 
 By providing an explicit default constructor, the default constructor becomes responsible for initializing all data members of the class. Therefore, an empty default constructor will default initialize all data member of class type, but will not initialize the data members of fundamental type.
 
-```
+```cpp
 // Ex 3: Explicit empty default constructor with value initialization
 struct Widget {
   Widget() { }     // Explicit empty default constructor
@@ -174,7 +174,7 @@ Widget w{};        // Value initialization with explicit empty default ctor
 
 A better option is to ask the compiler to generate the default constuctor by declaring it with `= default`. In doing so, fundamental type data members are value initialized and class type data members are default initialized. Asking for the compiler generated default constructor using `= default` may also provide bonus effects (e.g., `noexcept`).
 
-```
+```cpp
 // Ex 4: Defaulted constructor with value initialization
 struct Widget {
   Widget() = default; // Defaulted consructor
@@ -200,7 +200,7 @@ When a destructor is not explicitly declared or defined, the compiler will provi
 
 The default constructor consists of an empty body, meaning it does not contain any explicit code. In the example below, the compiler generated default destructor calls the destructor for the `std::string` data member, and performs no action on the `int` data member.
 
-```
+```cpp
 // Ex 1: Compiler-generated destructor available
 class Widget {
 public:
@@ -214,7 +214,7 @@ private:
 
 When a destructor is explicitly declared but not defined, the compiler will provide a default destructor for the class.
 
-```
+```cpp
 // Ex 2: Explicit declaration of destructor
 class Widget {
 public:
@@ -231,7 +231,7 @@ private:
 
 In the example below, the `Resource` pointer could be either owning or non-owning. The default destructor (either compiler generator or explicitly defined) performs no action on the pointer, which could lead to a resource leak.
 
-```
+```cpp
 // Ex 3: Explicit defintion of default destructor
 class Widget {
 public:
@@ -252,7 +252,7 @@ For this case, a custom destructor will be required to prevent a potential resou
 
 After exiting the body of the destructor, the destructor for the `std::string` data member is called, and no action is performed on the `int` data member.
 
-```
+```cpp
 // Ex 4: Explicit defintion of destructor to delete pointer
 class Widget {
 public:
@@ -284,7 +284,7 @@ Below is the compiler-generated copy constructor and copy assignment operator. B
 
 Note that we have included a manual destructor to to delete our resource, per our examples above.
 
-```
+```cpp
 // Ex 1: Compiiler generated
 class Widget {
 public:
@@ -321,7 +321,7 @@ To improve upon this implementation, both the copy constructor and the copy assi
 
 In the copy assignment operator, before creating the deep copy to assign to the member pointer, the existing resource must be deleted before the assignment to ensure the existing resource is not leaked. This poses a problem in the case of self-assignment, where the object is copy assigned to itself. If the copy assignment operator attempts to copy the deleted resource, undefined behavior occurs and the program becomes invalid.
 
-```
+```cpp
 // Ex 2: Manual implementation
 class Widget {
   // Copy constructor
@@ -358,7 +358,7 @@ The copy assignment operator utilizes the copy-and-swap idiom. Initially, the pa
 
 The `swap` member function itself performs a member-wise swap for each data member. By bringing `std::swap` into scope, argument-dependent lookup (ADL) enables the appropriate implementation of `swap` for each data member, ensuring the most efficient swapping of the underlying data.
 
-```
+```cpp
 // Ex 3: Copy-and-swap implementation
 class Widget {
 public:
@@ -401,7 +401,7 @@ If both `Widget` objects, `this` and `other`, have valid pointers, then each mem
 
 However, if one of pointers is not valid, then the `else` branch will use the copy-and-swap idiom.
 
-```
+```cpp
 // Ex 4: Optimized implementation
 class Widget {
   // Copy constructor
@@ -448,7 +448,7 @@ Note that we have been working with the Rule of Three, explicitly defining the d
 
 Per the C++ Core Guidelines, classes should not have owning pointers as data members. By switching ownership of the resource from a raw pointer to a `std::unique_ptr`, the class no longer need to worry about cleanup and the destructor can be defaulted. The copy operations must still be explicitly defined, since `std::unique_ptr` itself cannot be copied.
 
-```
+```cpp
 // Ex 5: std::unique_ptr implementation
 class Widget {
 public:
@@ -496,7 +496,7 @@ Another option for managing the resouce is to use `std::shared_ptr`. Note that t
 
 However, by using `std::shared_ptr` to own the resource, the copy constructor and copy assignment operator may be defaulted as well.
 
-```
+```cpp
 // Ex 6: std::shared_ptr implementation
 class Widget {
 public:
@@ -535,7 +535,7 @@ Furthermore, in scenarios where an existing object is no longer needed and a new
 * member-wise move
 * included a manual destructor
 
-```
+```cpp
 // Ex 1: Compiler generated
 class Widget {
 public:
@@ -573,7 +573,7 @@ private:
 [move assignment deletes the existing resource before move assigning]
 [still a problem for self assignment]
 
-```
+```cpp
 // Ex 2: Manual implementation
 class Widget {
 public:
@@ -610,7 +610,7 @@ private:
 [safe against self-assignment]
 [not optimal performance]
 
-```
+```cpp
 // Ex 3: Temporary-swap idiom
 class Widget {
 public:
@@ -650,7 +650,7 @@ private:
 [extend the manual implementation by setting the other resource to nullptr]
 [
 
-```
+```cpp
 // Ex 4: Optimized implementation
 class Widget {
 public:
@@ -692,7 +692,7 @@ private:
 
 
 
-```
+```cpp
 // Ex 5: std::unique_ptr
 class Widget {
 public:
@@ -715,7 +715,7 @@ private:
 ## std::shared_ptr Implementation
 
 
-```
+```cpp
 // Ex 6: std::shared_ptr
 class Widget {
 public:
