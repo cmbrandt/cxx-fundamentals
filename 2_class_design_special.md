@@ -280,7 +280,7 @@ The compiler generates copy operations if (1) they are not explicitly declared, 
 
 ## Compiler Generated
 
-Below is the compiler-generated copy constructor and copy assignment operator. Both operations accept a `Widget` by reference-to-const` and perform a member-wise copy operation. This is a very basic way to generate the operations, and works well for most types. However, the element-wise copy operation performs a shallow copy on the resource, meaning that the pointer is copied rather than copying the underlying object.
+Below is the compiler-generated copy constructor and copy assignment operator. Both operations accept a `Widget` by reference-to-const and perform a member-wise copy operation. This is a very basic way to generate the operations, and works well for most types. However, the element-wise copy operation performs a shallow copy on the resource, meaning that the pointer is copied rather than copying the underlying object.
 
 Note that we have included a manual destructor to to delete our resource, per our examples above.
 
@@ -527,13 +527,13 @@ Copy and move operations can be regarded as separate behaviors with distinct per
 
 Furthermore, in scenarios where an existing object is no longer needed and a new object is being constructed, move construction can be significantly faster than copy construction, though its performance may vary depending on the object's type. Thus, move operations can be seen as an optimized form of copy, enhancing efficiency in specific contexts.
 
-[when the compiler generates default move operations]
+The compiler will provide default move operations if (1) they are not explicitly declared, (2) move copy operation is declared, and (3) no destructor is declared, and (4) all base classes and data members can be move constructed and move assigned. In the case that any of those conditions are not met, the compiler will explicitly delete the move operations altogether.
 
 ## Compiler Generated
 
-[below is the compiler-generator move operations]
-* member-wise move
-* included a manual destructor
+Below is the compiler generated move constructor and move assignment operator. Both operations accept an rvalue reference to a non-const `Widget` and perform a member-wise move operation. This basic operation works well for most types; however, the shallow copy on the resource will prove to be problematic.
+
+A manual destructor to delete the resource is included, inline with the examples above.
 
 ```cpp
 // Ex 1: Compiler generated
@@ -564,14 +564,11 @@ private:
 };
 ```
 
-[shallow copy on resource, same problem we saw previously]
-[still undefined behavior]
+An similar observation about the default move operations can be made about the default copy operations. The shallow copy of the resource will lead to the destructor of each instance calling delete on the same pointer, again leading to undefined behavior.
 
 ## Manual Implementation
 
-[cleaned up by exchanging resources]
-[move assignment deletes the existing resource before move assigning]
-[still a problem for self assignment]
+These issues can be resolved in both operations by exchanging the existing resource (along with deleting the original resource in the move assignment operator). However, this implementation of the move assignment operator is still not safe for the case of self-assignment.
 
 ```cpp
 // Ex 2: Manual implementation
@@ -602,13 +599,14 @@ private:
   Resource* ptr{};
 };
 ```
-[
+
+By calling delete on `ptr` and deallocating the memory associated with it, then assigning it to the value of `other.ptr` ... dangling pointer.
+
 
 
 ## Temporary Swap Implementation
 
-[safe against self-assignment]
-[not optimal performance]
+The temporary swap idiom implementation for the move assignment operator is safe against self-assignment. However, this implementation does not have optimal performance.
 
 ```cpp
 // Ex 3: Temporary-swap idiom
@@ -647,8 +645,7 @@ private:
 
 ## Optimized Implementation
 
-[extend the manual implementation by setting the other resource to nullptr]
-[
+To provide a move assignment operation that has optimal performance and is safe against self-assignment, the exchange operation is replaced with a new set of operations to alleviate the dangling pointer. 
 
 ```cpp
 // Ex 4: Optimized implementation
@@ -687,10 +684,13 @@ private:
 };
 ```
 
+Even though this implementation may not be preferred by some since it calls delete outside of the destructor, it is both safe against self-assignment and optimized for performance.
+
+Note that for this implementation, we have provided a manual destructor with optimized move operations and optimized copy operations. This is what we refer to as the Rule of Five.
 
 ## std::unique_ptr Implementation
 
-
+By shifting ownership of the resource from a raw pointer to a `std::unique_ptr`, the manual destructor is no longer necessary (since the unique_ptr takes care of deleting things). Additionally, `std::unique_ptr` implements both move operations, so the move constructor and move assignment operator can now be defaulted along with the destructor.
 
 ```cpp
 // Ex 5: std::unique_ptr
@@ -714,6 +714,9 @@ private:
 
 ## std::shared_ptr Implementation
 
+As was shown previously, when the resource is owned by `std::shared_ptr` the copy constructor and copy assignment operator may be defaulted as well. This effectively eliminates the need to explicitly define any of the move operations, copy operations, or destructor.
+
+This is what is referred to as the Rule of Zero.
 
 ```cpp
 // Ex 6: std::shared_ptr
