@@ -152,7 +152,8 @@ Using a pair of integers, both `num` and `dem` are initialized using a member in
 
 
 ```cpp
-Rational::Rational(int n, int d) : num{n}, den{d} {
+Rational::Rational(int n, int d) : num{n}, den{d}
+{
   normalize(); // private implementation function
 }
 ```
@@ -182,7 +183,8 @@ The copy constructor is responsible for performing a member-wise copy of each da
 
 ```cpp
 // Copy constructor using copy assignment
-Rational::Rational(Rational const& other) {
+Rational::Rational(Rational const& other)
+{
   num = other.num;
   den = other.den;
 }
@@ -192,7 +194,7 @@ As with other constructors, the preferred definition of the copy constructor use
 
 ```cpp
 // Copy constructor using member initializers
-Rational::Rational(Rational const& other) {
+Rational::Rational(Rational const& other)
   : num{other.num}, den{other.den} { }
 ```
 
@@ -202,7 +204,8 @@ The operation differs from the copy constructor, in that the copy constructor is
 
 ```cpp
 // Copy assignment operator
-Rational& Rational::operator=(Rational const& other) {
+Rational& Rational::operator=(Rational const& other)
+{
   num = other.num;
   den = other.den;
 }
@@ -216,13 +219,14 @@ Once again, since the rational number class is a **plain old data** class, both 
 ### Move Constructor
 
 ```cpp
-Rational::Rational(Rational&& other) {
-: num{std::move(other.num)} , den{std::move(other.den)} { }
+Rational::Rational(Rational&& other)
+  : num{std::move(other.num)} , den{std::move(other.den)} { }
 ```
 
 ### Move Assignment Operator
 ```cpp
-Rational& Rational::operator=(Rational&& other) {
+Rational& Rational::operator=(Rational&& other)
+{
   num = std::move(other.num);
   den = std::move(other.den);
 }
@@ -251,7 +255,8 @@ void Rational::set_den(int d) { den = d; }
 ### Greatest Common Factor
 
 ```cpp
-int Rational::gcf() {
+int Rational::gcf()
+{
   int a = std::abs(num);
   int b = den;
   int tmp{};
@@ -268,7 +273,8 @@ int Rational::gcf() {
 ### Normalize
 
 ```cpp
-void Rational::normalize() {
+void Rational::normalize()
+{
   // Denominator cannot be zero
   assert(den != 0);
   
@@ -289,6 +295,7 @@ void Rational::normalize() {
 ```
 
 Note: we need to update the implementation of the following functions to include a call to the normalize member function: parameterized constructors and mutators. All other member functions will preserver the previously established class invariants.
+
 
 
 # Non-Member Functions
