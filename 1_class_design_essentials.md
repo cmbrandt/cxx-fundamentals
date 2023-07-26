@@ -26,7 +26,7 @@ Below, we will explore the design and implementation of a rational number class.
 * Comparison
 
 
-# Rational Number Class
+# Representation
 
 A rational number is expressed as the quotient of two numbers: `n/d` (numerator over denominator). Typical operations performed on rational numbers include basic arithmetic operations (addition, substraction, multiplication, and division), equality, distinction, and ordering.
 
@@ -60,14 +60,14 @@ public:
 A class invariant is a condition or property that must always hold true for all instances of a class throughout its lifetime. They are established when an object is fully constructed, and must be preserved throughout any state change.
 
 Properties that exist for the set of all rational numbers include the following:
-* For all n, n/0 is undefined
-* For all m, n, it is the case that 0/m = 0/n
-* For all n and d it is the case that n/-d and -n/d
-* Note that 1/2 = 2/4 = 3/6 = 4/8
+* For all $n$, $\frac{n}{0}$ is undefined
+* For all $m$, $n$, it is the case that $\frac{0}{m} = \frac{0}{n}$
+* For all $n$ and $d$ it is the case that $\frac{n}{\text{-}d} = \frac{\text{-}n}{d}$
+* Note that $\frac{1}{2} = \frac{2}{4} = \frac{3}{6} = \frac{4}{8}$
 
 To preserver these properties, the following class invariants can be established:
 * to prevent undefined values, `assert` when the denominator is set to zero
-* to provide a unique representation for zero, set d = 1 when n = 0
+* to provide a unique representation for zero, set the denominator to zero when the numerator is set to one
 * to provide a consistent representation for negative values, ensure that only the numerator may be negative
 * to ensure equality among equivalent values, always represent the object as a reduced fraction
 
