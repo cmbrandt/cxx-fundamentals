@@ -61,7 +61,7 @@ A class invariant is a condition or property that must always hold true for all 
 
 Properties that exist for the set of all rational numbers include the following:
 * For all $n$, $\frac{n}{0}$ is undefined
-* For all $m$, $n$, it is the case that$\frac{0}{m} = \frac{0}{n}$
+* For all $m$, $n$, it is the case that $\frac{0}{m} = \frac{0}{n}$
 * For all $n$, $d$, it is the case that $\frac{n}{\text{-}d} = \frac{\text{-}n}{d}$
 * Note that $\frac{1}{2} = \frac{2}{4} = \frac{3}{6} = \frac{4}{8}$
 
