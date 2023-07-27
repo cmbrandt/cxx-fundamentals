@@ -17,11 +17,11 @@ The material is intended for early career engineers, developers new to the C++ l
 
 ## [Class Design: Special Member Functions](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_class_design_special.md)
 
+* Rule of Three/Five/Zero
 * Default Constructor
 * Destructor
 * Copy Operations
 * Move Operations
-* Rule of Zero/Five
 
 ## [Class Design: Hierarchies](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/3_class_design_hierarchies.md)
 
@@ -48,7 +48,7 @@ The material is intended for early career engineers, developers new to the C++ l
 ## [Modern Idioms](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/6_modern_idioms.md)
 
 * Curiously Recurring Template Pattern (CRTP)
-* Mixin
+* Mixins
 * Type Erasure
 * Overload Pattern
 
