@@ -1,5 +1,3 @@
-// https://godbolt.org/z/oEMrds1Yd
-
 // VERSION #5
 // STD::UNIQUE_PTR
 

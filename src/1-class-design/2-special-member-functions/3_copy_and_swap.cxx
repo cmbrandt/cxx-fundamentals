@@ -1,5 +1,3 @@
-// https://godbolt.org/z/17sjaeE7K
-
 // VERSION #3
 // COPY-AND-SWAP
 

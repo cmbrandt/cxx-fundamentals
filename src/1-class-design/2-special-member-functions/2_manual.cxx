@@ -1,5 +1,3 @@
-// https://godbolt.org/z/EGrMar8so
-
 // VERSION #2
 // MANUAL IMPLEMENTATION
 

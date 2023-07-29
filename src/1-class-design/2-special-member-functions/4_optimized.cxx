@@ -1,5 +1,3 @@
-// https://godbolt.org/z/P7Tc3bE4K
-
 // VERSION #4
 // OPTIMIZED
 

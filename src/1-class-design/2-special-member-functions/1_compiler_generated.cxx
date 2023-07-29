@@ -1,5 +1,3 @@
-// https://godbolt.org/z/1x6eEW8rG
-
 // VERSION #1
 // COMPILER GENERATED
 

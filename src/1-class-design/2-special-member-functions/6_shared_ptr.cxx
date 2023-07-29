@@ -1,5 +1,3 @@
-// https://godbolt.org/z/hc1sYTMGx
-
 // VERSION #6
 // STD::SHARED_PTR
 
