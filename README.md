@@ -31,13 +31,20 @@ The material is intended for early career engineers, developers new to the C++ l
 * Polymorphism
 * Accessing Objects in a Hierarchy
 
-## [4. Gang of Four (GoF) Design Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/4_design_patterns.md)
+## [4. Gang of Four (GoF) Design Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/4_gof_design_patterns.md)
 
 * Creational Patterns
 * Structural Patterns
 * Behavioral Patterns
 
-## [5. Classic Idioms](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/5_classic_idioms.md)
+## [5. Templates](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/5_templates.md)
+
+* 1
+* 2
+* 3
+* 4
+
+## [6. Classic Idioms](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/6_classic_idioms.md)
 
 * Resource Acquisition is Initialization (RAII)
 * Pointer to Implementation (Pimpl)
@@ -45,21 +52,21 @@ The material is intended for early career engineers, developers new to the C++ l
 * Substitution Failure Is Not an Error (SFINAE)
 * Tag Dispatch
 
-## [6. Modern Idioms](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/6_modern_idioms.md)
+## [7. Modern Idioms](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/7_modern_idioms.md)
 
 * Curiously Recurring Template Pattern (CRTP)
 * Mixins
 * Type Erasure
 * Overload Pattern
 
-## [7. Generic Programming](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/7_generic_programming.md)
+## [8. Generic Programming](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/8_generic_programming.md)
 
 * Preliminaries
 * Type Traits
 * Concepts
 * Translating Object-Oriented to Generics
 
-## [8. Scientific Computing](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/8_scientific_computing.md)
+## [9. Scientific Computing](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/9_scientific_computing.md)
 
 * Vectorization
 * Parallelism
