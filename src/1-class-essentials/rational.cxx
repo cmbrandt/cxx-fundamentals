@@ -10,7 +10,8 @@ public:
   Rational(int n, int d) : num{n}, den {d} { normalize(); }
 
   // Copy constructor
-  Rational(Rational const& other) : num{other.num}, den{other.den} { }
+  Rational(Rational const& other)
+    : num{other.num}, den{other.den} { }
 
   // Copy assignment operator
   Rational& operator=(Rational const& other)
@@ -22,7 +23,7 @@ public:
 
   // Move constructor
   Rational(Rational&& other)
-  : num{std::move(other.num)}, den{std::move(other.den)} { }
+    : num{std::move(other.num)}, den{std::move(other.den)} { }
 
   // Move assignment operator
   Rational& operator=(Rational&& other)
@@ -32,35 +33,57 @@ public:
     return *this;
   }
 
+  // Accessors
   int get_num() const { return num; }
   int get_den() const { return den; }
 
+  // Mutators
   void set_num(int n) { num = n; }
   void set_den(int d) { den = d; }
 
+  // Arithmetic
+  Rational& operator+=(Rational const& other);
+
 private:
-  int gcf() const;
+  int gcd(int a, int b) const;
+  int lcm(int a, int b) const;
+  void reduce();
   void normalize();
 
   int num{0};
   int den{1};
 };
 
-int Rational::gcf() const {
-  int n = std::abs(num);
-  int d = den;
-  int temp;
+//----------------------------------------------------------------//
+// Member functions
 
-  while (d != 0) {
-    temp = n % d;
-    n = d;
-    d = temp;
+inline int Rational::gcd(int a, int b) const
+{
+  int n = std::abs(a);
+
+  while (b != 0) {
+    int temp = n % b;
+    n = b;
+    b = temp;
   }
 
   return n;
 }
 
-void Rational::normalize() {
+inline int Rational::lcm(int a, int b) const
+{
+  return  (a * b) / gcd(a, b);
+}
+
+inline void Rational::reduce()
+{
+  int n = Rational::gcd(num, den);
+  num = num / n;
+  den = den / n;
+}
+
+inline void Rational::normalize()
+{
   // Denominator cannot equal zero
   assert(den != 0);
   // Unique representation for zero
@@ -72,25 +95,46 @@ void Rational::normalize() {
     den = -den;
   }
   // Reduce
-  int n = Rational::gcf();
-  num = num / n;
-  den = den / n;
+  reduce();
 }
 
-bool operator==(Rational const& r1, Rational const& r2) {
+inline Rational& Rational::operator+=(Rational const& other)
+{
+  num = num * other.den + other.num * den;
+  den = den * other.den;
+  reduce();
+  return *this;
+}
+
+//----------------------------------------------------------------//
+// Non-Member functions
+
+// Arithmetic
+Rational operator+(Rational const& r1, Rational const& r2)
+{
+  Rational temp{r1};
+  return temp += r2;
+}
+
+// Equality
+bool operator==(Rational const& r1, Rational const& r2)
+{
   int n1 = r1.get_num();
   int d1 = r1.get_den();
   int n2 = r2.get_num();
   int d2 = r2.get_den();
 
-  return (n1*d2) == (d1*n2);
+  return (n1*d2) == (n2*d1);
 }
 
-bool operator!=(Rational const& r1, Rational const& r2) {
+bool operator!=(Rational const& r1, Rational const& r2)
+{
   return !operator==(r1, r2);
 }
 
-bool operator<(Rational const& r1, Rational const& r2) {
+// Ordering
+bool operator<(Rational const& r1, Rational const& r2)
+{
   int    n1 = r1.get_num();
   int    n2 = r2.get_num();
   double d1 = r1.get_den();
@@ -99,19 +143,23 @@ bool operator<(Rational const& r1, Rational const& r2) {
   return (n1/d2) < (n2/d1);
 }
 
-bool operator>(Rational const& r1, Rational const& r2) {
-  return operator<(r2, r1);
+bool operator>(Rational const& r1, Rational const& r2)
+{
+  return (r2 < r1);
 }
 
-bool operator<=(Rational const& r1, Rational const& r2) {
-  return !operator>(r1, r2);
+bool operator<=(Rational const& r1, Rational const& r2)
+{
+  return !(r1 > r2);
 }
 
-bool operator>=(Rational const& r1, Rational const& r2) {
-  return !operator<(r1, r2);
+bool operator>=(Rational const& r1, Rational const& r2)
+{
+  return !(r1 < r2);
 }
 
-void print_rational(std::string_view sv, Rational const& r) {
+void print_rational(std::string_view sv, Rational const& r)
+{
   std::cout << sv
             << "\nr.num = " << r.get_num()
             << "\nr.den = " << r.get_den() << std::endl;
@@ -140,6 +188,16 @@ int main()
   Rational r7 = std::move(r4);
   print_rational("\nMove assignment operator", r7);         // = 1/2
 
+
+  Rational a1{-2, 7};
+  Rational a2{4, 2};
+  a1 += a2;
+  print_rational("\nMember addition", a1);     // = 12/7
+
+  Rational a3{-2, 7};
+  Rational a4{4, 2};
+  Rational a5 = a3 + a4;
+  print_rational("\nNon-Member addition", a5); // = 12/7
 
   Rational c1{-1, 2};
   Rational c2{2, -4};
