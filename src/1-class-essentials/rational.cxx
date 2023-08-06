@@ -54,7 +54,7 @@ private:
   int den{1};
 };
 
-//----------------------------------------------------------------//
+//
 // Member functions
 
 inline int Rational::gcd(int a, int b) const
@@ -106,7 +106,7 @@ inline Rational& Rational::operator+=(Rational const& other)
   return *this;
 }
 
-//----------------------------------------------------------------//
+//
 // Non-Member functions
 
 // Arithmetic
@@ -190,14 +190,15 @@ int main()
 
 
   Rational a1{-2, 7};
-  Rational a2{4, 2};
+  Rational a2{4, -2};
   a1 += a2;
-  print_rational("\nMember addition", a1);     // = 12/7
+  print_rational("\nMember addition", a1);     // = -16/7
 
   Rational a3{-2, 7};
-  Rational a4{4, 2};
+  Rational a4{4, -2};
   Rational a5 = a3 + a4;
-  print_rational("\nNon-Member addition", a5); // = 12/7
+  print_rational("\nNon-Member addition", a5); // = -16/7
+
 
   Rational c1{-1, 2};
   Rational c2{2, -4};
