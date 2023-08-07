@@ -373,6 +373,8 @@ Rational operator+(Rational const& lhs, Rational const& rhs)
 
 ## Equality
 
+Equality performs member-wise equality comparisons.
+
 ```cpp
 // Equality
 bool operator==(Rational const& lhs, Rational const& rhs)
@@ -382,7 +384,9 @@ bool operator==(Rational const& lhs, Rational const& rhs)
 }
 ```
 
-```
+Distinction is defined in terms of equality.
+
+```cpp
 // Distinction
 bool operator!=(Rational const& lhs, Rational const& rhs)
 {
@@ -391,6 +395,8 @@ bool operator!=(Rational const& lhs, Rational const& rhs)
 ```
 
 ## Ordering
+
+Operator less-than uses an identity...
 
 ```cpp
 // Less-than
@@ -405,6 +411,7 @@ bool operator<(Rational const& lhs, Rational const& rhs)
 }
 ```
 
+Operator greater-than is defined in terms of operator less-than.
 ```cpp
 // Greater-than
 bool operator>(Rational const& lhs, Rational const& rhs)
@@ -413,15 +420,15 @@ bool operator>(Rational const& lhs, Rational const& rhs)
 }
 ```
 
+Less-or-equal and greater-or-equal are defined in terms of less-than and greater-than.
+
 ```cpp
 // Less-or-equal
 bool operator<=(Rational const& lhs, Rational const& rhs)
 {
   return not(lhs > rhs);
 }
-```
 
-```cpp
 // Greater-or-equal
 bool operator>=(Rational const& lhs, Rational const& rhs)
 {
