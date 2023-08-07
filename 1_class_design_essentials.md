@@ -321,13 +321,15 @@ Again, because the rational number class is a **plain old data** class, both the
 ### Accessors
 
 ```cpp
-// Explicit this
-int Rational::get_num() const { return this->num; }
-int Rational::get_den() const { return this->den; }
+int Rational::get_num() const
+{
+  return num;
+}
 
-// Implicit this
-int Rational::get_num() const { return num; }
-int Rational::get_den() const { return den; }
+int Rational::get_den() const
+{
+  return den;
+}
 ```
 
 ### Mutators
