@@ -164,7 +164,7 @@ Rational::Rational(int n, int d) : num{n}, den{d}
 ### Greatest Common Denominator
 
 ```cpp
-inline int Rational::gcd(int a, int b) const
+int Rational::gcd(int a, int b) const
 {
   int n = std::abs(a);
   while (b != 0) {
@@ -179,7 +179,7 @@ inline int Rational::gcd(int a, int b) const
 ### Least Common Multiple
 
 ```cpp
-inline int Rational::lcm(int a, int b) const
+int Rational::lcm(int a, int b) const
 {
   return  (a * b) / gcd(a, b);
 }
@@ -189,7 +189,7 @@ inline int Rational::lcm(int a, int b) const
 
 ```cpp
 // Explicit this
-inline void Rational::reduce()
+void Rational::reduce()
 {
   int n = Rational::gcd(this->num, this->den);
   this->num = this->num / n;
@@ -197,7 +197,7 @@ inline void Rational::reduce()
 }
 
 // Implicit this
-inline void Rational::reduce()
+void Rational::reduce()
 {
   int n = Rational::gcd(num, den);
   num = num / n;
@@ -208,7 +208,7 @@ inline void Rational::reduce()
 ### Normalize
 
 ```cpp
-inline void Rational::normalize()
+void Rational::normalize()
 {
   // Denominator cannot equal zero
   assert(den != 0);
@@ -351,7 +351,7 @@ void Rational::set_den(int d)
 
 ```cpp
 // Member addition
-inline Rational& Rational::operator+=(Rational const& other)
+Rational& Rational::operator+=(Rational const& other)
 {
   num = num * other.den + other.num * den;
   den = den * other.den;
@@ -390,7 +390,7 @@ constexpr bool operator!=(Rational const& lhs, Rational const& rhs)
 ## Ordering
 
 ```cpp
-bool operator<(Rational const& lhs, Rational const& rhs)
+constexpr bool operator<(Rational const& lhs, Rational const& rhs)
 {
   int    a = lhs.get_num();
   int    c = rhs.get_num();
