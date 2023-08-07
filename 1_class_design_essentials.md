@@ -376,51 +376,58 @@ Rational operator+(Rational const& lhs, Rational const& rhs)
 ## Equality
 
 ```cpp
-constexpr bool operator==(Rational const& lhs, Rational const& rhs)
+// Equality
+bool operator==(Rational const& lhs, Rational const& rhs)
 {
-  return (lhs.num == rhs.num) and (lhs.den == rhs.den);
+  return lhs.get_num() == rhs.get_num()
+     and lhs.get_den() == rhs.get_den();
 }
 ```
 
 ```
-constexpr bool operator!=(Rational const& lhs, Rational const& rhs)
+// Distinction
+bool operator!=(Rational const& lhs, Rational const& rhs)
 {
-  return !operator==(lhs, rhs);
+  return not(lhs == rhs);
 }
 ```
 
 ## Ordering
 
 ```cpp
-constexpr bool operator<(Rational const& lhs, Rational const& rhs)
+// Less than
+bool operator<(Rational const& lhs, Rational const& rhs)
 {
-  int    a = lhs.get_num();
-  int    c = rhs.get_num();
-  double b = lhs.get_den();
-  double d = rhs.get_den();
+  int    n1 = lhs.get_num();
+  int    n2 = rhs.get_num();
+  double d1 = lhs.get_den();
+  double d2 = rhs.get_den();
 
-  return (a/b) < (c/d);
+  return (n1/d2) < (n2/d1);
 }
 ```
 
 ```cpp
-constexpr bool operator>(Rational const& lhs, Rational const& rhs)
+// Greater than
+bool operator>(Rational const& lhs, Rational const& rhs)
 {
-  return operator<(rhs, lhs);
+  return (lhs < rhs);
 }
 ```
 
 ```cpp
-constexpr bool operator<=(Rational const& lhs, Rational const& rhs)
+// Less than or equal to
+bool operator<=(Rational const& lhs, Rational const& rhs)
 {
-  return !operator>(lhs, rhs);
+  return not(lhs > rhs);
 }
 ```
 
 ```cpp
-constexpr bool operator>=(Rational const& lhs, Rational const& rhs)
+// Greater than or equal to
+bool operator>=(Rational const& lhs, Rational const& rhs)
 {
-  return !operator<(lhs, rhs);
+  return not(lhs < rhs);
 }
 ```
 
