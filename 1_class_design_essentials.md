@@ -18,8 +18,7 @@ Below, we will explore the design and implementation of a rational number class.
 * Destructor
 * Copy Operations
 * Move Operations
-* Accessors and Mutators
-* Arithmetic
+* Public Functions
 
 ### [Non-Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#non-member-functions-1)
 
@@ -316,7 +315,7 @@ Rational& Rational::operator=(Rational&& other)
 Again, because the rational number class is a **plain old data** class, both the move constructor and move assignment operator may be defaulted, opting to use the compiler generated versions instead.
 
 
-## Accessors and Mutators
+## Public Functions
 
 ### Accessors
 
