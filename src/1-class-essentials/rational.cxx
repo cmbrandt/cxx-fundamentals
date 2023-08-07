@@ -96,6 +96,7 @@ void Rational::normalize()
     num = -num;
     den = -den;
   }
+  // Reduced form
   reduce();
 }
 
