@@ -251,6 +251,11 @@ Again, because the rational number class is a **plain old data** class, both the
 ### Accessors
 
 ```cpp
+// Explicit this
+int Rational::get_num() const { return this->num; }
+int Rational::get_den() const { return this->den; }
+
+// Implicit this
 int Rational::get_num() const { return num; }
 int Rational::get_den() const { return den; }
 ```
@@ -263,6 +268,7 @@ void Rational::set_num(int n)
   num = n;
   reduce();
 }
+
 void Rational::set_den(int d)
 {
   den = d;
