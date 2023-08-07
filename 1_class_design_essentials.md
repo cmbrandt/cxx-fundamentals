@@ -192,7 +192,7 @@ inline int Rational::lcm(int a, int b) const
 // Explicit this
 inline void Rational::reduce()
 {
-  int n = Rational::gcd(num, den);
+  int n = Rational::gcd(this->num, this->den);
   this->num = this->num / n;
   this->den = this->den / n;
 }
