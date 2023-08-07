@@ -14,7 +14,7 @@ Below, we will explore the design and implementation of a rational number class.
 ### [Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#member-functions-1)
 
 * Constructors
-* Private Implementation Functions
+* Implementation Functions
 * Destructor
 * Copy Operations
 * Move Operations
@@ -348,8 +348,29 @@ void Rational::set_den(int d)
 }
 ```
 
+### Arithmetic
+
+```cpp
+// Member addition
+inline Rational& Rational::operator+=(Rational const& other)
+{
+  num = num * other.den + other.num * den;
+  den = den * other.den;
+  reduce();
+  return *this;
+}
+```
 
 # Non-Member Functions
+
+```cpp
+// Non-Member Addition
+Rational operator+(Rational const& lhs, Rational const& rhs)
+{
+  Rational temp{lhs};
+  return temp += rhs;
+}
+```
 
 ## Equality
 
@@ -366,7 +387,6 @@ constexpr bool operator!=(Rational const& lhs, Rational const& rhs)
   return !operator==(lhs, rhs);
 }
 ```
-
 
 ## Ordering
 
