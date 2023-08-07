@@ -38,8 +38,8 @@ public:
   }
 
   // Accessors
-  int get_num() const { return num; }
-  int get_den() const { return den; }
+  int get_num() const { return this->num; }
+  int get_den() const { return this->den; }
 
   // Mutators
   void set_num(int n) { num = n; reduce();    }
@@ -61,7 +61,7 @@ private:
 //
 // Member functions
 
-inline int Rational::gcd(int a, int b) const
+int Rational::gcd(int a, int b) const
 {
   int n = std::abs(a);
   while (b != 0) {
@@ -72,19 +72,19 @@ inline int Rational::gcd(int a, int b) const
   return n;
 }
 
-inline int Rational::lcm(int a, int b) const
+int Rational::lcm(int a, int b) const
 {
   return  (a * b) / gcd(a, b);
 }
 
-inline void Rational::reduce()
+void Rational::reduce()
 {
-  int n = Rational::gcd(num, den);
-  num = num / n;
-  den = den / n;
+  int n = Rational::gcd(this->num, this->den);
+  this->num = this->num / n;
+  this->den = this->den / n;
 }
 
-inline void Rational::normalize()
+void Rational::normalize()
 {
   // Denominator cannot equal zero
   assert(den != 0);
@@ -99,7 +99,7 @@ inline void Rational::normalize()
   reduce();
 }
 
-inline Rational& Rational::operator+=(Rational const& other)
+Rational& Rational::operator+=(Rational const& other)
 {
   num = num * other.den + other.num * den;
   den = den * other.den;
