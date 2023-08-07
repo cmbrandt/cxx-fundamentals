@@ -164,13 +164,13 @@ The destructor is responsible for cleaning up all resources associated with the 
 
 ```cpp
 // Explicit default destructor
-~Rational::Rational() { };
+Rational::~Rational() { };
 ```
 The rational number class is a **plain old data** class, which does not require any special instructions for cleanup. As such, it may be defaulted.
 
 ```cpp
 // Defaulted destructor
-~Rational() = default;
+Rational::~Rational() = default;
 ```
 
 ## Copy Operations
