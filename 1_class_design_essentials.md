@@ -157,7 +157,7 @@ Rational::Rational(int n, int d) : num{n}, den{d}
 }
 ```
 
-## Private Implementation Functions
+## Implementation Functions
 
 ### Greatest Common Denominator
 
