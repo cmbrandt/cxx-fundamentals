@@ -258,52 +258,72 @@ int Rational::get_den() const { return den; }
 ### Mutators
 
 ```cpp
-void Rational::set_num(int n) { num = n; }
-void Rational::set_den(int d) { den = d; }
+void Rational::set_num(int n)
+{
+  num = n;
+  reduce();
+}
+void Rational::set_den(int d)
+{
+  den = d;
+  normalize();
+}
 ```
 
 
 ## Implementation Functions
 
-### Greatest Common Factor
+### Greatest Common Denominator
 
 ```cpp
-int Rational::gcf()
+inline int Rational::gcd(int a, int b) const
 {
-  int a = std::abs(num);
-  int b = den;
-  int tmp{};
-
+  int n = std::abs(a);
   while (b != 0) {
-    tmp = a % b;
-    a = b;
-    b = tmp;
+    int temp = n % b;
+    n = b;
+    b = temp;
   }
-  return a;
+  return n;
+}
+```
+
+### Least Common Multiple
+
+```cpp
+inline int Rational::lcm(int a, int b) const
+{
+  return  (a * b) / gcd(a, b);
+}
+```
+
+### Reduce
+
+```cpp
+inline void Rational::reduce()
+{
+  int n = Rational::gcd(num, den);
+  num = num / n;
+  den = den / n;
 }
 ```
 
 ### Normalize
 
 ```cpp
-void Rational::normalize()
+inline void Rational::normalize()
 {
-  // Denominator cannot be zero
+  // Denominator cannot equal zero
   assert(den != 0);
-  
   // Unique representation for zero
   if (num == 0)
     den = 1;
-  // Only the numerator can be negative
+  // Only the numerator should be negative
   else if (den < 0) {
     num = -num;
     den = -den;
   }
-  
-  // Simplify
-  int n = gcf();
-  num = num / n;
-  den = den / n;
+  reduce();
 }
 ```
 
