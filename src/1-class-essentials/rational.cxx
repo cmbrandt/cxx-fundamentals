@@ -6,7 +6,7 @@
 class Rational {
 public:
   Rational() = default;
-  Rational(int n)        : num{n}, den {1} { normalize(); }
+  Rational(int n)        : num{n}          { normalize(); }
   Rational(int n, int d) : num{n}, den {d} { normalize(); }
 
   // Copy constructor
@@ -38,8 +38,8 @@ public:
   int get_den() const { return den; }
 
   // Mutators
-  void set_num(int n) { num = n; }
-  void set_den(int d) { den = d; }
+  void set_num(int n) { num = n; reduce();    }
+  void set_den(int d) { den = d; normalize(); }
 
   // Arithmetic
   Rational& operator+=(Rational const& other);
@@ -94,7 +94,6 @@ inline void Rational::normalize()
     num = -num;
     den = -den;
   }
-  // Reduce
   reduce();
 }
 
@@ -110,55 +109,51 @@ inline Rational& Rational::operator+=(Rational const& other)
 // Non-Member functions
 
 // Arithmetic
-Rational operator+(Rational const& r1, Rational const& r2)
+Rational operator+(Rational const& lhs, Rational const& rhs)
 {
-  Rational temp{r1};
-  return temp += r2;
+  Rational temp{lhs};
+  return temp += rhs;
 }
 
 // Equality
-bool operator==(Rational const& r1, Rational const& r2)
+bool operator==(Rational const& lhs, Rational const& rhs)
 {
-  int n1 = r1.get_num();
-  int d1 = r1.get_den();
-  int n2 = r2.get_num();
-  int d2 = r2.get_den();
-
-  return (n1*d2) == (n2*d1);
+  return lhs.get_num() == rhs.get_num()
+     and lhs.get_den() == rhs.get_den();
 }
 
-bool operator!=(Rational const& r1, Rational const& r2)
+bool operator!=(Rational const& lhs, Rational const& rhs)
 {
-  return !operator==(r1, r2);
+  return not(lhs == rhs);
 }
 
 // Ordering
-bool operator<(Rational const& r1, Rational const& r2)
+bool operator<(Rational const& lhs, Rational const& rhs)
 {
-  int    n1 = r1.get_num();
-  int    n2 = r2.get_num();
-  double d1 = r1.get_den();
-  double d2 = r2.get_den();
+  int    n1 = lhs.get_num();
+  int    n2 = rhs.get_num();
+  double d1 = lhs.get_den();
+  double d2 = rhs.get_den();
 
   return (n1/d2) < (n2/d1);
 }
 
-bool operator>(Rational const& r1, Rational const& r2)
+bool operator>(Rational const& lhs, Rational const& rhs)
 {
-  return (r2 < r1);
+  return (lhs < rhs);
 }
 
-bool operator<=(Rational const& r1, Rational const& r2)
+bool operator<=(Rational const& lhs, Rational const& rhs)
 {
-  return !(r1 > r2);
+  return not(lhs > rhs);
 }
 
-bool operator>=(Rational const& r1, Rational const& r2)
+bool operator>=(Rational const& lhs, Rational const& rhs)
 {
-  return !(r1 < r2);
+  return not(lhs < rhs);
 }
 
-void print_rational(std::string_view sv, Rational const& r)
+void print(std::string_view sv, Rational const& r)
 {
   std::cout << sv
             << "\nr.num = " << r.get_num()
@@ -168,36 +163,36 @@ void print_rational(std::string_view sv, Rational const& r)
 int main()
 {
   Rational r1;
-  print_rational("\nDefault constructor", r1);              // = 0/1
+  print("\nDefault constructor", r1);              // = 0/1
 
   Rational r2{5};
-  print_rational("\nInteger conversation constructor", r2); // = 5/1
+  print("\nInteger conversation constructor", r2); // = 5/1
 
   Rational r3{2, 4};
-  print_rational("\nParameterized constructor", r3);        // = 1/2
+  print("\nParameterized constructor", r3);        // = 1/2
 
   Rational r4{r3};
-  print_rational("\nCopy constructor", r4);                 // = 1/2
+  print("\nCopy constructor", r4);                 // = 1/2
 
   Rational r5 = r3;
-  print_rational("\nCopy assignment operator", r5);         // = 1/2
+  print("\nCopy assignment operator", r5);         // = 1/2
 
   Rational r6{std::move(r3)};
-  print_rational("\nMove constructor", r6);                 // = 1/2
+  print("\nMove constructor", r6);                 // = 1/2
 
   Rational r7 = std::move(r4);
-  print_rational("\nMove assignment operator", r7);         // = 1/2
+  print("\nMove assignment operator", r7);         // = 1/2
 
 
   Rational a1{-2, 7};
-  Rational a2{4, -2};
+  Rational a2{4, -3};
   a1 += a2;
-  print_rational("\nMember addition", a1);     // = -16/7
+  print("\nMember addition", a1);     // = -34/21
 
   Rational a3{-2, 7};
-  Rational a4{4, -2};
+  Rational a4{4, -3};
   Rational a5 = a3 + a4;
-  print_rational("\nNon-Member addition", a5); // = -16/7
+  print("\nNon-Member addition", a5); // = -34/21
 
 
   Rational c1{-1, 2};
