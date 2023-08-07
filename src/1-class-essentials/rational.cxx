@@ -64,13 +64,11 @@ private:
 inline int Rational::gcd(int a, int b) const
 {
   int n = std::abs(a);
-
   while (b != 0) {
     int temp = n % b;
     n = b;
     b = temp;
   }
-
   return n;
 }
 
