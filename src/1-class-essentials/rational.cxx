@@ -5,9 +5,13 @@
 
 class Rational {
 public:
+  // Constructors
   Rational() = default;
   Rational(int n)        : num{n}          { normalize(); }
   Rational(int n, int d) : num{n}, den {d} { normalize(); }
+
+  // Destructor
+  ~Rational() = default;
 
   // Copy constructor
   Rational(Rational const& other)
@@ -166,7 +170,7 @@ int main()
   print("\nDefault constructor", r1);              // = 0/1
 
   Rational r2{5};
-  print("\nInteger conversation constructor", r2); // = 5/1
+  print("\nInteger conversion constructor", r2);   // = 5/1
 
   Rational r3{2, 4};
   print("\nParameterized constructor", r3);        // = 1/2
