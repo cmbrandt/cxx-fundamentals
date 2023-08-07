@@ -69,9 +69,7 @@ private:
   int num;
   int den;
 };
-```
 
-```cpp
 // class has default private access
 class Rational {
 public:
