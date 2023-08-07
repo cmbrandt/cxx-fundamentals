@@ -189,6 +189,15 @@ inline int Rational::lcm(int a, int b) const
 ### Reduce
 
 ```cpp
+// Explicit this
+inline void Rational::reduce()
+{
+  int n = Rational::gcd(num, den);
+  this->num = this->num / n;
+  this->den = this->den / n;
+}
+
+// Implicit this
 inline void Rational::reduce()
 {
   int n = Rational::gcd(num, den);
