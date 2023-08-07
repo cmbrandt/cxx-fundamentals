@@ -362,6 +362,8 @@ Rational& Rational::operator+=(Rational const& other)
 
 # Non-Member Functions
 
+## Arithmetic
+
 ```cpp
 // Non-Member Addition
 Rational operator+(Rational const& lhs, Rational const& rhs)
