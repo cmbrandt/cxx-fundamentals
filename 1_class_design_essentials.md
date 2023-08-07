@@ -14,14 +14,16 @@ Below, we will explore the design and implementation of a rational number class.
 ### [Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#member-functions-1)
 
 * Constructors
+* Private Implementation Functions
 * Destructor
 * Copy Operations
 * Move Operations
 * Accessors and Mutators
-* Implementation Functions
+* Arithmetic
 
 ### [Non-Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#non-member-functions-1)
 
+* Arithmetic
 * Equality
 * Ordering
 
@@ -158,6 +160,65 @@ Rational::Rational(int n, int d) : num{n}, den{d}
 }
 ```
 
+## Private Implementation Functions
+
+### Greatest Common Denominator
+
+```cpp
+inline int Rational::gcd(int a, int b) const
+{
+  int n = std::abs(a);
+  while (b != 0) {
+    int temp = n % b;
+    n = b;
+    b = temp;
+  }
+  return n;
+}
+```
+
+### Least Common Multiple
+
+```cpp
+inline int Rational::lcm(int a, int b) const
+{
+  return  (a * b) / gcd(a, b);
+}
+```
+
+### Reduce
+
+```cpp
+inline void Rational::reduce()
+{
+  int n = Rational::gcd(num, den);
+  num = num / n;
+  den = den / n;
+}
+```
+
+### Normalize
+
+```cpp
+inline void Rational::normalize()
+{
+  // Denominator cannot equal zero
+  assert(den != 0);
+  // Unique representation for zero
+  if (num == 0)
+    den = 1;
+  // Only the numerator should be negative
+  else if (den < 0) {
+    num = -num;
+    den = -den;
+  }
+  reduce();
+}
+```
+
+Note: we need to update the implementation of the following functions to include a call to the normalize member function: parameterized constructors and mutators. All other member functions will preserver the previously established class invariants.
+
+
 ## Destructor
 
 The destructor is responsible for cleaning up all resources associated with the class. The default destructor implementation has an empty body, as depicted below.
@@ -275,66 +336,6 @@ void Rational::set_den(int d)
   normalize();
 }
 ```
-
-
-## Implementation Functions
-
-### Greatest Common Denominator
-
-```cpp
-inline int Rational::gcd(int a, int b) const
-{
-  int n = std::abs(a);
-  while (b != 0) {
-    int temp = n % b;
-    n = b;
-    b = temp;
-  }
-  return n;
-}
-```
-
-### Least Common Multiple
-
-```cpp
-inline int Rational::lcm(int a, int b) const
-{
-  return  (a * b) / gcd(a, b);
-}
-```
-
-### Reduce
-
-```cpp
-inline void Rational::reduce()
-{
-  int n = Rational::gcd(num, den);
-  num = num / n;
-  den = den / n;
-}
-```
-
-### Normalize
-
-```cpp
-inline void Rational::normalize()
-{
-  // Denominator cannot equal zero
-  assert(den != 0);
-  // Unique representation for zero
-  if (num == 0)
-    den = 1;
-  // Only the numerator should be negative
-  else if (den < 0) {
-    num = -num;
-    den = -den;
-  }
-  reduce();
-}
-```
-
-Note: we need to update the implementation of the following functions to include a call to the normalize member function: parameterized constructors and mutators. All other member functions will preserver the previously established class invariants.
-
 
 
 # Non-Member Functions
