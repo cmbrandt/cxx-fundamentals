@@ -395,7 +395,7 @@ bool operator!=(Rational const& lhs, Rational const& rhs)
 ## Ordering
 
 ```cpp
-// Less than
+// Less-than
 bool operator<(Rational const& lhs, Rational const& rhs)
 {
   int    n1 = lhs.get_num();
@@ -408,7 +408,7 @@ bool operator<(Rational const& lhs, Rational const& rhs)
 ```
 
 ```cpp
-// Greater than
+// Greater-than
 bool operator>(Rational const& lhs, Rational const& rhs)
 {
   return (lhs < rhs);
@@ -416,7 +416,7 @@ bool operator>(Rational const& lhs, Rational const& rhs)
 ```
 
 ```cpp
-// Less than or equal to
+// Less-or-equal
 bool operator<=(Rational const& lhs, Rational const& rhs)
 {
   return not(lhs > rhs);
@@ -424,7 +424,7 @@ bool operator<=(Rational const& lhs, Rational const& rhs)
 ```
 
 ```cpp
-// Greater than or equal to
+// Greater-or-equal
 bool operator>=(Rational const& lhs, Rational const& rhs)
 {
   return not(lhs < rhs);
