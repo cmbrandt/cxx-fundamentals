@@ -10,8 +10,7 @@ The material is intended for early career engineers, developers new to the C++ l
 
 ## [1. Class Design: Essentials](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design_essentials.md)
 
-* Preliminaries
-* Data Members
+* Representation
 * Member Functions
 * Non-Member Functions
 
