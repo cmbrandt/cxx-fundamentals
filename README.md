@@ -8,13 +8,13 @@ The material is intended for early career engineers, developers new to the C++ l
 
 # Topics
 
-## [1. Class Design: Essentials](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/1_class_design_essentials.md)
+## [1. Class Design: Essentials](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/01_class_design_essentials.md)
 
 * Representation
 * Member Functions
 * Non-Member Functions
 
-## [2. Class Design: Special Member Functions](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/2_class_design_special.md)
+## [2. Class Design: Special Member Functions](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/02_class_design_special.md)
 
 * Rule of Three/Five/Zero
 * Default Constructor
@@ -22,7 +22,7 @@ The material is intended for early career engineers, developers new to the C++ l
 * Copy Operations
 * Move Operations
 
-## [3. Class Design: Hierarchies](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/3_class_design_hierarchies.md)
+## [3. Class Design: Hierarchies](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/03_class_design_hierarchies.md)
 
 * Preliminaries
 * Interface Inheritance
@@ -30,20 +30,20 @@ The material is intended for early career engineers, developers new to the C++ l
 * Polymorphism
 * Accessing Objects in a Hierarchy
 
-## [4. Gang of Four (GoF) Design Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/4_gof_design_patterns.md)
+## [4. Gang of Four (GoF) Design Patterns](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/04_gof_design_patterns.md)
 
 * Creational Patterns
 * Structural Patterns
 * Behavioral Patterns
 
-## [5. Templates](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/5_templates.md)
+## [5. Templates](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/05_templates.md)
 
 * 1
 * 2
 * 3
 * 4
 
-## [6. Classic Idioms](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/6_classic_idioms.md)
+## [6. Classic Idioms](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/06_classic_idioms.md)
 
 * Resource Acquisition is Initialization (RAII)
 * Pointer to Implementation (Pimpl)
@@ -51,21 +51,21 @@ The material is intended for early career engineers, developers new to the C++ l
 * Substitution Failure Is Not an Error (SFINAE)
 * Tag Dispatch
 
-## [7. Modern Idioms](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/7_modern_idioms.md)
+## [7. Modern Idioms](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/07_modern_idioms.md)
 
 * Curiously Recurring Template Pattern (CRTP)
 * Mixins
 * Type Erasure
 * Overload Pattern
 
-## [8. Concepts](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/8_generic_programming.md)
+## [8. Concepts](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/08_generic_programming.md)
 
 * 1
 * 2
 * 3
 * 4
 
-* ## [9. Generic Programming](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/9_generic_programming.md)
+## [9. Generic Programming](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/09_generic_programming.md)
 
 * Preliminaries
 * Type Traits
