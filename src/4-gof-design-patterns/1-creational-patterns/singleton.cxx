@@ -1,8 +1,7 @@
 #include <iostream>
 
 // This is the Scotty Meyers implementation of the Singleton Pattern
-struct Singleton
-{
+struct Singleton {
   // Delete copy operations
   Singleton(Singleton const&)            = delete;
   Singleton& operator=(Singleton const&) = delete;
@@ -43,7 +42,7 @@ void client1(Singleton& singleton)
 int main()
 {
   Singleton& singleton = Singleton::get_instance();
-  
+
   // Client usage
   client1(singleton);
 }

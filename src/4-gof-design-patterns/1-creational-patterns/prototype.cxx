@@ -2,16 +2,14 @@
 #include <memory>
 #include <string>
 
-struct Prototype
-{
+struct Prototype {
   virtual ~Prototype() = default;
 
   virtual std::unique_ptr<Prototype> clone() const = 0;
   virtual void display() const = 0;
 };
 
-struct ConcretePrototype1 : public Prototype
-{
+struct ConcretePrototype1 : public Prototype {
   ConcretePrototype1(std::string const& d) : data(d) { }
 
   std::unique_ptr<Prototype> clone() const override {
@@ -26,8 +24,7 @@ private:
   std::string data;
 };
 
-struct ConcretePrototype2 : public Prototype
-{
+struct ConcretePrototype2 : public Prototype {
   ConcretePrototype2(std::string const& d) : data(d) { }
 
   std::unique_ptr<Prototype> clone() const override {
@@ -43,11 +40,11 @@ private:
 };
 
 // Client code
-void client(std::unique_ptr<Prototype> const& p)
+void client(Prototype& p)
 {
-  std::unique_ptr<Prototype> c = p->clone();
+  std::unique_ptr<Prototype> c = p.clone();
 
-  p->display();
+  p.display();
   c->display();
 }
 
@@ -60,6 +57,6 @@ int main()
     = std::make_unique<ConcretePrototype2>("PrototypeTwo");
 
   // Client usage
-  client(prototype1);
-  client(prototype2);
+  client(*prototype1);
+  client(*prototype2);
 }
