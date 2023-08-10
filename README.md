@@ -58,14 +58,21 @@ The material is intended for early career engineers, developers new to the C++ l
 * Type Erasure
 * Overload Pattern
 
-## [8. Generic Programming](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/8_generic_programming.md)
+## [8. Concepts](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/8_generic_programming.md)
+
+* 1
+* 2
+* 3
+* 4
+
+* ## [9. Generic Programming](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/9_generic_programming.md)
 
 * Preliminaries
 * Type Traits
 * Concepts
 * Translating Object-Oriented to Generics
 
-## [9. Scientific Computing](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/9_scientific_computing.md)
+## [10. Scientific Computing](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/10_scientific_computing.md)
 
 * Vectorization
 * Parallelism
