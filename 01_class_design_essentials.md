@@ -4,7 +4,7 @@ A C++ class is a user-defined data type that serves as a blueprint for creating 
 
 Below, we will explore the design and implementation of a rational number class. Mathematical abstractions are ideal for demonstrating C++ class design because they provide a straightforward and intuitive representation of data and behavior. We will begin with the high-level representation of the class, then work through the implementation of all member and non-member functions, emphasizing idiomatic C++ design along the way.
 
-## Content
+# Content
 
 ### [Representation]()
 
@@ -360,14 +360,27 @@ Rational& Rational::operator+=(Rational const& other)
 
 # Non-Member Functions
 
+Description adf adf fa fad fadfa adf adf
+
 ## Arithmetic
+
+Performs the operation:
+
+```cpp
+Rational a{n1, d1};
+Rational b{n2, d2};
+
+Rational c = a + b;
+```
+
+The non-member binary addition operator is defined in terms of the member unary addition operator.
 
 ```cpp
 // Non-Member Addition
 Rational operator+(Rational const& lhs, Rational const& rhs)
 {
-  Rational temp{lhs};
-  return temp += rhs;
+  Rational tmp{lhs};
+  return tmp += rhs;
 }
 ```
 
