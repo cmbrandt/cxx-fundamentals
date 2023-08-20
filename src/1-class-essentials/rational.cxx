@@ -138,12 +138,12 @@ bool operator<(Rational const& lhs, Rational const& rhs)
   double d1 = lhs.get_den();
   double d2 = rhs.get_den();
 
-  return (n1/d2) < (n2/d1);
+  return (n1*d2) < (n2*d1);
 }
 
 bool operator>(Rational const& lhs, Rational const& rhs)
 {
-  return (lhs < rhs);
+  return (rhs < lhs);
 }
 
 bool operator<=(Rational const& lhs, Rational const& rhs)
