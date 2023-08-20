@@ -396,7 +396,11 @@ bool operator!=(Rational const& lhs, Rational const& rhs)
 
 ## Ordering
 
+Operator less-than evaluates the expression $r1 < r2$, where $r1 = \frac{n1}{d1}$ and $r2 = \frac{n2}{d2}$.
+
+Because division has a higher latency than multiplication, we can use algebra to evaluate the equivalent (and computationally less expective) expression $n1 * d2 < n2 * d1$.
 Operator less-than uses an identity...
+
 
 ```cpp
 // Less-than
