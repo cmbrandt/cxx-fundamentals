@@ -396,9 +396,9 @@ bool operator!=(Rational const& lhs, Rational const& rhs)
 
 ## Ordering
 
-Operator less-than evaluates the expression $r1 < r2$, where $r1 = \frac{n1}{d1}$ and $r2 = \frac{n2}{d2}$.
+Operator less-than evaluates the expression $r_1 < r_2$, where $r_1 = \frac{n_1}{d_1}$ and $r_2 = \frac{n_2}{d_2}$.
 
-Because division has a higher latency than multiplication, we can use algebra to evaluate the equivalent (and computationally less expective) expression $n1 * d2 < n2 * d1$.
+Because division has a higher latency than multiplication, we can use algebra to evaluate the equivalent (and computationally less expective) expression $n_1 * d_2 < n_2 * d_1$.
 Operator less-than uses an identity...
 
 
