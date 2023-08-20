@@ -347,6 +347,17 @@ void Rational::set_den(int d)
 
 ### Arithmetic
 
+Perform the operation:
+
+```cpp
+Rational a{n1, d1};
+Rational b{n2, d2};
+
+a += b;
+```
+
+Asfadf dafdadsf adfa fdss
+
 ```cpp
 // Member addition
 Rational& Rational::operator+=(Rational const& other)
