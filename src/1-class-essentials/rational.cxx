@@ -133,10 +133,10 @@ bool operator!=(Rational const& lhs, Rational const& rhs)
 // Ordering
 bool operator<(Rational const& lhs, Rational const& rhs)
 {
-  int    n1 = lhs.get_num();
-  int    n2 = rhs.get_num();
-  double d1 = lhs.get_den();
-  double d2 = rhs.get_den();
+  int n1 = lhs.get_num();
+  int n2 = rhs.get_num();
+  int d1 = lhs.get_den();
+  int d2 = rhs.get_den();
 
   return (n1*d2) < (n2*d1);
 }
