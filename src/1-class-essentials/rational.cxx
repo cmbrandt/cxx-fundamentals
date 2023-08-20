@@ -138,7 +138,7 @@ bool operator<(Rational const& lhs, Rational const& rhs)
   int d1 = lhs.get_den();
   int d2 = rhs.get_den();
 
-  return (n1*d2) < (n2*d1);
+  return (n1 * d2) < (n2 * d1);
 }
 
 bool operator>(Rational const& lhs, Rational const& rhs)
