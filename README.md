@@ -60,10 +60,10 @@ The material is intended for early career engineers, developers new to the C++ l
 
 ## [8. Concepts](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/08_generic_programming.md)
 
-* 1
-* 2
-* 3
-* 4
+* Theory
+* Syntax
+* Definition
+* Applications
 
 ## [9. Generic Programming](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/09_generic_programming.md)
 
