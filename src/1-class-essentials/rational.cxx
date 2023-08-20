@@ -38,8 +38,8 @@ public:
   }
 
   // Accessors
-  int get_num() const { return this->num; }
-  int get_den() const { return this->den; }
+  int get_num() const { return num; }
+  int get_den() const { return den; }
 
   // Mutators
   void set_num(int n) { num = n; reduce();    }
