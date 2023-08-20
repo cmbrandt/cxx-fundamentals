@@ -413,7 +413,7 @@ bool operator<(Rational const& lhs, Rational const& rhs)
 }
 ```
 
-Operator greater-than is defined in terms of operator less-than, swapping the arguments `lhs` and `rhs` within the less-than expression.
+Operator greater-than is defined in terms of operator less-than, swapping the order of the arguments `lhs` and `rhs` within the operator less-than expression.
 ```cpp
 // Greater-than
 bool operator>(Rational const& lhs, Rational const& rhs)
