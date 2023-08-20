@@ -364,7 +364,7 @@ Description adf adf fa fad fadfa adf adf
 
 ## Arithmetic
 
-Performs the operation:
+The non-member binary addition operator performs the operation:
 
 ```cpp
 Rational a{n1, d1};
@@ -373,7 +373,7 @@ Rational b{n2, d2};
 Rational c = a + b;
 ```
 
-The non-member binary addition operator is defined in terms of the member unary addition operator.
+This non-member free function is defined in terms of the member unary addition operator.
 
 ```cpp
 // Non-Member Addition
@@ -386,7 +386,7 @@ Rational operator+(Rational const& lhs, Rational const& rhs)
 
 ## Equality
 
-Equality performs member-wise equality comparisons.
+Equality performs member-wise equality comparisons. Note that the logical AND and logical OR operators perform short-circuit evaluation (does not evaluate the second operand if the result is known after evaluating the first operand).
 
 ```cpp
 // Equality
