@@ -398,9 +398,7 @@ bool operator!=(Rational const& lhs, Rational const& rhs)
 
 Operator less-than evaluates the expression $r_1 < r_2$, where $r_1 = \frac{n_1}{d_1}$ and $r_2 = \frac{n_2}{d_2}$.
 
-Because division has a higher latency than multiplication, we can use algebra to evaluate the equivalent (and computationally less expective) expression $n_1 * d_2 < n_2 * d_1$.
-Operator less-than uses an identity...
-
+Because division has a higher latency than multiplication, we choose to instead evaluation the mathematically equivalent (and computationally less expensive) expression $n_1 \times d_2 < n_2 \times d_1$.
 
 ```cpp
 // Less-than
@@ -415,12 +413,12 @@ bool operator<(Rational const& lhs, Rational const& rhs)
 }
 ```
 
-Operator greater-than is defined in terms of operator less-than.
+Operator greater-than is defined in terms of operator less-than, swapping the arguments `lhs` and `rhs` within the less-than expression.
 ```cpp
 // Greater-than
 bool operator>(Rational const& lhs, Rational const& rhs)
 {
-  return (lhs < rhs);
+  return (rhs < lhs);
 }
 ```
 
