@@ -166,9 +166,9 @@ int Rational::gcd(int a, int b) const
 {
   int n = std::abs(a);
   while (b != 0) {
-    int temp = n % b;
+    int tmp = n % b;
     n = b;
-    b = temp;
+    b = tmp;
   }
   return n;
 }
@@ -189,9 +189,9 @@ int Rational::lcm(int a, int b) const
 // Explicit this
 void Rational::reduce()
 {
-  int n = Rational::gcd(this->num, this->den);
-  this->num = this->num / n;
-  this->den = this->den / n;
+  int n = Rational::gcd(num, den);
+  num = num / n;
+  den = den / n;
 }
 
 // Implicit this
