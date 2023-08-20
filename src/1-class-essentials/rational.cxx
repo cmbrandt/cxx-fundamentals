@@ -7,8 +7,8 @@ class Rational {
 public:
   // Constructors
   Rational() = default;
-  Rational(int n)        : num{n}          { normalize(); }
-  Rational(int n, int d) : num{n}, den {d} { normalize(); }
+  Rational(int n)        : num{n}         { normalize(); }
+  Rational(int n, int d) : num{n}, den{d} { normalize(); }
 
   // Destructor
   ~Rational() = default;
@@ -79,9 +79,9 @@ int Rational::lcm(int a, int b) const
 
 void Rational::reduce()
 {
-  int n = Rational::gcd(this->num, this->den);
-  this->num = this->num / n;
-  this->den = this->den / n;
+  int n = Rational::gcd(num, den);
+  num = num / n;
+  den = den / n;
 }
 
 void Rational::normalize()
