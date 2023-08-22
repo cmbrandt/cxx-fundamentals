@@ -49,8 +49,7 @@ public:
   Rational& operator+=(Rational const& other);
 
 private:
-  int gcd(int a, int b) const;
-  int lcm(int a, int b) const;
+  int  gcd(int a, int b) const;
   void reduce();
   void normalize();
 
@@ -65,16 +64,11 @@ int Rational::gcd(int a, int b) const
 {
   int n = std::abs(a);
   while (b != 0) {
-    int temp = n % b;
+    int tmp = n % b;
     n = b;
-    b = temp;
+    b = tmp;
   }
   return n;
-}
-
-int Rational::lcm(int a, int b) const
-{
-  return  (a * b) / gcd(a, b);
 }
 
 void Rational::reduce()
@@ -114,8 +108,8 @@ Rational& Rational::operator+=(Rational const& other)
 // Arithmetic
 Rational operator+(Rational const& lhs, Rational const& rhs)
 {
-  Rational temp{lhs};
-  return temp += rhs;
+  Rational tmp{lhs};
+  return tmp += rhs;
 }
 
 // Equality
