@@ -7,7 +7,7 @@ class Rational {
 public:
   // Constructors
   Rational() = default;
-  Rational(int n)        : num{n}         { normalize(); }
+  Rational(int n)        : num{n}         { }
   Rational(int n, int d) : num{n}, den{d} { normalize(); }
 
   // Destructor
@@ -49,9 +49,9 @@ public:
   Rational& operator+=(Rational const& other);
 
 private:
-  int  gcd(int a, int b) const;
-  void reduce();
   void normalize();
+  void reduce();
+  int  gcd(int a, int b) const;
 
   int num{0};
   int den{1};
@@ -59,24 +59,6 @@ private:
 
 //
 // Member functions
-
-int Rational::gcd(int a, int b) const
-{
-  int n = std::abs(a);
-  while (b != 0) {
-    int tmp = n % b;
-    n = b;
-    b = tmp;
-  }
-  return n;
-}
-
-void Rational::reduce()
-{
-  int n = Rational::gcd(num, den);
-  num = num / n;
-  den = den / n;
-}
 
 void Rational::normalize()
 {
@@ -92,6 +74,24 @@ void Rational::normalize()
   }
   // Reduced form
   reduce();
+}
+
+void Rational::reduce()
+{
+  int n = Rational::gcd(num, den);
+  num = num / n;
+  den = den / n;
+}
+
+int Rational::gcd(int a, int b) const
+{
+  int n = std::abs(a);
+  while (b != 0) {
+    int tmp = n % b;
+    n = b;
+    b = tmp;
+  }
+  return n;
 }
 
 Rational& Rational::operator+=(Rational const& other)
