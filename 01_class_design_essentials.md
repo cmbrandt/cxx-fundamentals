@@ -6,7 +6,7 @@ Below, we will explore the design and implementation of a rational number class.
 
 # Content
 
-### [Data Members]()
+### [Data Members](https://github.com/cmbrandt/cxx-fundamentals/blob/master/01_class_design_essentials.md#data-members-1)
 
 * Access Specifiers
 * Invariants
@@ -473,7 +473,8 @@ TODO: `operator<=>`
 
 # References
 
-* 1
-* 2
-* 3
+* C++ Core Guidelines re: classes
+* ISO C++ Link re: classes
+* 'Hands-On Design Patters' by Fedor Pikus
+* ISO C++ Standard Draft
 
