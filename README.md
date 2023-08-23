@@ -1,6 +1,6 @@
 # C++ Fundamentals
 
-This collection of materials is dedicated to exploring idiomatic modern C++ design. Each topic contains a mixture of code samples and example programs to demonstrate common usage, along with references and links to external resources where applicable. Originally conceived in June 2023, this repository is intended to be a living resource, continually updated to accommodate new research and language features as they become available.
+This collection of materials is dedicated to exploring idiomatic modern C++ design. Each topic contains a mixture of code samples and example programs to demonstrate common usage, along with references and links to external resources where applicable. Originally conceived in June 2023, this repository is intended to be a living document, continually updated to accommodate new research and language features as they become available.
 
 ## Audience
 
@@ -10,7 +10,7 @@ The material is intended for early career engineers, developers new to the C++ l
 
 ## [1. Class Design: Essentials](https://github.com/cmbrandt/modern-cxx-seminar/blob/master/01_class_design_essentials.md)
 
-* Representation
+* Data Members
 * Member Functions
 * Non-Member Functions
 
