@@ -166,8 +166,6 @@ Rational::Rational(int n, int d) : num{n}, den{d}
 
 ## Implementation Functions
 
-### Greatest Common Denominator
-
 ### Reduce
 
 ```cpp
@@ -206,6 +204,8 @@ void Rational::normalize()
   reduce();
 }
 ```
+
+### Greatest Common Denominator
 
 ```cpp
 int Rational::gcd(int a, int b) const
