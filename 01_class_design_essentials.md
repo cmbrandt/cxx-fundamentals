@@ -168,28 +168,6 @@ Rational::Rational(int n, int d) : num{n}, den{d}
 
 ### Greatest Common Denominator
 
-```cpp
-int Rational::gcd(int a, int b) const
-{
-  int n = std::abs(a);
-  while (b != 0) {
-    int tmp = n % b;
-    n = b;
-    b = tmp;
-  }
-  return n;
-}
-```
-
-### Least Common Multiple
-
-```cpp
-int Rational::lcm(int a, int b) const
-{
-  return  (a * b) / gcd(a, b);
-}
-```
-
 ### Reduce
 
 ```cpp
@@ -226,6 +204,19 @@ void Rational::normalize()
     den = -den;
   }
   reduce();
+}
+```
+
+```cpp
+int Rational::gcd(int a, int b) const
+{
+  int n = std::abs(a);
+  while (b != 0) {
+    int tmp = n % b;
+    n = b;
+    b = tmp;
+  }
+  return n;
 }
 ```
 
