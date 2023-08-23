@@ -27,7 +27,7 @@ Below, we will explore the design and implementation of a rational number class.
 * Equality
 * Ordering
 
-### [References](https://github.com/cmbrandt/cxx-fundamentals/blob/master/01_class_design_essentials.md#references-1)
+### [Additional Resources](https://github.com/cmbrandt/cxx-fundamentals/blob/master/01_class_design_essentials.md#additional-resources-1)
 
 
 # Data Members
@@ -453,7 +453,7 @@ bool operator>=(Rational const& lhs, Rational const& rhs)
 
 TODO: `operator<=>`
 
-# References
+# Additional Resources
 
 * C++ Core Guidelines re: classes
 * ISO C++ Link re: classes
