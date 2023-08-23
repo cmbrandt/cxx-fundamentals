@@ -166,26 +166,6 @@ Rational::Rational(int n, int d) : num{n}, den{d}
 
 ## Implementation Functions
 
-### Reduce
-
-```cpp
-// Explicit this
-void Rational::reduce()
-{
-  int n = Rational::gcd(num, den);
-  num = num / n;
-  den = den / n;
-}
-
-// Implicit this
-void Rational::reduce()
-{
-  int n = Rational::gcd(num, den);
-  num = num / n;
-  den = den / n;
-}
-```
-
 ### Normalize
 
 ```cpp
@@ -202,6 +182,17 @@ void Rational::normalize()
     den = -den;
   }
   reduce();
+}
+```
+
+### Reduce
+
+```cpp
+void Rational::reduce()
+{
+  int n = Rational::gcd(num, den);
+  num = num / n;
+  den = den / n;
 }
 ```
 
