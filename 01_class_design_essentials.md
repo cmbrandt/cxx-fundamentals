@@ -26,6 +26,8 @@ Below, we will explore the design and implementation of a rational number class.
 * Equality
 * Ordering
 
+### [References](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#references-1)
+
 
 # Representation
 
@@ -463,3 +465,10 @@ bool operator>=(Rational const& lhs, Rational const& rhs)
 ```
 
 TODO: `operator<=>`
+
+# References
+
+* 1
+* 2
+* 3
+
