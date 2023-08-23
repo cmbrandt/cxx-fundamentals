@@ -79,7 +79,7 @@ Properties that exist for the set of all rational numbers include the following:
 
 To preserver these properties, the following class invariants can be established:
 * to prevent undefined values, `assert` when the denominator is set to zero
-* to provide a unique representation for zero, set the denominator to zero when the numerator is set to one
+* to provide a unique representation for zero, set the denominator to one when the numerator is set to zero
 * to provide a consistent representation for negative values, ensure that only the numerator may be negative
 * to ensure equality among equivalent values, always represent the object as a reduced fraction
 
