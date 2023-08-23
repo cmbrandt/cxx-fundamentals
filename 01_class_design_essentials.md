@@ -75,7 +75,7 @@ Properties that exist for the set of all rational numbers include the following:
 * for all $n$, $\frac{n}{0}$ is undefined
 * for all $m$, $n$, it is the case that $\frac{0}{m} = \frac{0}{n}$
 * for all $n$, $d$, it is the case that $\frac{n}{\text{-}d} = \frac{\text{-}n}{d}$
-* note that $\frac{1}{2} = \frac{2}{4} = \frac{3}{6} = \frac{4}{8}$
+* observe that $\frac{1}{2} = \frac{2}{4} = \frac{3}{6} = \frac{4}{8}$
 
 To preserver these properties, the following class invariants can be established:
 * to prevent undefined values, `assert` when the denominator is set to zero
