@@ -31,7 +31,7 @@ Below, we will explore the design and implementation of a rational number class.
 
 # Representation
 
-A rational number is expressed as the quotient of two numbers: `n/d` (numerator over denominator). Typical operations performed on rational numbers include basic arithmetic operations (addition, substraction, multiplication, and division), equality, distinction, and ordering.
+A rational number is expressed as the quotient of two numbers: $\frac{n}{d}$ (numerator over denominator). Typical operations performed on rational numbers include basic arithmetic operations (addition, substraction, multiplication, and division), equality, distinction, and ordering.
 
 ## Invariants
 
