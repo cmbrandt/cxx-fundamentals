@@ -459,4 +459,5 @@ TODO: `operator<=>`
 * ISO C++ Link re: classes
 * 'Hands-On Design Patters' by Fedor Pikus
 * ISO C++ Standard Draft
+* 'What is Object-Oriented Programming' by Bjarnie Stroupsrup | https://www.stroustrup.com/whatis.pdf
 
