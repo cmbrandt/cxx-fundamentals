@@ -6,10 +6,11 @@ Below, we will explore the design and implementation of a rational number class.
 
 # Content
 
-### [Representation]()
+### [Data Members]()
 
+* Access Specifiers
 * Invariants
-* Accessibility
+* Encapsulation
 
 ### [Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#member-functions-1)
 
@@ -29,29 +30,11 @@ Below, we will explore the design and implementation of a rational number class.
 ### [References](https://github.com/cmbrandt/cxx-fundamentals/blob/master/01_class_design_essentials.md#references-1)
 
 
-# Representation
+# Data Members
 
 A rational number is expressed as the quotient of two numbers: $\frac{n}{d}$ (numerator over denominator). Typical operations performed on rational numbers include basic arithmetic operations (addition, substraction, multiplication, and division), equality, distinction, and ordering.
 
-## Invariants
-
-A class invariant is a condition or property that must always hold true for all instances of a class throughout its lifetime. They are established when an object is fully constructed, and must be preserved throughout any state change.
-
-Properties that exist for the set of all rational numbers include the following:
-* for all $n$, $\frac{n}{0}$ is undefined
-* for all $m$, $n$, it is the case that $\frac{0}{m} = \frac{0}{n}$
-* for all $n$, $d$, it is the case that $\frac{n}{\text{-}d} = \frac{\text{-}n}{d}$
-* note that $\frac{1}{2} = \frac{2}{4} = \frac{3}{6} = \frac{4}{8}$
-
-To preserver these properties, the following class invariants can be established:
-* to prevent undefined values, `assert` when the denominator is set to zero
-* to provide a unique representation for zero, set the denominator to zero when the numerator is set to one
-* to provide a consistent representation for negative values, ensure that only the numerator may be negative
-* to ensure equality among equivalent values, always represent the object as a reduced fraction
-
-These properties can be captured by a private member function, which will be described later herein.
-
-## Accessibililty
+## Access Specifiers
 
 Direct access to data members allows programmers to break invariants established by the constructor. The internal details of a class can be protected by changing the visibility of data members and member functions.
 
@@ -83,6 +66,28 @@ private:
   int den;
 };
 ```
+
+## Invariants
+
+A class invariant is a condition or property that must always hold true for all instances of a class throughout its lifetime. They are established when an object is fully constructed, and must be preserved throughout any state change.
+
+Properties that exist for the set of all rational numbers include the following:
+* for all $n$, $\frac{n}{0}$ is undefined
+* for all $m$, $n$, it is the case that $\frac{0}{m} = \frac{0}{n}$
+* for all $n$, $d$, it is the case that $\frac{n}{\text{-}d} = \frac{\text{-}n}{d}$
+* note that $\frac{1}{2} = \frac{2}{4} = \frac{3}{6} = \frac{4}{8}$
+
+To preserver these properties, the following class invariants can be established:
+* to prevent undefined values, `assert` when the denominator is set to zero
+* to provide a unique representation for zero, set the denominator to zero when the numerator is set to one
+* to provide a consistent representation for negative values, ensure that only the numerator may be negative
+* to ensure equality among equivalent values, always represent the object as a reduced fraction
+
+These properties can be captured by a private member function, which will be described later herein.
+
+
+## Encapsulation
+
 
 # Member Functions
 
