@@ -455,9 +455,9 @@ TODO: `operator<=>`
 
 # Additional Resources
 
-* C++ Core Guidelines re: classes
-* ISO C++ Link re: classes
-* 'Hands-On Design Patters' by Fedor Pikus
-* ISO C++ Standard Draft
-* 'What is Object-Oriented Programming' by Bjarnie Stroupsrup | https://www.stroustrup.com/whatis.pdf
+* Stroustrup, B. [What is Object-Oriented Programming? (1991 revised version)](https://www.stroustrup.com/whatis.pdf). Proc. 1st European Software Festival. February, 1991.
+* Stroustrup, B., Sutter, H. "Classes and Class Hierarchies." *C++ Core Guidelines* 13 April 2023. http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#S-class
+* "Working Draft, Programming Languages - C++" Accessed August 2023. https://eel.is/c++draft/#class.
+* "Classes and Objects." *ISO C++*. Accessed August 2023. https://isocpp.org/wiki/faq/classes-and-objects.
+* Pikus, F. *[Hands-On Design Patterns with C++](https://www.amazon.com/Hands-Design-Patterns-problems-applications-dp-1804611557/dp/1804611557/)*, 2nd ed., Packt, 2023.
 
