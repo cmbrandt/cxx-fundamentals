@@ -8,20 +8,20 @@ In some cases, the compiler may generate *delete* special member functions, wher
 
 # Content
 
-### [Rule of Three/Five/Zero](https://github.com/cmbrandt/cxx-fundamentals/blob/master/2_class_design_special.md#rule-of-threefivezero-1)
+### [Rule of Three/Five/Zero](https://github.com/cmbrandt/cxx-fundamentals/blob/master/02_class_design_special.md#rule-of-threefivezero-1)
 * Rule of Three
 * Rule of Five
 * Rule of Zero
 
-### [Default Constructor](https://github.com/cmbrandt/cxx-fundamentals/blob/master/2_class_design_special.md#default-constructor-1)
+### [Default Constructor](https://github.com/cmbrandt/cxx-fundamentals/blob/master/02_class_design_special.md#default-constructor-1)
 * Availability
 * Initialization
 
-### [Destructor](https://github.com/cmbrandt/cxx-fundamentals/blob/master/2_class_design_special.md#destructor-1)
+### [Destructor](https://github.com/cmbrandt/cxx-fundamentals/blob/master/02_class_design_special.md#destructor-1)
 * Default Destructor
 * Custom Destructor
 
-### [Copy Operations](https://github.com/cmbrandt/cxx-fundamentals/blob/master/2_class_design_special.md#copy-operations-1)
+### [Copy Operations](https://github.com/cmbrandt/cxx-fundamentals/blob/master/02_class_design_special.md#copy-operations-1)
 * Compiler Generated
 * Manual Implementation
 * Copy-and-Swap Implementation
@@ -29,7 +29,7 @@ In some cases, the compiler may generate *delete* special member functions, wher
 * std::unique_ptr Implementation
 * std::shared_ptr Implementation
 
-### [Move Operations](https://github.com/cmbrandt/cxx-fundamentals/blob/master/2_class_design_special.md#move-operations-1)
+### [Move Operations](https://github.com/cmbrandt/cxx-fundamentals/blob/master/02_class_design_special.md#move-operations-1)
 * Compiler Generated
 * Manual Implementation
 * Copy-and-Swap Implementation
