@@ -298,7 +298,8 @@ public:
   { } 
 
   // Copy assignment operator
-  Widget& operator=(Widget const& other) {
+  Widget& operator=(Widget const& other)
+  {
     idx = other.idx;
     str = other.str;
     ptr = other.ptr; // Shallow copy!
@@ -334,7 +335,8 @@ class Widget {
   { }
 
   // Copy assignment operator
-  Widget& operator=(Widget const& other) {
+  Widget& operator=(Widget const& other)
+  {
     delete ptr;
     idx = other.idx;
     str = other.str;
@@ -372,7 +374,8 @@ public:
   { }
 
   // Copy assignment operator
-  Widget& operator=(Widget const& other) {
+  Widget& operator=(Widget const& other)
+  {
     Widget tmp{other};
     swap(tmp);
     return *this;
@@ -381,7 +384,8 @@ public:
   // Destructor
   ~Widget() { delete ptr; }
 
-  void swap(Widget& other) noexcept {
+  void swap(Widget& other) noexcept
+  {
     using std::swap;
     swap(idx, other.idx);
     swap(str, other.str);
@@ -414,7 +418,8 @@ class Widget {
   { }
 
   // Copy assignment operator
-  Widget& operator=(Widget const& other) {
+  Widget& operator=(Widget const& other)
+  {
     if (ptr and &other.ptr) {
       idx  = other.idx;
       str  = other.str;
@@ -430,7 +435,8 @@ class Widget {
   // Destructor
   ~Widget() { delete ptr; }
 
-  void swap(Widget& other) noexcept {
+  void swap(Widget& other) noexcept
+  {
     using std::swap;
     swap(idx, other.idx);
     swap(str, other.str);
@@ -462,7 +468,8 @@ public:
   { }
 
   // Copy assignment operator
-  Widget& operator=(Widget const& other) {
+  Widget& operator=(Widget const& other)
+  {
     if (ptr and &other.ptr) {
       idx  = other.idx;
       str  = other.str;
@@ -478,7 +485,8 @@ public:
   // Destructor
   ~Widget() = default;
 
-  void swap(Widget& other) noexcept {
+  void swap(Widget& other) noexcept
+  {
     using std::swap;
     swap(idx, other.idx);
     swap(str, other.str);
@@ -549,7 +557,8 @@ public:
   { }
 
   // Move assignment operator
-  Widget& operator=(Widget&& other) noexcept {
+  Widget& operator=(Widget&& other) noexcept
+  {
     idx = std::move(other.idx);
     str = std::move(other.str);
     ptr = std::move(other.ptr); // Shallow copy!
@@ -584,7 +593,8 @@ public:
   { }
 
   // Move assignment operator
-  Widget& operator=(Widget&& other) noexcept {
+  Widget& operator=(Widget&& other) noexcept
+  {
     delete ptr;
     idx = std::move(other.idx);
     str = std::move(other.str);
@@ -622,7 +632,8 @@ public:
   { }
 
   // Move assignment operator
-  Widget& operator=(Widget&& other) noexcept {
+  Widget& operator=(Widget&& other) noexcept
+  {
     Widget tmp{std::move(other)};
     swap(tmp);
     return *this;
@@ -631,7 +642,8 @@ public:
   // Destructor
   ~Widget() { delete ptr; }
 
-  void swap(Widget& other) noexcept {
+  void swap(Widget& other) noexcept
+  {
     using std::swap;
     swap(idx, other.idx);
     swap(str, other.str);
@@ -661,7 +673,8 @@ public:
   { }
 
   // Move assignment operator
-  Widget& operator=(Widget&& other) noexcept {
+  Widget& operator=(Widget&& other) noexcept
+  {
     delete ptr;
     idx = std::move(other.idx);
     str = std::move(other.str);
@@ -672,7 +685,8 @@ public:
   // Destructor
   ~Widget() { delete ptr; }
 
-  void swap(Widget& other) noexcept {
+  void swap(Widget& other) noexcept
+  {
     using std::swap;
     swap(idx, other.idx);
     swap(str, other.str);
