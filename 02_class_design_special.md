@@ -37,6 +37,8 @@ In some cases, the compiler may generate *delete* special member functions, wher
 * std::unique_ptr Implementation
 * std::shared_ptr Implementation
 
+### [Additional Resources](https://github.com/cmbrandt/cxx-fundamentals/blob/master/2_class_design_special.md#additional-resources-1)
+
 
 # Rule of Three/Five/Zero
 
@@ -739,3 +741,12 @@ private:
 As was shown previously, when the resource is owned by `std::shared_ptr` the copy constructor and copy assignment operator may be defaulted as well. This effectively eliminates the need to explicitly define any of the move operations, copy operations, or destructor.
 
 This is referred to as the Rule of Zero.
+
+# Additional Resources
+
+* https://www.youtube.com/watch?v=vLinb2fgkHk Howard Hinnant 2016
+* https://www.youtube.com/watch?v=9BM5LAvNtus Klaus CppCon 2021
+* https://en.cppreference.com/w/cpp/language/rule_of_three
+* 4
+
+
