@@ -455,7 +455,7 @@ TODO: `operator<=>`
 
 # Additional Resources
 
-* Stroustrup, B. [What is Object-Oriented Programming? (1991 revised version)](https://www.stroustrup.com/whatis.pdf). Proc. 1st European Software Festival. February, 1991.
+* Stroustrup, B. [What is Object-Oriented Programming?](https://www.stroustrup.com/whatis.pdf) (1991 revised version). Proc. 1st European Software Festival. February, 1991.
 * Stroustrup, B., Sutter, H. "Classes and Class Hierarchies." *C++ Core Guidelines*, 13 April 2023. [http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#S-class](http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#S-class)
 * Pikus, F. *[Hands-On Design Patterns with C++](https://www.amazon.com/Hands-Design-Patterns-problems-applications-dp-1804611557/dp/1804611557/)*, 2nd ed., Packt, 2023.
 * "Classes and Objects." *Standard C++*, [https://isocpp.org/wiki/faq/classes-and-objects](https://isocpp.org/wiki/faq/classes-and-objects). Accessed August 2023. 
