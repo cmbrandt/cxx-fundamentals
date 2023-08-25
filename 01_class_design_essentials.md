@@ -25,9 +25,9 @@ Below, we will explore idiomatic C++ class design through the example of a ratio
 
 ### [Non-Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#non-member-functions-1)
 
-* Arithmetic
-* Equality
-* Ordering
+* Arithmetic Operators
+* Equality Operators
+* Comparison Operators
 
 ### [Additional Resources](https://github.com/cmbrandt/cxx-fundamentals/blob/master/01_class_design_essentials.md#additional-resources-1)
 
@@ -367,7 +367,7 @@ Rational& Rational::operator+=(Rational const& other)
 
 Description adf adf fa fad fadfa adf adf
 
-## Arithmetic
+## Arithmetic Operators
 
 The non-member binary addition operator performs the operation:
 
@@ -389,7 +389,7 @@ Rational operator+(Rational const& lhs, Rational const& rhs)
 }
 ```
 
-## Equality
+## Equality Operators
 
 Equality performs member-wise equality comparisons. Note that the logical AND and logical OR operators perform short-circuit evaluation (does not evaluate the second operand if the result is known after evaluating the first operand).
 
@@ -412,7 +412,7 @@ bool operator!=(Rational const& lhs, Rational const& rhs)
 }
 ```
 
-## Ordering
+## Comparison Operators
 
 Operator less-than evaluates the expression $r_1 < r_2$, where $r_1 = \frac{n_1}{d_1}$ and $r_2 = \frac{n_2}{d_2}$.
 
