@@ -759,7 +759,7 @@ This is referred to as the Rule of Zero.
 # Additional Resources
 
 * Hinnant, H. [Inside Bloomberg]. (2016, July 25). *Everything You Ever Wanted To Know About Move Semantics*. [Video]. [www.youtube.com/watch?v=vLinb2fgkHk](https://www.youtube.com/watch?v=vLinb2fgkHk)
-* Iglberger, K. [CppCon]. (2021, September xx). *Back To Basics: The Special Member Functions*. [Video]. [www.youtube.com/watch?v=9BM5LAvNtus](https://www.youtube.com/watch?v=9BM5LAvNtus)
+* Iglberger, K. [CppCon]. (2021, October 27). *Back To Basics: The Special Member Functions*. [Video]. [www.youtube.com/watch?v=9BM5LAvNtus](https://www.youtube.com/watch?v=9BM5LAvNtus)
 * https://en.cppreference.com/w/cpp/language/rule_of_three
 * 4
 
