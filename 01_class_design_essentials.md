@@ -1,4 +1,4 @@
-# Class Design: Essentials
+# Class Design: Essentials (WIP)
 
 A class is a collection of data and the algorithms that operate on that data. A class is a user-defined type, and serves as the definition of an object. An object is a concrete instance of a class, and all objects have an address (a location in memory).  Since C++ is primarily an object-oriented language, objects serve as the basis for C++ programs.
 
@@ -10,8 +10,8 @@ Below, we will explore idiomatic C++ class design through the example of a ratio
 
 ### [Data Members](https://github.com/cmbrandt/cxx-fundamentals/blob/master/01_class_design_essentials.md#data-members-1)
 
-* Access Specifiers
 * Invariants
+* Access Specifiers
 * Encapsulation
 
 ### [Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#member-functions-1)
@@ -34,7 +34,27 @@ Below, we will explore idiomatic C++ class design through the example of a ratio
 
 # Data Members
 
-A rational number is expressed as the quotient of two numbers: $\frac{n}{d}$ (numerator over denominator). Typical operations performed on rational numbers include basic arithmetic operations (addition, substraction, multiplication, and division), equality, distinction, and ordering.
+Data members are created and destroyed as part of the object’s lifecycle. When an instance of a class is created, memory is allocated for all data members of that object. Data members are initialized in the order they are declared in the class and destroyed in the reverse order of their declaration when the object goes out of scope. Data members may include fundamental types, pointers, references, built-in arrays, bit fields, or other user-defined types.
+
+A rational number is expressed as the quotient of two integers: $\frac{n}{d}$ (numerator over denominator). The choice for integer data members is natural, given the formal definition of rational numbers as the equivalence class of the quotient set of the Cartesian product of all integers (excluding zero from the set of integers in the second term of the product). Restating that definition in terms of the rational number class, the denominator can never be zero.
+
+## Invariants
+
+A class invariant is a condition or property that must always hold true for all instances of a class throughout its lifetime. They are established when an object is fully constructed, and must be preserved throughout any state change.
+
+Properties that exist for the set of all rational numbers include the following:
+* for all $n$, $\frac{n}{0}$ is undefined
+* for all $m$, $n$, it is the case that $\frac{0}{m} = \frac{0}{n}$
+* for all $n$, $d$, it is the case that $\frac{n}{\text{-}d} = \frac{\text{-}n}{d}$
+* observe that $\frac{1}{2} = \frac{2}{4} = \frac{3}{6} = \frac{4}{8}$
+
+To preserver these properties, the following class invariants can be established:
+* to prevent undefined values, `assert` when the denominator is set to zero
+* to provide a unique representation for zero, set the denominator to one when the numerator is set to zero
+* to provide a consistent representation for negative values, ensure that only the numerator may be negative
+* to ensure equality among equivalent values, always represent the object as a reduced fraction
+
+These properties can be captured by a private member function, which will be described later herein.
 
 ## Access Specifiers
 
@@ -69,27 +89,7 @@ private:
 };
 ```
 
-## Invariants
-
-A class invariant is a condition or property that must always hold true for all instances of a class throughout its lifetime. They are established when an object is fully constructed, and must be preserved throughout any state change.
-
-Properties that exist for the set of all rational numbers include the following:
-* for all $n$, $\frac{n}{0}$ is undefined
-* for all $m$, $n$, it is the case that $\frac{0}{m} = \frac{0}{n}$
-* for all $n$, $d$, it is the case that $\frac{n}{\text{-}d} = \frac{\text{-}n}{d}$
-* observe that $\frac{1}{2} = \frac{2}{4} = \frac{3}{6} = \frac{4}{8}$
-
-To preserver these properties, the following class invariants can be established:
-* to prevent undefined values, `assert` when the denominator is set to zero
-* to provide a unique representation for zero, set the denominator to one when the numerator is set to zero
-* to provide a consistent representation for negative values, ensure that only the numerator may be negative
-* to ensure equality among equivalent values, always represent the object as a reduced fraction
-
-These properties can be captured by a private member function, which will be described later herein.
-
-
 ## Encapsulation
-
 
 # Member Functions
 
