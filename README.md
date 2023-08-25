@@ -1,4 +1,4 @@
-# C++ Fundamentals
+# C++ Fundamentals (WIP)
 
 This collection of materials is dedicated to exploring idiomatic modern C++ design. Each topic contains a mixture of code samples and example programs to demonstrate common usage, along with references and links to external resources where applicable. Originally conceived in June 2023, this repository is intended to be a living document, continually updated to accommodate new research and language features as they become available.
 
