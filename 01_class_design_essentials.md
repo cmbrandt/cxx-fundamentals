@@ -61,9 +61,9 @@ The responsibility for establishing and maintaining these properties will be han
 
 ## Access Specifiers
 
-Access specifiers provide the author of the class the ability to decide which class members are accessible to the users of the class (the class interface) and which members are for internal use only (the class implementation). There are three access specifiers: `public`, `private`, and `protected`. Public members form the public interface of the class and are accessible anywhere. Private members are only accessible by other members of the class, and form the implementation of the class. Protected members are accessible by other members of the class and provide unique access within a class hierarchy (to be discussed in detail in a future topic).
+Access specifiers provide the author of the class the ability to decide which class members are accessible to the users of the class (the class interface) and which members are for internal use only (the class implementation). There are three access specifiers: `public`, `private`, and `protected`. Public members form the public interface of the class and are accessible anywhere. Private members are only accessible by other members of the class and form the implementation of the class. Protected members are accessible by other members of the class and provide unique access within a class hierarchy (to be discussed in detail in a future topic).
 
-In C++, a class may be defined using the keywords `class` or `struct`. From a language perspective, the only different between these two keywords is the default access to class members: `struct` provides default public access, and `class` provides default private access.
+In C++, a class may be defined using the keyword `class` or the keyword `struct`. From a language perspective, the only difference between these two keywords is the default access to class members: `struct` provides default public access, and `class` provides default private access.
 
 The two class definitions below are considered equivalent:
 
@@ -90,7 +90,9 @@ private:
 };
 ```
 
-The commonly accepted convention is to use `class` if the class has an invariant, or if any member is non-public. The use of `struct` alerts the user that the data members can vary independently and all class members are publicly accessible.
+A common convention for ordering class members in their declaration is to group them by their accessibility level. This convention improves code readability and makes it easier to understand the class interface. The general guideline is to order class members from most accessible to least accessible (`public` before `protected` before `private`).
+
+The choice between using the keywords `class` or `struct` can vary by individual, project, or team. A common convention is to use the keyword `class` if the class has an invariant or if any member is non-public. The use of `struct` is typically reserved for a class whose data members can vary independently.
 
 ## Encapsulation
 
