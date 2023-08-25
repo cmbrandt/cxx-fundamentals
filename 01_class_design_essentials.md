@@ -61,6 +61,39 @@ The responsibility for establishing and maintaining these properties will be han
 
 ## Access Specifiers
 
+Access specifiers provide the author of the class the ability to decide which class members are accessible to the users of the class (the class interface) and which members are for internal use only (the class implementation). There are three access specifiers: `public`, `private`, and `protected`. Public members form the public interface of the class and are accessible anywhere. Private members are only accessible by other members of the class, and form the implementation of the class. Protected members are accessible by other members of the class and provide unique access within a class hierarchy (to be discussed in detail in a future topic).
+
+In C++, a class may be defined using the keywords `class` or `struct`. From a language perspective, the only different between these two keywords is the default access to class members: `struct` provides default public access, and `class` provides default private access.
+
+The two class definitions below are considered equivalent:
+
+```cpp
+// struct has default public access
+struct Rational {
+  // Constructors
+  // Assignment operators
+  // Destructor
+private:
+  int num;
+  int den;
+};
+
+// class has default private access
+class Rational {
+public:
+  // Constructors
+  // Assignment operators
+  // Destructor
+private:
+  int num;
+  int den;
+};
+```
+
+The commonly accepted convention is to use `class` if the class has an invariant, or if any member is non-public. The use of `struct` alerts the user that the data members can vary independently and all class members are publicly accessible.
+
+## Encapsulation
+
 Direct access to data members allows programmers to break invariants established by the constructor. The internal details of a class can be protected by changing the visibility of data members and member functions.
 
 C++ provides the following three access specifiers: `public`, `protected`, and `private`. Public members for a part of the public interface of a class, and are accessible anywhere. Protected members of a class are only accessible (1) to the members and friends of that class, and (2) to the members of any derived class of that class. Private members form the implementation of a class, and are only accessible to the members and friends of that class.
