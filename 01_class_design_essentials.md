@@ -40,7 +40,8 @@ A rational number is expressed as the quotient of two integers: $\frac{n}{d}$ (n
 
 ## Invariants
 
-A class invariant is a condition or property that must always hold true for all instances of a class throughout its lifetime. They are established when an object is fully constructed, and must be preserved throughout any state change.
+A class invariant is a condition or property that must always hold true for all instances of a class throughout their lifetime. They are established when an object is fully constructed and must be preserved throughout any state change.
+
 
 Properties that exist for the set of all rational numbers include the following:
 * for all $n$, $\frac{n}{0}$ is undefined
@@ -48,13 +49,15 @@ Properties that exist for the set of all rational numbers include the following:
 * for all $n$, $d$, it is the case that $\frac{n}{\text{-}d} = \frac{\text{-}n}{d}$
 * observe that $\frac{1}{2} = \frac{2}{4} = \frac{3}{6} = \frac{4}{8}$
 
-To preserver these properties, the following class invariants can be established:
+The requirement that the denominator cannot equal zero is a restriction that exists for the domain of all rational numbers. However, the remaining three properties are logical equivalences that can be incorporated into our class design to greatly simplify arithmetic, equality, and comparison operations.
+
+For our rational number class, we will employ the following class invariants:
 * to prevent undefined values, `assert` when the denominator is set to zero
 * to provide a unique representation for zero, set the denominator to one when the numerator is set to zero
 * to provide a consistent representation for negative values, ensure that only the numerator may be negative
 * to ensure equality among equivalent values, always represent the object as a reduced fraction
 
-These properties can be captured by a private member function, which will be described later herein.
+The responsibility for establishing and maintaining these properties will be handled by a set of private member functions, which will be described herein.
 
 ## Access Specifiers
 
