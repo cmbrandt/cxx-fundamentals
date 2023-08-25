@@ -456,7 +456,8 @@ TODO: `operator<=>`
 # Additional Resources
 
 * Stroustrup, B. [What is Object-Oriented Programming?](https://www.stroustrup.com/whatis.pdf) (1991 revised version). Proc. 1st European Software Festival. February, 1991.
-* Stroustrup, B., Sutter, H. "Classes and Class Hierarchies." *C++ Core Guidelines*, 13 April 2023. [http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#S-class](http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#S-class)
+* Iglberger, K. [CppCon]. (2021, October 25). *Back to Basics: Designing Classes (part 2 of 2)*. [Video]. [www.youtube.com/watch?v=9BM5LAvNtus](https://www.youtube.com/watch?v=O65lEiYkkbc)
+* Stroustrup, B., Sutter, H. "Classes and Class Hierarchies." *C++ Core Guidelines*, April 2023. [http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#S-class](http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#S-class)
 * Pikus, F. *[Hands-On Design Patterns with C++](https://www.amazon.com/Hands-Design-Patterns-problems-applications-dp-1804611557/dp/1804611557/)*, 2nd ed., Packt, 2023.
 * "Classes and Objects." *Standard C++*, [https://isocpp.org/wiki/faq/classes-and-objects](https://isocpp.org/wiki/faq/classes-and-objects). Accessed August 2023. 
 * "Working Draft." *Draft C++ Standard*, [https://eel.is/c++draft/#class](https://eel.is/c++draft/#class). Accessed August 2023. 
