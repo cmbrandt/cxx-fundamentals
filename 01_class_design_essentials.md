@@ -2,9 +2,9 @@
 
 A class is a collection of data and the algorithms that operate on that data. A class is a user-defined type, and serves as the definition of an object. An object is a concrete instance of a class, and all objects have an address (a location in memory).  Since C++ is primarily an object-oriented language, objects serve as the basis for C++ programs.
 
-In C++, the data contained within a class are referred to as data members (or attributes). The algorithms that operate on that data are implemented as functions and may be defined inside or outside of the class. Functions defined inside of the class are member functions (or methods), and functions defined outside of the class are non-member functions.
+In C++, the data contained within a class are referred to as data members (or attributes). The algorithms that operate on that data are implemented as functions and may be defined inside or outside of the class. Functions defined inside of the class are referred to as member functions (or methods), and functions defined outside of the class are referred to as non-member functions.
 
-Below, we will explore idiomatic C++ class design through the example of a rational number class. Mathematical abstractions are ideal for demonstrating C++ class design because they provide a straightforward and intuitive representation of data and behavior. We will begin with the specification and encapsulation of data members, then illustrate the functionality of the class by stepping through the implemention of all member and non-member functions.
+Below, we will explore idiomatic C++ class design through the example of a rational number class. Mathematical abstractions are ideal for demonstrating C++ class design because they provide a straightforward and intuitive representation of data and behavior. We will begin with the data representation, then illustrate the functionality of the class by stepping through the implemention of all member and non-member functions.
 
 # Content
 
@@ -34,9 +34,9 @@ Below, we will explore idiomatic C++ class design through the example of a ratio
 
 # Data Members
 
-Data members are created and destroyed as part of the object’s lifecycle. When an instance of a class is created, memory is allocated for all data members of that object. Data members are initialized in the order they are declared in the class and destroyed in the reverse order of their declaration when the object goes out of scope. Data members may include fundamental types, pointers, references, built-in arrays, bit fields, or other user-defined types.
+Data members are created and destroyed as part of the object’s lifecycle. When an instance of a class is created, memory is allocated for all data members of that object. The order in which class data members are created and destroyed is determined by their order of declaration within the class definition. Data members are created and initialized in the order they are listed in the class, and they are destroyed in the reverse order when the object goes out of scope or is explicitly deleted. Data members may include fundamental types, pointers, references, built-in arrays, bit fields, or other user-defined types.
 
-A rational number is expressed as the quotient of two integers: $\frac{n}{d}$ (numerator over denominator). The choice for integer data members is natural, given the formal definition of rational numbers as the equivalence class of the quotient set of the Cartesian product of all integers (excluding zero from the set of integers in the second term of the product). Restating that definition in terms of the rational number class, the denominator can never be zero.
+A rational number is expressed as the quotient of two integers: $\frac{n}{d}$ (numerator over denominator). The choice for integer data members is natural, given the formal definition of rational numbers: the equivalence class of the quotient set of the Cartesian product of all integers (excluding zero from the set of integers in the second term of the product). Restating that definition in terms of the rational number class, the numerator can be any integer value, and the denominator can be any integer value but zero.
 
 ## Invariants
 
@@ -57,15 +57,17 @@ For our rational number class, we will employ the following class invariants:
 * to provide a consistent representation for negative values, ensure that only the numerator may be negative
 * to ensure equality among equivalent values, always represent the object as a reduced fraction
 
-The responsibility for establishing and maintaining these properties will be handled by a set of private member functions, which will be described herein.
+The responsibility for establishing and maintaining these invariants will be managed by a set of private member functions, details of which will be provided subsequently.
 
 ## Access Specifiers
 
-Access specifiers provide the author of the class the ability to decide which class members are accessible to the users of the class (the class interface) and which members are for internal use only (the class implementation). There are three access specifiers: `public`, `private`, and `protected`. Public members form the public interface of the class and are accessible anywhere. Private members are only accessible by other members of the class and form the implementation of the class. Protected members are accessible by other members of the class and provide unique access within a class hierarchy (to be discussed in detail in a future topic).
+Access specifiers provide the ability to determine which class members are accessible to the users of the class (the class interface) and which members are for internal use only (the class implementation). C++ has three access specifiers: `public`, `private`, and `protected`. Public members form the public interface of the class and are accessible anywhere. Private members form the implementation of the class and are only accessible by other members. Protected members are accessible by other members of the class and provide unique access to objects within a class hierarchy (to be discussed in [Class Design: Hierarchies]()).
 
-In C++, a class may be defined using the keyword `class` or the keyword `struct`. From a language perspective, the only difference between these two keywords is the default access to class members: `struct` provides default public access, and `class` provides default private access.
+A common convention for ordering the declaration of class members is to group them by their accessibility level. This convention improves code readability and makes it easier to understand the class interface. The general guideline is to order class members from most accessible to least accessible (`public` before `protected` before `private`).
 
-The two class definitions below are considered equivalent:
+In C++, a class may be defined using the keyword `struct` or the keyword `class`. From a language perspective, the only difference between these two keywords is the default access to class members: `struct` provides default public access, and `class` provides default private access.
+
+The two class definitions below are equivalent:
 
 ```cpp
 // struct has default public access
@@ -90,15 +92,13 @@ private:
 };
 ```
 
-A common convention for ordering class members in their declaration is to group them by their accessibility level. This convention improves code readability and makes it easier to understand the class interface. The general guideline is to order class members from most accessible to least accessible (`public` before `protected` before `private`).
-
-The choice between using the keywords `class` or `struct` can vary by individual, project, or team. A common convention is to use the keyword `class` if the class has an invariant or if any member is non-public. The use of `struct` is typically reserved for a class whose data members can vary independently.
+The choice of using the keyword `struct` or `class` can vary by individual, project, or team. The general guideline is to use the keyword `class` if the class has an invariant or if any member is non-public. The use of `struct` is typically reserved for a class whose data members can vary independently.
 
 ## Encapsulation
 
-Good class design starts from the outside-in: begin with the interface, then move to the implementation. The public interface provides a simplified view of the abstraction that works naturally within the vocabulary of the domain. The “simplified view” means unnecessary details are intentionally hidden, and we encapsulate (put into a capsule) the implementation details of the class. This is common performed by exposing only the minimum required set of public methods necessary, and making all implementation functions and data members private.
+Good class design begins from the outside-in: start with the interface, then move to the implementation. The public interface provides a simplified view of the abstraction that works naturally within the vocabulary of the domain. The “simplified view” means unnecessary details are intentionally hidden, and we encapsulate (put into a capsule) the implementation details of the class. This is typically achieved by exposing only the necessary functionality through the public interface, and making all data members and implementation functions private.
 
-By separating the stable part of the class (the interface) from the volatile part (the implementation), we gain several immediate benefits. One, direct access to data members is restricted, ensuring that class invariants are not violated through various state changes. Two, by simplifying the public interface of the class, we reduce the chances of the class being used incorrectly. Three, by separating the interface from the implementation, modifications to the implementation will not affect the other software components the class interacts with.
+Our rational number class with have a set of public member functions to both observe (accessors) and modify (mutators) each data member. Through this design, we can restrict access to the data members, ensuring the preservation of class invariants throughout the various state transitions over the lifetime of each instance of the class. This encapsulation of the implemenation details not only safeguards the class against unintended use, but also ensures that modifications to the implementation will not affect other software components that interact with the class.
 
 # Member Functions
 
