@@ -96,9 +96,9 @@ The choice between using the keywords `class` or `struct` can vary by individual
 
 ## Encapsulation
 
-Good class design starts from the outside-in: begin with the interface, then the implementation. The public interface provides a simplified view of the abstraction that works naturally within the vocabulary of the domain. The “simplified view” means unnecessary details are intentionally hidden, and we “encapsulate” (put into a capsule) the implementation details of the class. This is common performed by exposing only the minimum required set of public methods necessary, and making all data members and implementation functions private.
+Good class design starts from the outside-in: begin with the interface, then move to the implementation. The public interface provides a simplified view of the abstraction that works naturally within the vocabulary of the domain. The “simplified view” means unnecessary details are intentionally hidden, and we encapsulate (put into a capsule) the implementation details of the class. This is common performed by exposing only the minimum required set of public methods necessary, and making all implementation functions and data members private.
 
-There are several direct consequences from this design strategy of separating the “stable part” of the class (the interface) from the “volatile part” (the implementation). One, direct access to data members is restricted, enabling us to ensure class invariants are not violated through various state changes. Two, by simplifying the public interface of the class, we reduce the changes that the class will be used incorrectly. Third, be separating the interface from the implementation, modifications to the class implementation will not affect other software components the class interacts with.
+By separating the stable part of the class (the interface) from the volatile part (the implementation), we gain several immediate benefits. One, direct access to data members is restricted, enabling us to ensure class invariants are not violated through various state changes. Two, by simplifying the public interface of the class, we reduce the chances of the class being used incorrectly. Three, by separating the interface from the implementation, modifications to the implementation will not affect the other software components the class interacts with.
 
 # Member Functions
 
