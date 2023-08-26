@@ -98,36 +98,7 @@ The choice between using the keywords `class` or `struct` can vary by individual
 
 Direct access to data members allows programmers to break invariants established by the constructor. The internal details of a class can be protected by changing the visibility of data members and member functions.
 
-C++ provides the following three access specifiers: `public`, `protected`, and `private`. Public members for a part of the public interface of a class, and are accessible anywhere. Protected members of a class are only accessible (1) to the members and friends of that class, and (2) to the members of any derived class of that class. Private members form the implementation of a class, and are only accessible to the members and friends of that class.
-
-User-defined types are declared using the keywords `class` and `struct`, which are identical except for the default member acess: `struct` is public by default, while `class` is private by default.
-
-The following two class definitions can be considered equivalent definitions:
-
-```cpp
-// struct has default public access
-struct Rational {
-  // Constructors
-  // Assignment operators
-  // Destructor
-private:
-  int num;
-  int den;
-};
-
-// class has default private access
-class Rational {
-public:
-  // Constructors
-  // Assignment operators
-  // Destructor
-private:
-  int num;
-  int den;
-};
-```
-
-## Encapsulation
+...
 
 # Member Functions
 
