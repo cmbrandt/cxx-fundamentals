@@ -379,23 +379,47 @@ Description adf adf fa fad fadfa adf adf
 
 The non-member binary addition operator performs the operation:
 
+Binary operators are typically implemented as non-member functions to maintain symmetry.  blah-blah-blah ... `Rational + Rational`, `Rational + int`, `int + Rational`...
+
+Note that very binary arithmetic arithmetic operator has a corresponding compound assignment operator. Therefore, the canonical forms of binary arithmetic operators are implemented in terms of their compound assignments.
+
 ```cpp
 Rational a{n1, d1};
 Rational b{n2, d2};
+int i{ii};
 
 Rational c = a + b;
+Rational d = a + i;
+Rational e = i + b;
 ```
 
 This non-member free function is defined in terms of the member unary addition operator.
 
 ```cpp
-// Non-Member Addition
-Rational operator+(Rational const& lhs, Rational const& rhs)
+Rational operator+(Rational lhs, Rational const& rhs)
 {
-  Rational tmp{lhs};
-  return tmp += rhs;
+  return lhs += rhs;
 }
 ```
+
+Rational + int overload:
+
+```cpp
+Rational operator+(Rational lhs, int rhs)
+{
+  return lhs += rhs;
+}
+```
+
+int + Rational overload
+
+```cpp
+Rational operator+(int lhs, Rational rhs)
+{
+  return rhs + lhs;
+}
+```
+
 
 ## Equality Comparison
 
@@ -410,7 +434,6 @@ Recall that our class invariants ensure that each instance of the rational numbe
 Maintaining these properties throughout the lifetime of each object enables us to implement the equality operator using only two binary equality operations. Furthermore, the logical AND operator performs short-circuit evaluation, and does not evaluate the second operand if the result is false.
 
 ```cpp
-// Equality
 constexpr bool operator==(Rational const& lhs, Rational const& rhs)
 {
   return lhs.get_num() == rhs.get_num()
@@ -432,7 +455,6 @@ Operator less-than evaluates the expression $r_1 < r_2$, where $r_1 = \frac{n_1}
 Because division has a higher latency than multiplication, we choose to instead evaluate the mathematically equivalent (and computationally less expensive) expression $n_1d_2 < n_2d_1$.
 
 ```cpp
-// Less-than
 constexpr bool operator<(Rational const& lhs, Rational const& rhs)
 {
   int n1 = lhs.get_num();
