@@ -26,8 +26,8 @@ Below, we will explore idiomatic C++ class design through the example of a ratio
 ### [Non-Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#non-member-functions-1)
 
 * Arithmetic Operators
-* Equality Operators
-* Comparison Operators
+* Equality Comparison
+* Relational Comparison
 
 ### [Additional Resources](https://github.com/cmbrandt/cxx-fundamentals/blob/master/01_class_design_essentials.md#additional-resources-1)
 
@@ -345,6 +345,8 @@ void Rational::set_den(int d)
 }
 ```
 
+The compound assignment `operator+=` modifies the current value of an object by performing an addition assignment operation.
+
 ### Arithmetic
 
 Perform the operation:
@@ -395,72 +397,62 @@ Rational operator+(Rational const& lhs, Rational const& rhs)
 }
 ```
 
-## Equality Operators
+## Equality Comparison
 
-Equality performs member-wise equality comparisons. Note that the logical AND and logical OR operators perform short-circuit evaluation (does not evaluate the second operand if the result is known after evaluating the first operand).
+For composite types, two objects are considered equal if their corresponding parts are considered equal (applied recursively). Using this definition, binary equality can be defined in terms of member-wise equality.
+
+Recall that the `normalize` member function ensures a unique representation for all equivalent values. From this, we can implement `operator==` by testing `num` and by testing `den` for two objects.
+
+Two rational numbers are considered equivalent when they represent the same value despite potentially having different numerical representations. In other words, if the ratios of their numerators and denominators are the same, the rational numbers are considered equivalent.
+
+Recall that our class invariants ensure that each instance of the rational number class have a unique representation for zero, do not have a negatve denominator, and exist in reduced form. Maintaining these properties throughout hte lifetime of each object ensures that 
+
+Maintaining these properties throughout the lifetime of each object enables us to implement the equality operator using only two binary equality operations. Furthermore, the logical AND operator performs short-circuit evaluation, and does not evaluate the second operand if the result is false.
 
 ```cpp
 // Equality
-bool operator==(Rational const& lhs, Rational const& rhs)
+constexpr bool operator==(Rational const& lhs, Rational const& rhs)
 {
   return lhs.get_num() == rhs.get_num()
      and lhs.get_den() == rhs.get_den();
 }
 ```
 
-Distinction is defined in terms of equality.
+The inequality operator is typically implemented in terms of the equality operator.
 
 ```cpp
-// Distinction
-bool operator!=(Rational const& lhs, Rational const& rhs)
-{
-  return not(lhs == rhs);
-}
+constexpr bool operator==(Rational const& lhs, Rational const& rhs) { /* perform the comparison */ }
+constexpr bool operator!=(Rational const& lhs, Rational const& rhs) { return not(lhs == rhs); }
 ```
 
-## Comparison Operators
+## Relational Comparison
 
 Operator less-than evaluates the expression $r_1 < r_2$, where $r_1 = \frac{n_1}{d_1}$ and $r_2 = \frac{n_2}{d_2}$.
 
-Because division has a higher latency than multiplication, we choose to instead evaluation the mathematically equivalent (and computationally less expensive) expression $n_1 \times d_2 < n_2 \times d_1$.
+Because division has a higher latency than multiplication, we choose to instead evaluate the mathematically equivalent (and computationally less expensive) expression $n_1d_2 < n_2d_1$.
 
 ```cpp
 // Less-than
-bool operator<(Rational const& lhs, Rational const& rhs)
+constexpr bool operator<(Rational const& lhs, Rational const& rhs)
 {
   int n1 = lhs.get_num();
-  int n2 = rhs.get_num();
   int d1 = lhs.get_den();
+  int n2 = rhs.get_num();
   int d2 = rhs.get_den();
 
   return (n1*d2) < (n2*d1);
 }
 ```
 
-Operator greater-than is defined in terms of operator less-than, swapping the order of the arguments `lhs` and `rhs` within the operator less-than expression.
-```cpp
-// Greater-than
-bool operator>(Rational const& lhs, Rational const& rhs)
-{
-  return (rhs < lhs);
-}
-```
-
-Less-or-equal and greater-or-equal are defined in terms of less-than and greater-than.
+Typically, once `operator<` is provided, the other relational operators are implemented in terms of it.
 
 ```cpp
-// Less-or-equal
-bool operator<=(Rational const& lhs, Rational const& rhs)
-{
-  return not(lhs > rhs);
-}
-
-// Greater-or-equal
-bool operator>=(Rational const& lhs, Rational const& rhs)
-{
-  return not(lhs < rhs);
-}
+constexpr bool operator< (Rational const& lhs, Rational const& rhs) { /* perform the comparison */ }
+constexpr bool operator> (Rational const& lhs, Rational const& rhs) { return rhs < lhs;      }
+constexpr bool operator<=(Rational const& lhs, Rational const& rhs) { return not(lhs > rhs); }
+constexpr bool operator>=(Rational const& lhs, Rational const& rhs) { return not(lhs < rhs); }
 ```
+
 
 TODO: `operator<=>`
 
