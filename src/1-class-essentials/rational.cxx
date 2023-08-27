@@ -113,22 +113,19 @@ Rational& Rational::operator+=(int other)
 // Non-Member functions
 
 // Arithmetic
-Rational operator+(Rational const& lhs, Rational const& rhs)
+Rational operator+(Rational lhs, Rational const& rhs)
 {
-  Rational tmp{lhs};
-  return tmp += rhs;
+  return lhs += rhs;
 }
 
-Rational operator+(Rational const& lhs, int rhs)
+Rational operator+(Rational lhs, int rhs)
 {
-  Rational tmp{rhs};
-  return tmp += lhs;
+  return lhs += rhs;
 }
 
-Rational operator+(int lhs, Rational const& rhs)
+Rational operator+(int lhs, Rational rhs)
 {
-  Rational tmp{lhs};
-  return tmp += rhs;
+  return rhs + lhs;
 }
 
 // Equality
