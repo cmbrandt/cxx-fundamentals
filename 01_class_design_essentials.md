@@ -4,7 +4,7 @@ A class is a collection of data and the algorithms that operate on that data. A 
 
 In C++, the data contained within a class are referred to as data members (or attributes). The algorithms that operate on that data are implemented as functions and may be defined inside or outside of the class. Functions defined inside of the class are member functions (or methods), and functions defined outside of the class are non-member functions.
 
-Below, we will explore idiomatic C++ class design through the example of a rational number class. Mathematical abstractions are ideal for demonstrating C++ class design because they provide a straightforward and intuitive representation of data and behavior. We will begin by specifying the data representation of the class, then illustrate the functionality by detailing the implemention of all member and non-member functions.
+Below, we will explore idiomatic C++ class design through the example of a rational number class. Mathematical abstractions are ideal for demonstrating C++ class design because they provide a straightforward and intuitive example of data and behavior. We will begin by specifying the data representation of the class, then illustrate the functionality by detailing the implemention of all member and non-member functions.
 
 # Content
 
@@ -34,13 +34,13 @@ Below, we will explore idiomatic C++ class design through the example of a ratio
 
 # Data Members
 
-Data members are created and destroyed as part of the object’s lifecycle. When an instance of a class is created, memory is allocated for all data members of that object. The order in which class data members are created and destroyed is determined by their order of declaration within the class definition. Data members are created and initialized in the order they are listed in the class, and they are destroyed in the reverse order when the object goes out of scope or is explicitly deleted. Data members may include fundamental types, pointers, references, built-in arrays, bit fields, or other user-defined types.
+Data members are created and destroyed as part of the object’s lifecycle. When an instance of a class is created, memory is allocated for all data members of that object. The order in which data members are created and destroyed is determined by their order of declaration within the class definition. Data members are created in the order they are listed in the class, and they are destroyed in the reverse order when the object goes out of scope or is explicitly deleted. Data members may include fundamental types, pointers, references, built-in arrays, bit fields, or other user-defined types.
 
 A rational number is expressed as the quotient of two integers: $\frac{n}{d}$ (numerator over denominator). The choice for integer data members is natural, given the formal definition of rational numbers: the equivalence class of the quotient set of the Cartesian product of all integers (excluding zero from the set of integers in the second term of the product). Restating that definition in terms of the rational number class, the numerator can be any integer value, and the denominator can be any integer value but zero.
 
 ## Invariants
 
-A class invariant is a condition or property that must always hold true for all instances of a class throughout their lifetime. They are established when an object is fully constructed and must be preserved throughout any state change.
+A class invariant is a condition or property that must hold true throughout the lifetime of all instances of a class. They are established when an object is fully constructed and must be preserved throughout any state change.
 
 
 Properties that exist for the set of all rational numbers include the following:
@@ -92,13 +92,13 @@ private:
 };
 ```
 
-The choice of using the keyword `struct` or `class` can vary by individual, project, or team. The general guideline is to use the keyword `class` if the class has an invariant or if any member is non-public. The use of `struct` is commonly reserved for a class whose data members can vary independently.
+The choice of using the keyword `struct` or `class` can vary by individual, project, or team. The general guideline is to use the keyword `class` if the class has an invariant or if any class member is non-public. The use of `struct` is typically reserved for a class whose data members can vary independently.
 
 ## Encapsulation
 
-Good class design begins from the outside-in: start with the interface, then move to the implementation. The public interface provides a simplified view of the abstraction that works naturally within the vocabulary of the domain. The “simplified view” means unnecessary details are intentionally hidden, and we encapsulate (put into a capsule) the implementation details of the class. This is typically achieved by exposing only the necessary functionality through the public interface, making all data members and implementation functions private.
+Good class design begins from the outside-in: start with the interface, then move to the implementation. The public interface provides a simplified view of the class that works naturally within the vocabulary of the domain. The “simplified view” means unnecessary details are intentionally hidden, and we encapsulate (put into a capsule) the implementation details. This is typically achieved by exposing only the necessary functionality through the public interface, making all data members and implementation functions private.
 
-The rational number class with have a set of public member functions to both observe (accessors) and modify (mutators) each data member. Through this design, we can restrict access to the data members, ensuring the preservation of class invariants throughout the various state transitions over the lifetime of each instance of the class. The encapsulation of implemenation details not only safeguards the class against unintended use, but also ensures that modifications to the implementation will not affect other software components that interact with the class.
+The rational number class will have public member functions to both observe (accessors) and modify (mutators) each data member. Through this design, we can restrict access to the data members, ensuring the preservation of class invariants throughout state transitions over the lifetime of each instance of the class. The encapsulation of implemenation details not only safeguards the class against unintended use, but also ensures that modifications to the implementation will not affect other software components that interact with the class.
 
 # Member Functions
 
