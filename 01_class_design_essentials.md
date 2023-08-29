@@ -102,7 +102,9 @@ The rational number class will have public member functions to both observe (acc
 
 # Member Functions
 
-In C++, member functions (also referred to as methods), are functions defined within a class and work with the class's data members (attributes). They serve as the primary means of interacting with the data encapsulated in the class and play a vital role in implementing the class's behavior and operations.
+Member functions define the operations and behaviors associated with a class. They provide a structured manner for objects to manipulate their internal data, offering controlled access and modification. By encapsulating operations within the class, member functions contribute to organized and reusable code, enhancing its overall maintainability.
+
+Member functions are declared within the class declaration and may be defined inside or outside of the class. Functions defined outside of the class use the scope resolution operator `::` to specify the class to which the function belongs. The typical convention is that small, simple functions are defined within the class declaration, while larger functions are defined outside of the class. This helps to keep the class declaration concise and readable, especially for larger classes or when more complex logic is required.
 
 ## Constructors
 
