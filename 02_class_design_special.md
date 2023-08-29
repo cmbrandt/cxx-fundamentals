@@ -760,8 +760,6 @@ This is referred to as the Rule of Zero.
 
 * Hinnant, H. [Inside Bloomberg]. (2016, July 25). *Everything You Ever Wanted To Know About Move Semantics*. [Video]. [www.youtube.com/watch?v=vLinb2fgkHk](https://www.youtube.com/watch?v=vLinb2fgkHk)
 * Iglberger, K. [CppCon]. (2021, October 27). *Back To Basics: The Special Member Functions*. [Video]. [www.youtube.com/watch?v=9BM5LAvNtus](https://www.youtube.com/watch?v=9BM5LAvNtus)
-* "The rule of three/five/zero." *C++ Reference*, [https://en.cppreference.com/w/cpp/language/rule_of_three](https://en.cppreference.com/w/cpp/language/rule_of_three). Accessed August 2023.
+* "The Rule of Three/Five/Zero." *C++ Reference*, [https://en.cppreference.com/w/cpp/language/rule_of_three](https://en.cppreference.com/w/cpp/language/rule_of_three). Accessed August 2023.
 * "Classes and Objects." *Standard C++*, [https://isocpp.org/wiki/faq/classes-and-objects](https://isocpp.org/wiki/faq/classes-and-objects). Accessed August 2023. 
 * "Working Draft." *Draft C++ Standard*, [https://eel.is/c++draft/#class](https://eel.is/c++draft/#class). Accessed August 2023. 
-
-
