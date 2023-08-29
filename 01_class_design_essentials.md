@@ -14,7 +14,7 @@ Below, we will explore idiomatic C++ class design through the example of a ratio
 * Access Specifiers
 * Encapsulation
 
-### [Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#member-functions-1)
+### [Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/01_class_design_essentials.md#member-functions-1)
 
 * Constructors
 * Implementation Functions
@@ -23,7 +23,7 @@ Below, we will explore idiomatic C++ class design through the example of a ratio
 * Move Operations
 * Public Functions
 
-### [Non-Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/1_class_design_essentials.md#non-member-functions-1)
+### [Non-Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/01_class_design_essentials.md#non-member-functions-1)
 
 * Arithmetic Operators
 * Equality Comparison
@@ -102,9 +102,11 @@ The rational number class will have public member functions to both observe (acc
 
 # Member Functions
 
-Member functions define the operations and behaviors associated with a class. They provide a structured manner for objects to manipulate their internal data, offering controlled access and modification. By encapsulating operations within the class, member functions contribute to organized and reusable code, enhancing its overall maintainability.
+Member functions define the operations and behaviors associated with a class. They provide a structured manner for objects to manipulate their internal data, offering controlled access and modification. By encapsulating operations within the class, member functions contribute to organized and reusable code, enhancing the overall maintainability of software.
 
 Member functions are declared within the class declaration and may be defined inside or outside of the class. Functions defined outside of the class use the scope resolution operator `::` to specify the class to which the function belongs. The typical convention is that small, simple functions are defined within the class declaration, while larger functions are defined outside of the class. This helps to keep the class declaration concise and readable, especially for larger classes or when more complex logic is required.
+
+Under certain conditions, the compiler will automatically generate certain member functions for the class. These functions, known as the special member functions, include the default constructor, destructor, copy constructor, copy assignment operator, move constructor, and move assignment operator. Each of these functions are discussed below, but we will perform a much more comprehensive treatment of them individually in (Part 2).
 
 ## Constructors
 
