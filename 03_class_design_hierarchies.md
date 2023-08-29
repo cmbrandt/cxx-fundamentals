@@ -50,3 +50,4 @@ Lorem ipsum dolor sit amet, semper accumsan adolescens eum eu, ea pri modo primi
 # Additional References
 
 * Iglberger, K. [CppCon]. (2021, October 25). *Back to Basics: Designing Classes (part 1 of 2)*. [Video]. [www.youtube.com/watch?v=motLOioLJfg](https://www.youtube.com/watch?v=motLOioLJfg)
+* Stroustrup, B., Sutter, H. "Class Hierarchies (OOP)." *C++ Core Guidelines*, April 2023. [http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#SS-hier](http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#SS-hier)
