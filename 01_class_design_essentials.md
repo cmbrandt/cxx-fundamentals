@@ -489,4 +489,3 @@ TODO: `operator<=>`
 * Stroustrup, B., Sutter, H. "Classes and Class Hierarchies." *C++ Core Guidelines*, April 2023. [http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#S-class](http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#S-class)
 * Pikus, F. *[Hands-On Design Patterns with C++](https://www.amazon.com/Hands-Design-Patterns-problems-applications-dp-1804611557/dp/1804611557/)*, 2nd ed., Packt, 2023.
 * "Classes and Objects." *Standard C++*, [https://isocpp.org/wiki/faq/classes-and-objects](https://isocpp.org/wiki/faq/classes-and-objects). Accessed August 2023. 
-* "Working Draft." *Draft C++ Standard*, [https://eel.is/c++draft/#class](https://eel.is/c++draft/#class). Accessed August 2023. 
