@@ -231,13 +231,20 @@ Note: we need to update the implementation of the following functions to include
 
 ## Destructor
 
-The destructor is responsible for cleaning up all resources associated with the class. The default destructor implementation has an empty body, as depicted below.
+The destructor is a special member function that is invoked at the end of an object’s lifetime and tasked with releasing any resources the object may have acquired during its existence. Specific operations necessary to ensure the proper release of owned resources are defined within the body of the destructor. After executing the body of the destructor, the compiler calls the destructor for each data member in reverse order of declaration.
+
+TODO: description of syntax:
+1. Tilde
+2. empty parameter list
+
+The default destructor implementation has an empty body, as depicted below.
 
 ```cpp
 // Explicit default destructor
 Rational::~Rational() { };
 ```
-The rational number class is a **plain old data** class, which does not require any special instructions for cleanup. As such, it may be defaulted.
+
+Our rational number class contains only fundamental type that do not require any special instructions before destruction. As such, the destructor may be defaulted.
 
 ```cpp
 // Defaulted destructor
