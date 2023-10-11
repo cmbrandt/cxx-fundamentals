@@ -235,7 +235,7 @@ Note: we need to update the implementation of the following functions to include
 
 The destructor is a special member function that is invoked at the end of an object’s lifetime and tasked with releasing any resources the object may have acquired during its existence. Specific operations necessary to ensure the proper release of owned resources are defined within the body of the destructor. After executing the body of the destructor, the compiler calls the destructor for each data member in reverse order of declaration.
 
-The destructor has the same name as the class, but is preceded by a tilde `~`. It does not accept arguments, nor does it return a value (or `void`).
+The destructor has the same name as the class, preceded by a tilde `~`. It does not accept arguments, nor does it return a value (or `void`).
 
 The default destructor implementation has an empty body, as depicted below.
 
