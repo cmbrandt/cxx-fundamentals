@@ -19,10 +19,10 @@ Below, we will explore idiomatic C++ class design through the example of a ratio
 ### [Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/01_class_design_essentials.md#member-functions-1)
 
 * Constructors
-* Implementation Functions
 * Destructor
 * Copy Operations
 * Move Operations
+* Implementation Functions
 * Public Functions
 
 ### [Non-Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/01_class_design_essentials.md#non-member-functions-1)
@@ -181,56 +181,6 @@ Rational::Rational(int n, int d) : num{n}, den{d}
 }
 ```
 
-## Implementation Functions
-
-### Normalize
-
-```cpp
-void Rational::normalize()
-{
-  // Denominator cannot equal zero
-  assert(den != 0);
-  // Unique representation for zero
-  if (num == 0)
-    den = 1;
-  // Only the numerator should be negative
-  else if (den < 0) {
-    num = -num;
-    den = -den;
-  }
-  reduce();
-}
-```
-
-### Reduce
-
-```cpp
-void Rational::reduce()
-{
-  int n = Rational::gcd(num, den);
-  num = num / n;
-  den = den / n;
-}
-```
-
-### Greatest Common Denominator
-
-```cpp
-int Rational::gcd(int a, int b) const
-{
-  int n = std::abs(a);
-  while (b != 0) {
-    int tmp = n % b;
-    n = b;
-    b = tmp;
-  }
-  return n;
-}
-```
-
-Note: we need to update the implementation of the following functions to include a call to the normalize member function: parameterized constructors and mutators. All other member functions will preserver the previously established class invariants.
-
-
 ## Destructor
 
 The destructor is a special member function that is invoked at the end of an object’s lifetime and tasked with releasing any resources the object may have acquired during its existence. Specific operations necessary to ensure the proper release of owned resources are defined within the body of the destructor. After executing the body of the destructor, the compiler calls the destructor for each data member in reverse order of declaration.
@@ -322,6 +272,56 @@ Rational& Rational::operator=(Rational&& other)
 ```
 
 Again, because the rational number class is a **plain old data** class, both the move constructor and move assignment operator may be defaulted, opting to use the compiler generated versions instead.
+
+
+## Implementation Functions
+
+### Normalize
+
+```cpp
+void Rational::normalize()
+{
+  // Denominator cannot equal zero
+  assert(den != 0);
+  // Unique representation for zero
+  if (num == 0)
+    den = 1;
+  // Only the numerator should be negative
+  else if (den < 0) {
+    num = -num;
+    den = -den;
+  }
+  reduce();
+}
+```
+
+### Reduce
+
+```cpp
+void Rational::reduce()
+{
+  int n = Rational::gcd(num, den);
+  num = num / n;
+  den = den / n;
+}
+```
+
+### Greatest Common Denominator
+
+```cpp
+int Rational::gcd(int a, int b) const
+{
+  int n = std::abs(a);
+  while (b != 0) {
+    int tmp = n % b;
+    n = b;
+    b = tmp;
+  }
+  return n;
+}
+```
+
+Note: we need to update the implementation of the following functions to include a call to the normalize member function: parameterized constructors and mutators. All other member functions will preserver the previously established class invariants.
 
 
 ## Public Functions
