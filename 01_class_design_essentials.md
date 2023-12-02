@@ -1,8 +1,6 @@
 # Class Design: Essentials (WIP)
 
-A class is a collection of data and the algorithms that operate on that data. A class is a user-defined type, and serves as the definition of an object. An object is a concrete instance of a class, and all objects have an address (a location in memory).  Since C++ is primarily an object-oriented language, objects serve as the basis for C++ programs.
-
-Given the popularity of the C++ object oriented programming facilities, objects often serve as the basis for C++ programs.
+A class is a collection of data and the algorithms that operate on that data. A class is a user-defined type, and serves as the definition of an object. An object is a concrete instance of a class, and all objects have an address (a location in memory). Given the popularity of the object oriented programming facilities within C++, objects often serve as the basis for C++ programs.
 
 In C++, the data contained within a class are referred to as data members (or attributes). The algorithms that operate on that data are implemented as functions and may be defined inside or outside of the class. Functions defined inside of the class are member functions (or methods), and functions defined outside of the class are non-member functions.
 
