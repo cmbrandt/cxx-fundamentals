@@ -110,16 +110,32 @@ Under certain conditions, the compiler will automatically generate certain membe
 
 ## Constructors
 
-A C++ constructor is a special member function within a class that is automatically called when an object of that class is created. The primary purpose of a constructor is to initialize the object's data members to specific values, ensuring that the object starts in a valid and consistent state. Constructors play a fundamental role in the process of object creation and are essential for proper memory allocation and initialization of object attributes.
+The constructor is a special member function that is used to create an instance of a class. When the constructed is called, all data members of the class are initialized. A class may provide an overload set of multiple constructors to initialize it’s data members under different conditions, using different values.
 
 ### Default Constructor
 
-A default constructor is a constructor that accepts no arguments and is used to create objects of the class with default initial values for its data members. If no other constructor is explicitly defined for the class, the compiler will provide generate a default constructor for the class.
+A default constructor is a constructor that can be called with no arguments. If no other constructor is explicitly defined in the class, the compiler will generate and default constructor for the class.
 
-The default constructor performs member-wise assignment for each data member.
+Below is an empty default constructor for our rational number class.
 
 ```cpp
-// assignment
+// Empty default constructor
+class Rational {
+public:
+  Rational() { }
+
+private:
+  int num;
+  int den;
+};
+```
+
+In this example, default initialization is performed for each data member, as no explicit value has been provided. In the case of our integer data members, this leads to indeterminant values being provide to each instance of the class.
+
+Explicit value may be assigned in the body of the constructor, as shown below.
+
+```cpp
+// Member-wise assignment
 class Rational {
 public:
   Rational() {
@@ -133,10 +149,14 @@ private:
 };
 ```
 
-Member-wise assignment in the body of the constuctor is inefficient because (...). Instead, prefer to use member initializer lists.
+In this example, each data member is default initialized before reaching the opening brace of the constructor body, then a specific value is assigned to them. This is highly inefficient and consider poor practice.
+
+[order of elements in member initializer list]
+
+Instead, C++ provide a member initializer list to specify the direct initialization of data members within the default constructor. The member initializer list is the colon character `:` followed by a common-separated list of one of more member-initializers. By using the initializer list, each data member is initialized using the value provided to them, and we can avoid the less-efficient two-step process observed in the previous example of member-wise assignment.
 
 ```cpp
-// member initializer list
+// Member initializer list
 class Rational {
 public:
   Rational() : num{0}, den{1} { }
@@ -147,10 +167,10 @@ private:
 };
 ```
 
-Things can be simplified even further by using in-class initializers for defining default data member values. This also allows the default constructor to be defaulted by the compiler (defining it using `= default`).
+Alternately, we can use in-class initializers for each data member, enabling us to remove the member initializer list and define the constructor using `=default`.  This style is preferred for default constructors since it clearly specifies the desired default value for each data member and leads to the shortest and most efficient code.
 
 ```cpp
-// in-class member initializer with defaulted constructor
+// In-class initializers with defaulted constructor
 class Rational {
 public:
   Rational() = default;
