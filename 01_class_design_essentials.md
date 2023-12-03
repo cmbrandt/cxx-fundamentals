@@ -13,6 +13,7 @@ Below, we will explore idiomatic C++ class design through the example of a ratio
 * Invariants
 * Access Specifiers
 * Encapsulation
+* Value Semantics
 
 ### [Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/01_class_design_essentials.md#member-functions-1)
 
@@ -99,6 +100,15 @@ The choice of using the keywords `struct` or `class` can vary by individual, pro
 Good class design begins from the outside-in: start with the interface, then move to the implementation. The public interface provides a simplified view of the class that works naturally within the vocabulary of the domain. Unnecessary details are intentionally hidden, and we encapsulate (put into a capsule) the implementation details. This is typically achieved by exposing only the desired functionality through the public interface, making all data members and implementation functions private.
 
 Our rational number class will have public member functions to observe (accessors) and modify (mutators) each data member. Through this design, we can restrict access to the data members, ensuring the preservation of class invariants throughout state transitions over the lifetime of each instance of the class. The encapsulation of implemenation details not only safeguards the class against unintended use, but also ensures that modifications to the implementation will not affect other software components that interact with the class.
+
+## Value Semantics
+
+Value semantics (also called value-type semantics or copy-by-value semantics) states that only the value of an object is significant, not its identity. You can copy an object (via copy construction or copy assignment) as much as you like, and any copy may be used in place of the original object with no change to the program. A type that follows values semantics is commonly referred to as a value type.
+
+By contract, reference semantics refer to an object’s identity (i.e., it’s unique address in memory). A type that follows reference semantics is commonly referred to as a reference type. Reference types are always accessed via references.
+
+In C++, the default semantics for fundamental types and concrete user-defined types is value semantics. Value semantics are preferred whenever possible as they are easier for the programmer to reason about, and easier for the compiler to optimize for performance. Reference semantics are often seen in class hierarchies within an object-oriented design and bring with them a unique set of properties and challenges that we will discuss in Section 3: Class Design Hierarchies.
+
 
 # Member Functions
 
