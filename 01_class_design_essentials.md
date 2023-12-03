@@ -131,7 +131,7 @@ private:
 
 Each data member is default initialized before reaching the opening brace of the constructor body. This leads to default initialization with indeterminate values, since no explicit value is provided for them.
 
-One option would be to assign values to each data member in the body of the constructor, as illlustrated below.
+One option would be to assign values to each data member in the body of the constructor, as illlustrated below. We choose the values of zero for `num` and one for `den`, and this is our unique representation for zero and satisfies each of the four invariants of our class.
 
 ```cpp
 class Rational {
@@ -163,6 +163,8 @@ private:
 };
 ```
 
+[a word about num and the valid domain of values, class invariants, etc.]
+
 Note that the order of the member initializer list follows the same order in which data members are declared in the class definition.
 
 Another method to provide direct initialization of data members within our default constructor is the use of in-class initializers. By using in-class initializers, we can remove the member initializer list from our default constructor, thereby allowing us to default our constructor (defining using `=delete`). This approach clearly specifies the desired default values for each data member and leads to the shortest and most efficient code, and therefore is the preferred convention to follow.
@@ -190,7 +192,9 @@ Below is a parameterized constructor for our rational number class that enables 
 class Rational {
 public:
   Rational() = default;
-  explicit Rational(int n) : num{n} { } // parameterized constructor
+
+  explicit Rational(int n) // parameterized constructor
+    : num{n} { }
 
 private:
   int num{0};
@@ -200,15 +204,20 @@ private:
 
 Note that we use a member initializer list to define the data member `num`. If a data member has an in-class initializer and also appears in a member initializer list, the member initializer is used and the in-class initializer is ignored.
 
-[ ... ]
-
-Also note the keyword `explicit` at the beginning of the parameterized constructor definition. Any non-explicit constructor is called a converting constructor, and specifies an implicit converstaion from the types of its arguments to the type of its class. It is considered best practice to annotate each all single paramter constructors `explicit` as this can be a known source of bugs and other unexpected behavior, as demonstrated below.
+Any constructor that is not declared with the specifier `explicit` is called a converting constructor. In the context of a single parameter constructor, this enables an implicit conversion from the type of its argument to the type of its class, as demonstrated below.
 
 ```cpp
-Rational r = 5; // error! implicit conversion
+Rational r = 5; // implicit conversion from int to Rational
 ```
 
-We can provide a second parameterized constructor that accepts two arguments (one for each data member), which provides complete flexibility in blah-blah-blah. However, recall that blah-blah-blah class invariants blah-blah-blah ... . To prevent any potential violation of class invariants during the construction process, we include a `normalize()` implementation function to be called in the body of the constructor. The `normalize()` function will be discussed in detail further below.
+Specifying all single parameter constructs as `explicit` is considered best practice, in order to avoid this implicit conversion from argument to class type.
+
+
+We can add a second parameterized constructor to our class that accepts tow parameters, one for each data member. This provides the greatest possible ... .
+
+With that flexibility also comes the need to ensure that that the class invariants are adhered to. Therefore, we provide a `normalize()` function...
+
+The example below illustrates a constructor definition outside of the class body using the scope resolution operator. All subsequent member function examples will follow this [outside of class definition to prevent the unnecessary redefinition of the overall class itself].
 
 ```cpp
 Rational::Rational(int n, int d) : num{n}, den{d}
@@ -217,21 +226,7 @@ Rational::Rational(int n, int d) : num{n}, den{d}
 }
 ```
 
-
-```cpp
-class Rational {
-public:
-  Rational() = default;
-  explicit Rational(int n) : num{n} { }
-  Rational(int n, int d) : num{n}, den{d} {
-    normalize();
-  }
-
-private:
-  int num{0};
-  int den{1};
-};
-```
+All subsequent member function examples below will follow this [...] to prevent the duplication of class defintioin etc etc.
 
 ## Destructor
 
