@@ -104,22 +104,21 @@ Our rational number class will have public member functions to observe (accessor
 
 Member functions define the operations and behaviors associated with a class. They provide a structured manner for objects to manipulate their internal data, offering controlled access and modification. By encapsulating operations within the class, member functions contribute to organized and reusable code, enhancing the overall maintainability of software.
 
-Member functions are declared within the class definition and may be defined inside or outside of the class. Functions defined outside of the class use the scope resolution operator `::` to specify the class to which the function belongs. The typical convention is that small, simple functions are defined within the class definition, while larger functions are defined outside of the class. This helps to keep the class definition concise and readable, especially for larger classes or when more complex logic is required.
+Member functions are declared within the class definition and may be defined inside or outside of the class. Functions defined outside of the class use the scope resolution operator `::` to specify the class to which the function belongs. The typical convention is that small, simple functions are defined within the class definition, while larger functions are defined outside of the class. This helps to keep class definitions concise and readable, especially for larger classes or when more complex logic is required.
 
-Under certain conditions, the compiler will automatically generate certain member functions for the class. These functions, known as the special member functions, include the default constructor, destructor, copy constructor, copy assignment operator, move constructor, and move assignment operator. Each of these functions are discussed below, though a much more comprehensive treatment of each individual function is conducted in [Class Design: Special Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/02_class_design_special.md).
+Under certain conditions, the compiler will automatically generate certain member functions for the class. These functions, known as the special member functions, include the default constructor, copy constructor, copy assignment operator, move constructor, move assignment operator, and destructor. Each of these special functions are discussed below, though a much more comprehensive treatment of each individual function is conducted in [Class Design: Special Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/02_class_design_special.md).
 
 ## Constructors
 
-The constructor is a special member function that is used to create an instance of a class. When the constructed is called, all data members of the class are initialized. A class may provide an overload set of multiple constructors to initialize it’s data members under different conditions, using different values.
+The constructor is a member function that is used to create an instance of a class. When the constructor is called, all data members of the class are default initialized. A class may provide an overload set of multiple constructors to initialize it’s data members under different conditions, using different values.
 
 ### Default Constructor
 
-A default constructor is a constructor that can be called with no arguments. If no other constructor is explicitly defined in the class, the compiler will generate and default constructor for the class.
+A default constructor is a constructor that can be called with no arguments. If no other constructor is explicitly defined in the class, the compiler will generate a default constructor for the class.
 
 Below is an empty default constructor for our rational number class.
 
 ```cpp
-// Empty default constructor
 class Rational {
 public:
   Rational() { }
@@ -130,12 +129,11 @@ private:
 };
 ```
 
-In this example, default initialization is performed for each data member, as no explicit value has been provided. In the case of our integer data members, this leads to indeterminant values being provide to each instance of the class.
+In this example, default initialization is performed for each data member, as no explicit value has been provided. In the case of our integer data members, this leads to indeterminant values.
 
-Explicit value may be assigned in the body of the constructor, as shown below.
+Explicit values may be assigned to each data member in the body of the constructor, as shown below.
 
 ```cpp
-// Member-wise assignment
 class Rational {
 public:
   Rational() {
@@ -149,17 +147,16 @@ private:
 };
 ```
 
-In this example, each data member is default initialized before reaching the opening brace of the constructor body, then a specific value is assigned to them. This is highly inefficient and consider poor practice.
+In the above example, each data member is default initialized before reaching the opening brace of the constructor body, then a specific value is assigned to them. This is highly inefficient and considered poor practice.
 
 [order of elements in member initializer list]
 
-Instead, C++ provide a member initializer list to specify the direct initialization of data members within the default constructor. The member initializer list is the colon character `:` followed by a common-separated list of one of more member-initializers. By using the initializer list, each data member is initialized using the value provided to them, and we can avoid the less-efficient two-step process observed in the previous example of member-wise assignment.
+Instead, C++ provide a member initializer list to specify the direct-initialization of data members within the default constructor. The member initializer list is the colon character `:` followed by a comma-separated list of one of more member-initializers. By using the initializer list, we can avoid the less-efficient two-step process observed in the previous example of member-wise assignment.
 
 ```cpp
-// Member initializer list
 class Rational {
 public:
-  Rational() : num{0}, den{1} { }
+  Rational() : num{0}, den{1} { } // ": num{0}, den{1}" is the initializer list
 
 private:
   int num;
@@ -167,10 +164,9 @@ private:
 };
 ```
 
-Alternately, we can use in-class initializers for each data member, enabling us to remove the member initializer list and define the constructor using `=default`.  This style is preferred for default constructors since it clearly specifies the desired default value for each data member and leads to the shortest and most efficient code.
+Alternately, we can use in-class initializers for each data member, enabling us to remove the member initializer list and define the constructor using `=default`.  This is the preferred convention since it clearly specifies the desired default value for each data member and leads to the shortest and most efficient code.
 
 ```cpp
-// In-class initializers with defaulted constructor
 class Rational {
 public:
   Rational() = default;
