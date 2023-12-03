@@ -179,20 +179,55 @@ private:
 
 ### Parameterized Constructors
 
-Constructing an instance using only a single integer value, the parameter is used to initialize `num`, while `den` is initialized to `1` using the default value provided by the in-class member initializer, providing a representation that defaults to a reduced form and preserving the invariants of the class.
+The default constructor initializes an instance of a class with a specific set of values. However, in practice it may be necessary to initialize data members with different values at object creation. We can achieve this by passing arguments to the constructor when objects are created.
+
+A parametrized constructor accepts one or more parameters to provide direct-initialization to one or more data members. They enable programmers to construct objects with specific values and properties.
+
+Below is a parameterized constructor for our rational number class that enables us to specify the numerator with value of our choosing. By explicitly defining a constructor for our class, the compiler will no longer autogenerate a default constructor for the class, and therefore must be explicitly defined as well.
 
 ```cpp
-explicit Rational::Rational(int n) : num{n} { }
+class Rational {
+public:
+  Rational() = default;
+  explicit Rational(int n) : num{n} { } // parameterized constructor
+
+private:
+  int num{0};
+  int den{1};
+};
 ```
 
-Using a pair of integers, both `num` and `dem` are initialized using a member initializer list. Since this function has the ability to overwrite both default values, the class invariants will need to be established during construction. Therefore, within the constructor body, the private member function `normalize` is called, which will be discussed later.
+Note that we use a member initializer list to define the data member `num`. If a data member has an in-class member initializer and also appears in a member initializer list, then the member initializer is used and the in-class initializer is ignored.
 
+Also note the keyword `explicit` at the beginning of the parameterized constructor definition. Any non-explicit constructor is called a converting constructor, and specifies an implicit converstaion from the types of its arguments to the type of its class. It is considered best practice to annotate each all single paramter constructors `explicit` as this can be a known source of bugs and other unexpected behavior, as demonstrated below.
+
+```cpp
+Rational r = 5; // error! implicit conversion
+```
+
+We can provide a second parameterized constructor that accepts two arguments (one for each data member), which provides complete flexibility in blah-blah-blah. However, recall that blah-blah-blah class invariants blah-blah-blah ... . To prevent any potential violation of class invariants during the construction process, we include a `normalize()` implementation function to be called in the body of the constructor. The `normalize()` function will be discussed in detail further below.
 
 ```cpp
 Rational::Rational(int n, int d) : num{n}, den{d}
 {
   normalize(); // private implementation function
 }
+```
+
+
+```cpp
+class Rational {
+public:
+  Rational() = default;
+  explicit Rational(int n) : num{n} { }
+  Rational(int n, int d) : num{n}, den{d} {
+    normalize();
+  }
+
+private:
+  int num{0};
+  int den{1};
+};
 ```
 
 ## Destructor
