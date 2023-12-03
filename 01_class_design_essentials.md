@@ -110,11 +110,11 @@ Under certain conditions, the compiler will automatically generate certain membe
 
 ## Constructors
 
-The constructor is a member function that is used to create an instance of a class. When the constructor is called, all data members of the class are default initialized. A class may provide an overload set of multiple constructors to initialize it’s data members under different conditions, using different values.
+The constructor is a member function that creates an instance of a class. When the constructor is called, all data members of the class are default initialized. A class may provide multiple constructors to initialize it’s data members under different conditions, and using different values.
 
 ### Default Constructor
 
-A default constructor is a constructor that can be called with no arguments. If no other constructor is explicitly defined in the class, the compiler will generate a default constructor for the class.
+A default constructor is a constructor that can be called with no arguments. If no constructor is explicitly defined in the class, the compiler will generate a default constructor.
 
 Below is an empty default constructor for our rational number class.
 
@@ -124,14 +124,14 @@ public:
   Rational() { }
 
 private:
-  int num;
-  int den;
+  int num; // default initialized with
+  int den; // indeterminate values
 };
 ```
 
-In this example, default initialization is performed for each data member, as no explicit value has been provided. In the case of our integer data members, this leads to indeterminant values.
+Each data member is default initialized before reaching the opening brace of the constructor body. This leads to default initialization with indeterminate values, since no explicit value is provided for them.
 
-Explicit values may be assigned to each data member in the body of the constructor, as shown below.
+One option would be to assign values to each data member in the body of the constructor, as illlustrated below.
 
 ```cpp
 class Rational {
@@ -147,16 +147,15 @@ private:
 };
 ```
 
-In the above example, each data member is default initialized before reaching the opening brace of the constructor body, then a specific value is assigned to them. This is highly inefficient and considered poor practice.
+Since each data member is default initialized before the assignment operation takes place, this leads to a rather inefficient and inelegant two-step initialization process. However, modern C++ provides the facilities to handle this process in one step.
 
-[order of elements in member initializer list]
-
-Instead, C++ provide a member initializer list to specify the direct-initialization of data members within the default constructor. The member initializer list is the colon character `:` followed by a comma-separated list of one of more member-initializers. By using the initializer list, we can avoid the less-efficient two-step process observed in the previous example of member-wise assignment.
+The member initializer list is the colon character `:` followed by a comma-separated list of one of more member-initializers. Use of the member initializer list results the direct initialization of data members with the user-provided values before entering the opening brace of the constructor body, replacing the additional computation displayed in the two-step process above.
 
 ```cpp
 class Rational {
 public:
-  Rational() : num{0}, den{1} { } // ": num{0}, den{1}" is the initializer list
+  Rational()             // constructor definition:
+    : num{0}, den{1} { } // ": num{0}, den{1}" is the initializer list
 
 private:
   int num;
@@ -164,7 +163,9 @@ private:
 };
 ```
 
-Alternately, we can use in-class initializers for each data member, enabling us to remove the member initializer list and define the constructor using `=default`.  This is the preferred convention since it clearly specifies the desired default value for each data member and leads to the shortest and most efficient code.
+Note that the order of the member initializer list follows the same order in which data members are declared in the class definition.
+
+Another method to provide direct initialization of data members within our default constructor is the use of in-class initializers. By using in-class initializers, we can remove the member initializer list from our default constructor, thereby allowing us to default our constructor (defining using `=delete`). This approach clearly specifies the desired default values for each data member and leads to the shortest and most efficient code, and therefore is the preferred convention to follow.
 
 ```cpp
 class Rational {
@@ -179,11 +180,11 @@ private:
 
 ### Parameterized Constructors
 
-The default constructor initializes an instance of a class with a specific set of values. However, in practice it may be necessary to initialize data members with different values at object creation. We can achieve this by passing arguments to the constructor when objects are created.
+The default constructor initializes an instance of a class with a specific set of values. However, in practice it may be necessary to initialize data members with different values. We can achieve this by passing arguments to the constructor when objects are created.
 
 A parametrized constructor accepts one or more parameters to provide direct-initialization to one or more data members. They enable programmers to construct objects with specific values and properties.
 
-Below is a parameterized constructor for our rational number class that enables us to specify the numerator with value of our choosing. By explicitly defining a constructor for our class, the compiler will no longer autogenerate a default constructor for the class, and therefore must be explicitly defined as well.
+Below is a parameterized constructor for our rational number class that enables us to specify the numerator with a value of our choosing. By explicitly defining a non-default constructor for our class, the compiler will no longer autogenerate a default constructor. Therefore, we define an explicit default constructor in our example below.
 
 ```cpp
 class Rational {
@@ -197,7 +198,9 @@ private:
 };
 ```
 
-Note that we use a member initializer list to define the data member `num`. If a data member has an in-class member initializer and also appears in a member initializer list, then the member initializer is used and the in-class initializer is ignored.
+Note that we use a member initializer list to define the data member `num`. If a data member has an in-class initializer and also appears in a member initializer list, the member initializer is used and the in-class initializer is ignored.
+
+[ ... ]
 
 Also note the keyword `explicit` at the beginning of the parameterized constructor definition. Any non-explicit constructor is called a converting constructor, and specifies an implicit converstaion from the types of its arguments to the type of its class. It is considered best practice to annotate each all single paramter constructors `explicit` as this can be a known source of bugs and other unexpected behavior, as demonstrated below.
 
