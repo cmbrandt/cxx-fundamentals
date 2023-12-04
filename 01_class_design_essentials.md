@@ -10,17 +10,17 @@ Below, we will explore idiomatic C++ class design through the example of a ratio
 
 ### [Data Members](https://github.com/cmbrandt/cxx-fundamentals/blob/master/01_class_design_essentials.md#data-members-1)
 
+* Value Semantics
 * Invariants
 * Access Specifiers
 * Encapsulation
-* Value Semantics
 
 ### [Member Functions](https://github.com/cmbrandt/cxx-fundamentals/blob/master/01_class_design_essentials.md#member-functions-1)
 
 * Constructors
-* Destructor
 * Copy Operations
 * Move Operations
+* Destructor
 * Implementation Functions
 * Public Functions
 
@@ -38,6 +38,14 @@ Below, we will explore idiomatic C++ class design through the example of a ratio
 Data members are created and destroyed as part of the object’s lifecycle. When an instance of a class is created, memory is allocated for all data members of that object, and data members are created in their order of declaration within the class definition. When the object goes out of scope or is explicitly deleted, data members are destroyed in the reverse order of their declaration. Data members may include fundamental types, pointers, references, built-in arrays, bit fields, or other user-defined types.
 
 A rational number is expressed as the quotient of two integers: $\frac{n}{d}$ (numerator over denominator). The choice for integer data members is natural given the formal definition of rational numbers, which is the equivalence class of the quotient set of the Cartesian product of all integers (excluding zero from the set of integers in the second term of the product). Restating that definition in terms of the rational number class, the numerator can be any integer value, and the denominator can be any integer value but zero.
+
+## Value Semantics
+
+Value semantics (also called value-type semantics or copy-by-value semantics) states that only the value of an object is significant, not its identity. You can copy an object (via copy construction or copy assignment) as much as you like, and any copy may be used in place of the original object with no change to the program. A type that follows values semantics is commonly referred to as a value type.
+
+By contract, reference semantics refer to an object’s identity (i.e., it’s unique address in memory). A type that follows reference semantics is commonly referred to as a reference type. Reference types are always accessed via references.
+
+In C++, the default semantics for fundamental types and concrete user-defined types is value semantics. Value semantics are preferred whenever possible as they are easier for the programmer to reason about, and easier for the compiler to optimize for performance. Reference semantics are often seen in class hierarchies within an object-oriented design and bring with them a unique set of properties and challenges that we will discuss in Section 3: Class Design Hierarchies.
 
 ## Invariants
 
@@ -100,14 +108,6 @@ The choice of using the keywords `struct` or `class` can vary by individual, pro
 Good class design begins from the outside-in: start with the interface, then move to the implementation. The public interface provides a simplified view of the class that works naturally within the vocabulary of the domain. Unnecessary details are intentionally hidden, and we encapsulate (put into a capsule) the implementation details. This is typically achieved by exposing only the desired functionality through the public interface, making all data members and implementation functions private.
 
 Our rational number class will have public member functions to observe (accessors) and modify (mutators) each data member. Through this design, we can restrict access to the data members, ensuring the preservation of class invariants throughout state transitions over the lifetime of each instance of the class. The encapsulation of implemenation details not only safeguards the class against unintended use, but also ensures that modifications to the implementation will not affect other software components that interact with the class.
-
-## Value Semantics
-
-Value semantics (also called value-type semantics or copy-by-value semantics) states that only the value of an object is significant, not its identity. You can copy an object (via copy construction or copy assignment) as much as you like, and any copy may be used in place of the original object with no change to the program. A type that follows values semantics is commonly referred to as a value type.
-
-By contract, reference semantics refer to an object’s identity (i.e., it’s unique address in memory). A type that follows reference semantics is commonly referred to as a reference type. Reference types are always accessed via references.
-
-In C++, the default semantics for fundamental types and concrete user-defined types is value semantics. Value semantics are preferred whenever possible as they are easier for the programmer to reason about, and easier for the compiler to optimize for performance. Reference semantics are often seen in class hierarchies within an object-oriented design and bring with them a unique set of properties and challenges that we will discuss in Section 3: Class Design Hierarchies.
 
 
 # Member Functions
@@ -238,25 +238,6 @@ Rational::Rational(int n, int d) : num{n}, den{d}
 
 All subsequent member function examples below will follow this [...] to prevent the duplication of class defintioin etc etc.
 
-## Destructor
-
-The destructor is a special member function that is invoked at the end of an object’s lifetime and tasked with releasing any resources the object may have acquired during its existence. Specific operations necessary to ensure the proper release of owned resources are defined within the body of the destructor. After executing the body of the destructor, the compiler calls the destructor for each data member in reverse order of declaration.
-
-The destructor has the same name as the class, preceded by a tilde `~`. It does not accept arguments, nor does it return a value (or `void`).
-
-The default destructor implementation has an empty body, as depicted below.
-
-```cpp
-// Explicit default destructor
-Rational::~Rational() { };
-```
-
-Our rational number class contains only fundamental type that do not require any special instructions before destruction. As such, the destructor may be defaulted.
-
-```cpp
-// Defaulted destructor
-Rational::~Rational() = default;
-```
 
 ## Copy Operations
 
@@ -329,6 +310,27 @@ Rational& Rational::operator=(Rational&& other)
 ```
 
 Again, because the rational number class is a **plain old data** class, both the move constructor and move assignment operator may be defaulted, opting to use the compiler generated versions instead.
+
+
+## Destructor
+
+The destructor is a special member function that is invoked at the end of an object’s lifetime and tasked with releasing any resources the object may have acquired during its existence. Specific operations necessary to ensure the proper release of owned resources are defined within the body of the destructor. After executing the body of the destructor, the compiler calls the destructor for each data member in reverse order of declaration.
+
+The destructor has the same name as the class, preceded by a tilde `~`. It does not accept arguments, nor does it return a value (or `void`).
+
+The default destructor implementation has an empty body, as depicted below.
+
+```cpp
+// Explicit default destructor
+Rational::~Rational() { };
+```
+
+Our rational number class contains only fundamental type that do not require any special instructions before destruction. As such, the destructor may be defaulted.
+
+```cpp
+// Defaulted destructor
+Rational::~Rational() = default;
+```
 
 
 ## Implementation Functions
